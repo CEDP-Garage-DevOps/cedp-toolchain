@@ -11,9 +11,9 @@ template:
     - cedp-garage-repo
   info:
     git url: >-
-      [https://github.ibm.com/CEDP-Garage/cedp-garage-toolchain](https://github.ibm.com/CEDP-Garage/cedp-garage-toolchain)
+      [https://github.ibm.com/CEDP-Garage/cedp-toolchain](https://github.ibm.com/CEDP-Garage/cedp-toolchain)
     git branch: >-
-      [staging](https://github.ibm.com/CEDP-Garage/cedp-garage-tooolchain/tree/testing)
+      [master](https://github.ibm.com/CEDP-Garage/cedp-tooolchain/tree/master)
 toolchain:
   name: 'cedp-garage-{{timestamp}}'
   template:
