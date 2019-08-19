@@ -94,19 +94,13 @@
 				}, {
 					"type": "label",
 					"title": ""
-				},{
-					"type": "label",
-					"title": "Region"
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "label",
 					"title": "Kubernetes Cluster"
-				}, {
-					"type": "select",
-					"key": "prod-region"
-				}, {
+				},  {
 					"type": "label",
 					"title": ""
 				}, {
