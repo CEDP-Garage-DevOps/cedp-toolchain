@@ -1,0 +1,9 @@
+{
+  "copyDataFromToolchain": "4641a60b-169f-466b-82e2-fb58f65ed88c",
+  "copyDataFromToolchainName": "component toolchain from default RG based toolchain in ucparule@us.ibm.com org in us-south",
+  "mineRepos": 3,
+  "customDatasets": [
+  ],
+  "policies": [
+  ]
+}

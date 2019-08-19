@@ -1,0 +1,4 @@
+parameters:
+  criteria:
+    $ref: doi.json
+    $refType: text

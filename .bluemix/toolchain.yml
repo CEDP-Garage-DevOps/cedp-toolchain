@@ -1,0 +1,54 @@
+version: '2'
+messages:
+  $i18n: locales.yml
+template:
+  name:
+    $ref: "#/messages/template.name"
+  description:
+    $ref: "#/messages/template.description"
+  required:
+    - cedp-garage-build
+    - cedp-garage-repo
+  info:
+    git url: >-
+      [https://github.ibm.com/CEDP-Garage/cedp-garage-toolchain](https://github.ibm.com/CEDP-Garage/cedp-garage-toolchain)
+    git branch: >-
+      [staging](https://github.ibm.com/CEDP-Garage/cedp-garage-tooolchain/tree/testing)
+toolchain:
+  name: 'cedp-garage-{{timestamp}}'
+  template:
+    getting_started:
+      $ref: "#/messages/template.gettingStarted" 
+services:
+  cedp-garage-repo:
+    service_id: github_integrated
+    parameters:
+      repo_name: ''
+      repo_url: ''
+      type: link
+      private_repo: true
+      has_issues: false
+      enable_traceability: false
+  cedp-garage-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - cedp-garage-repo
+      name: '{{toolchain.name}}'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: pipeline.yml
+        env:
+          GIT_REPO: cedp-garage-repo
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+        execute: false
+  messaging:
+    service_id: slack
+form:
+  pipeline:
+    parameters:
+      app-name: '{{services.cedp-garage-repo.parameters.repo_name}}'
+    schema:
+      $ref: deploy.json
