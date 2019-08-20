@@ -51,7 +51,7 @@
 			"type": "string",
 			"disabled": false
 		}
-	
+
 	},
 	"form": [{
 			"type": "validator",
