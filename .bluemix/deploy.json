@@ -84,6 +84,60 @@
 			]
 		}, {
 			"type": "table",
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
+			"items": [{
+						"type": "label",
+						"title": ""
+					}, {
+						"type": "label",
+						"title": ""
+					}, {
+						"type": "label",
+						"title": ""
+					},{
+						"type": "label",
+						"title": "FUNC_USER"
+					}, {
+						"type": "label",
+						"title": ""
+					}, {
+						"type": "label",
+						"title": "FUNC_PASS"
+					}, {
+						"type": "text",
+						"key": "prod-region"
+					}, {
+						"type": "label",
+						"title": ""
+					}, {
+						"type": "text",
+						"key": "cluster",
+						"readonly": false
+					},   {
+						"type": "label",
+						"title": "DOCKER_PASSWORD"
+					},  {
+						"type": "label",
+						"title": ""
+					},  {
+						"type": "label",
+						"title": "DOCKER_USERNAME"
+					}, {
+						"type": "text",
+						"key": "domain",
+						"readonly": false
+					},  {
+						"type": "label",
+						"title": ""
+					}, {
+						"type": "text",
+						"key": "externalIP",
+						"readonly": false
+					}
+			]
+	}, {
+			"type": "table",
 			"columnCount": 1,
 			"widths": ["100%"],
 			"items": [{
