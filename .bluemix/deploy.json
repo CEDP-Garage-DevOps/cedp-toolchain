@@ -53,6 +53,7 @@
 		}
 
 	},
+	"required": ["api-key", "prod-region"],
 	"form": [{
 		"type": "validator",
 		"url": "/devops/setup/bm-helper/custom_helper.html"
