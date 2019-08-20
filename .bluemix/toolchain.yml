@@ -41,14 +41,14 @@ services:
           $text: pipeline.yml
         env:
           GIT_REPO: cedp-garage-repo
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.DOCKER_IMAGE_NAME}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
-          DOCKER_USERNAME: '{{form.pipeline.parameters.dockerUsername}}'
-          DOCKER_PASSWORD: '{{form.pipeline.parameters.dockerPassword}}'
-          FUNC_USER: '{{form.pipeline.parameters.FuncUser}}'
-          FUNC_PASS: '{{form.pipeline.parameters.FuncPass}}'
-          AF_PSW: '{{form.pipeline.parameters.AfPsw}}'
-          SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.SonarDevopToken}}'
+          DOCKER_USERNAME: '{{form.pipeline.parameters.DOCKER_USERNAME}}'
+          DOCKER_PASSWORD: '{{form.pipeline.parameters.DOCKER_PASSWORD}}'
+          FUNC_USER: '{{form.pipeline.parameters.FUNC_USER}}'
+          FUNC_PASS: '{{form.pipeline.parameters.FUNC_PASS}}'
+          AF_PSW: '{{form.pipeline.parameters.AF_PSW}}'
+          SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.SONAR_DEVOP_TOKEN}}'
         execute: false
   messaging:
     service_id: slack

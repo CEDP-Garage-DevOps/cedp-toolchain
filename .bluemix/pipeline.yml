@@ -32,25 +32,25 @@ hooks:
 
 properties:
 - name: DOCKER_IMAGE_NAME
-  value: '{{form.pipeline.parameters.dockerImageName}}'
+  value: '{{form.pipeline.parameters.DOCKER_IMAGE_NAME}}'
   type: text
 - name: DOCKER_USERNAME
-  value: '{{form.pipeline.parameters.dockerUsername}}'
+  value: '{{form.pipeline.parameters.DOCKER_USERNAME}}'
   type: text
 - name: DOCKER_PASSWORD
-  value: '{{form.pipeline.parameters.dockerPassword}}'
+  value: '{{form.pipeline.parameters.DOCKER_PASSWORD}}'
   type: secure
 - name: FUNC_USER
-  value: '{{form.pipeline.parameters.FuncUser}}'
+  value: '{{form.pipeline.parameters.FUNC_USER}}'
   type: secure
 - name: FUNC_PASS
-  value: '{{form.pipeline.parameters.FuncPass}}'
+  value: '{{form.pipeline.parameters.FUNC_PASS}}'
   type: secure
 - name: AF_PSW
-  value: '{{form.pipeline.parameters.AfPsw}}'
+  value: '{{form.pipeline.parameters.AF_PSW}}'
   type: secure
 - name: SONAR_DEVOP_TOKEN
-  value: '{{form.pipeline.parameters.SonarDevopToken}}'
+  value: '{{form.pipeline.parameters.SONAR_DEVOP_TOKEN}}'
   type: secure
 - name: INPUT_GIT_BRANCH
   value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'

@@ -14,7 +14,7 @@
 	},
 	"type": "object",
 	"properties": {
-		"FuncUser": {
+		"FUNC_USER": {
 			"type": "string",
 			"disabled": false
 		},
@@ -43,7 +43,7 @@
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"dockerImageName": {
+		"DOCKER_IMAGE_NAME": {
 			"type": "string",
 			"disabled": false
 		},
@@ -85,11 +85,31 @@
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "dockerImageName",
+					"key": "DOCKER_IMAGE_NAME",
 					"readonly": false
 				}, {
 					"type": "text",
-					"key": "FuncUser",
+					"key": "SONAR_DEVOP_TOKEN",
+					"readonly": false
+			    }, {
+					"type": "text",
+					"key": "FUNC_PASS",
+					"readonly": false
+				}, {
+					"type": "text",
+					"key": "FUNC_USER",
+					"readonly": false
+				}, {
+					"type": "text",
+					"key": "DOCKER_USERNAME",
+					"readonly": false
+				}, {
+					"type": "text",
+					"key": "DOCKER_PASSWORD",
+					"readonly": false
+			    }, {
+					"type": "text",
+					"key": "AF_PSW",
 					"readonly": false
 				}
 
