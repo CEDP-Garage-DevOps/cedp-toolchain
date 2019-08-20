@@ -134,12 +134,15 @@ properties:
 - name: FUNC_PASS
   value: '{{form.pipeline.parameters.FuncPass}}'
   type: secure
-- name: VAULT
-  value: '{{form.pipeline.parameters.vault}}'
-  type: text
 - name: AF_PSW
   value: '{{form.pipeline.parameters.AfPsw}}'
   type: secure
 - name: SONAR_DEVOP_TOKEN
   value: '{{form.pipeline.parameters.SonarDevopToken}}'
   type: secure
+- name: INPUT_GIT_BRANCH
+  value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+  type: text
+- name: GIT_REPO
+  value: 'https://github.ibm.com/CEDP-Garage/cedp-toolchain.git'
+  type: text
