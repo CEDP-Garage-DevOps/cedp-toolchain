@@ -42,6 +42,14 @@
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
+		},
+		"dockerImageName": {
+			"type": "string",
+			"disabled": false
+		},
+		"INPUT_GIT_BRANCH": {
+			"type": "string",
+			"disabled": false
 		}
 	
 	},
