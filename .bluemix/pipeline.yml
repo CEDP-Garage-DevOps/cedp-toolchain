@@ -1,60 +1,214 @@
 ---
 stages:
-- name: Init
-  inputs:
-  - service: ${GIT_REPO}
-    type: git
-    branch: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
-    dir_name: null
-  triggers:
-  - type: commit
-  permission:
-    execute: TOOLCHAIN_ADMINS
-  jobs:
+  - name: Plan
+    inputs:
+      - service: ${GIT_REPO}
+        type: git
+        branch: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+        dir_name: null
+    triggers:
+      - type: commit
+    permission:
+      execute: TOOLCHAIN_ADMINS
+    jobs:
+      - name: 'Build Plan'
+        type: builder
+        artifact_dir: ''
+        build_type: customimage
+        script: |-
+          #********************************************
+          #!/bin/bash
+          set -x
+          set -e
+          cedp-garage-devops -v build plan diff
+
+        namespace: 'NULL'
+        docker_image: ${DOCKER_IMAGE_NAME}
   - name: Build
-    type: builder
-    artifact_dir: ''
-    build_type: customimage
-    script: |-
-      #********************************************
-      #!/bin/bash
-      set -x
-      set -e
-      ibm-bifrost init diff
-    namespace: 'NULL'
-    docker_image: ${DOCKER_IMAGE_NAME}
+    inputs:
+      - type: job
+        stage: Plan
+        job: 'Build Plan'
+        dir_name: null
+    triggers:
+      - type: stage
+    permission:
+      execute: TOOLCHAIN_ADMINS
+    jobs:
+      - name: 'Build Code'
+        type: builder
+        artifact_dir: ''
+        build_type: customimage
+        script: |-
+          #********************************************
+          #!/bin/bash
+          set -x
+          set -e
+          export MAVEN_OPTS="-Xmx1000m"
+          cedp-garage-devops -v build_code
+        docker_image: ${DOCKER_IMAGE_NAME}
+  - name: Docker
+    inputs:
+      - type: job
+        stage: Build
+        job: 'Build Code'
+        dir_name: null
+    triggers:
+      - type: stage
+    permission:
+      execute: TOOLCHAIN_ADMINS
+    jobs:
+      - name: 'Build Docker'
+        type: builder
+        artifact_dir: ''
+        build_type: customimage
+        script: |-
+          #********************************************
+          #!/bin/bash
+          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
+          set -x
+          set -e
+          ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+          ibmcloud cr login
+          cedp-garage-devops -v build_docker
 
+        namespace: 'NULL'
+        docker_image: ${DOCKER_IMAGE_NAME}
+      - name: 'Validate'
+        type: builder
+        artifact_dir: ''
+        build_type: customimage
+        script: |-
+          #********************************************
+          #!/bin/bash
+          set -x
+          set -e
+          ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+
+          ibmcloud cr login
+
+          cedp-garage-devops -v build_docker validate
+
+        namespace: 'NULL'
+        docker_image: ${DOCKER_IMAGE_NAME}
+  - name: Validate
+    inputs:
+      - type: job
+        stage: Build
+        job: 'Build Code'
+        dir_name: null
+    triggers:
+      - type: stage
+    permission:
+      execute: TOOLCHAIN_ADMINS
+    jobs:
+      - name: 'SonarQube'
+        type: builder
+        artifact_dir: ''
+        build_type: customimage
+        script: |-
+          #********************************************
+          #!/bin/bash
+          set -x
+          set -e
+          cedp-garage-devops -v sonar_validate
+
+        namespace: 'NULL'
+        docker_image: ${DOCKER_IMAGE_NAME}
+  - name: Deploy
+    inputs:
+      - type: job
+        stage: Validate
+        job: 'SonarQube'
+        dir_name: null
+    triggers:
+      - type: stage
+    permission:
+      execute: TOOLCHAIN_ADMINS
+    jobs:
+      - name: 'Dev'
+        type: deployer
+        artifact_dir: ''
+        deploy_type: customimage
+        script: |-
+          #********************************************
+          #!/bin/bash
+          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
+          set -x
+          set -e
+          ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+          ibmcloud cs init
+          ibmcloud cs clusters
+          $(ibmcloud cs cluster-config "${CLUSTER}" | grep export)
+          cedp-garage-devops -v deploy dev
+
+        namespace: 'NULL'
+        docker_image: ${DOCKER_IMAGE_NAME}
+      - name: 'Validate'
+        type: deployer
+        artifact_dir: ''
+        deploy_type: customimage
+        script: |-
+          #********************************************
+          #!/bin/bash
+          set -x
+          set -e
+          ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+          ibmcloud cs init
+          ibmcloud cs clusters
+          $(ibmcloud cs cluster-config "${CLUSTER}" | grep export)
+          cedp-garage-devops -v deploy dev validate
+
+        namespace: 'NULL'
+        docker_image: ${DOCKER_IMAGE_NAME}
 hooks:
-- enabled: true
-  label: null
-  ssl_enabled: false
-  url: http://lms-api/v1/messaging/webhook/publish
-
+  - enabled: true
+    label: null
+    ssl_enabled: false
+    url: http://lms-api/v1/messaging/webhook/publish
 properties:
-- name: DOCKER_IMAGE_NAME
-  value: '{{form.pipeline.parameters.DOCKER_IMAGE_NAME}}'
-  type: text
-- name: DOCKER_USERNAME
-  value: '{{form.pipeline.parameters.DOCKER_USERNAME}}'
-  type: text
-- name: DOCKER_PASSWORD
-  value: '{{form.pipeline.parameters.DOCKER_PASSWORD}}'
-  type: secure
-- name: FUNC_USER
-  value: '{{form.pipeline.parameters.FUNC_USER}}'
-  type: secure
-- name: FUNC_PASS
-  value: '{{form.pipeline.parameters.FUNC_PASS}}'
-  type: secure
-- name: AF_PSW
-  value: '{{form.pipeline.parameters.AF_PSW}}'
-  type: secure
-- name: SONAR_DEVOP_TOKEN
-  value: '{{form.pipeline.parameters.SONAR_DEVOP_TOKEN}}'
-  type: secure
-- name: INPUT_GIT_BRANCH
-  value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
-  type: text
-- name: GIT_REPO
-  value: 'https://github.ibm.com/CEDP-Garage/cedp-toolchain.git'
-  type: text
+  - name: DOCKER_IMAGE_NAME
+    value: '{{form.pipeline.parameters.dockerImageName}}'
+    type: text
+  - name: IBM_CLOUD_API_KEY
+    value: '{{form.pipeline.parameters.api-key}}'
+    type: secure
+  - name: DOCKER_USERNAME
+    value: 'iamapikey'
+    type: text
+  - name: DOCKER_PASSWORD
+    value: '{{form.pipeline.parameters.api-key}}'
+    type: secure
+  - name: SIGNIN_ADDRESS
+    value: '{{form.pipeline.parameters.linkpassword}}'
+    type: text
+  - name: EMAIL_ADDRESS
+    value: '{{form.pipeline.parameters.email-address}}'
+    type: text
+  - name: S_KEY
+    value: '{{form.pipeline.parameters.skey}}'
+    type: secure
+  - name: M_PASS
+    value: '{{form.pipeline.parameters.mpass}}'
+    type: secure
+  - name: VAULT
+    value: '{{form.pipeline.parameters.vault}}'
+    type: text
+  - name: REGISTRY_REGION_ID
+    value: '{{form.pipeline.parameters.registry-region}}'
+    type: text
+  - name: CLUSTER
+    value: '{{form.pipeline.parameters.cluster}}'
+    type: text
+  - name: DOMAIN
+    value: '{{form.pipeline.parameters.domain}}'
+    type: text
+  - name: EXTERNAL_IP
+    value: '{{form.pipeline.parameters.externalIP}}'
+    type: text
+  - name: INPUT_GIT_BRANCH
+    value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+    type: text
+  - name: GIT_REPO
+    value: 'https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines.git'
+    type: text
