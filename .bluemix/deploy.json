@@ -14,40 +14,40 @@
 	},
 	"type": "object",
 	"properties": {
-		"FUNC_USER": {
+		"func-user": {
 			"type": "string",
 			"disabled": false
 		},
-		"FUNC_PASS": {
+		"func-pass": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"AF_PSW": {
+		"af-psw": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"DOCKER_USERNAME": {
+		"docker-username": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"DOCKER_PASSWORD": {
+		"docker-password": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"SONAR_DEVOP_TOKEN": {
+		"sonar-devop-token": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"DOCKER_IMAGE_NAME": {
+		"docker-image-name": {
 			"type": "string",
 			"disabled": false
 		},
-		"INPUT_GIT_BRANCH": {
+		"input-git-branch": {
 			"type": "string",
 			"disabled": false
 		}
