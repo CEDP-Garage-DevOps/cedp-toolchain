@@ -87,7 +87,12 @@
 					"type": "text",
 					"key": "dockerImageName",
 					"readonly": false
+				}, {
+					"type": "text",
+					"key": "FUNC_USER",
+					"readonly": false
 				}
+
 			]
 		}, {
 			"type": "table",

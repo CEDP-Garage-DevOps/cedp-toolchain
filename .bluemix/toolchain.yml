@@ -49,7 +49,7 @@ services:
           FUNC_PASS: '{{form.pipeline.parameters.FuncPass}}'
           AF_PSW: '{{form.pipeline.parameters.AfPsw}}'
           SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.SonarDevopToken}}'
-        execute: true
+        execute: false
   messaging:
     service_id: slack
   dra:
