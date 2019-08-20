@@ -60,24 +60,27 @@
 			"type": "table",
 			"columnCount": 3,
 			"widths": ["45%", "10%", "45%"],
-			"items": [ {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Pipeline Image"
-				},  {
-					"type": "text",
-					"key": "INPUT_GIT_BRANCH",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "DOCKER_IMAGE_NAME",
-					"readonly": false
-				}
+			"items": [{
+						"type": "label",
+						"title": "Git Input Branch"
+					}, {
+						"type": "label",
+						"title": ""
+					}, {
+						"type": "label",
+						"title": "Pipeline Image"
+					},  {
+						"type": "text",
+						"key": "INPUT_GIT_BRANCH",
+						"readonly": false
+					}, {
+						"type": "label",
+						"title": ""
+					}, {
+						"type": "text",
+						"key": "DOCKER_IMAGE_NAME",
+						"readonly": false
+					}
 			]
 		}, {
 			"type": "table",
