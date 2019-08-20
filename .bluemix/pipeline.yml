@@ -38,7 +38,7 @@ properties:
   value: '{{form.pipeline.parameters.dockerUsername}}'
   type: text
 - name: DOCKER_PASSWORD
-  value: '{{form.pipeline.parameters.api-key}}'
+  value: '{{form.pipeline.parameters.dockerPassword}}'
   type: secure
 - name: FUNC_USER
   value: '{{form.pipeline.parameters.FuncUser}}'

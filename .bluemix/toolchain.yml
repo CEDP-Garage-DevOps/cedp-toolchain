@@ -43,9 +43,20 @@ services:
           GIT_REPO: cedp-garage-repo
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+          DOCKER_USERNAME: '{{form.pipeline.parameters.dockerUsername}}'
+          DOCKER_PASSWORD: '{{form.pipeline.parameters.dockerPassword}}'
+          FUNC_USER: '{{form.pipeline.parameters.FuncUser}}'
+          FUNC_PASS: '{{form.pipeline.parameters.FuncPass}}'
+          AF_PSW: '{{form.pipeline.parameters.AfPsw}}'
+          SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.SonarDevopToken}}'
         execute: false
   messaging:
     service_id: slack
+  dra:
+    service_id: draservicebroker
+    name: is_developer_insights_enabled
+    type: boolean
+    $ref: dra.yml
 form:
   pipeline:
     parameters:
