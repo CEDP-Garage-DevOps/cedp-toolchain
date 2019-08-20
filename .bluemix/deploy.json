@@ -14,60 +14,36 @@
 	},
 	"type": "object",
 	"properties": {
-		"api-key": {
-			"description": {
-				"$ref": "#/messages/deploy.apikeyDescription"
-			},
-			"type": "string",
-			"pattern": "\\S"
-		},
-		"prod-region": {
-			"description": {
-				"$ref": "#/messages/deploy.regionDescription"
-			},
+		"FUNC_USER": {
 			"type": "string",
 			"disabled": false
 		},
-		"registry-region": {
-			"type": "string",
-			"disabled": false
-		},
-		"linkpassword": {
-			"type": "string",
-			"disabled": false
-		},
-		"email-address": {
-			"type": "string",
-			"disabled": false
-		},
-		"skey": {
+		"FUNC_PASS": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"mpass": {
+		"AF_PSW": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"vault": {
+		"DOCKER_USERNAME": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"pattern": "\\S"
 		},
-		"cluster": {
+		"DOCKER_PASSWORD": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"pattern": "\\S"
 		},
-		"domain": {
+		"SONAR_DEVOP_TOKEN": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"pattern": "\\S"
 		},
-		"externalIP": {
-			"type": "string",
-			"disabled": false
-		},
-
-		"dockerImageName": {
+		"DOCKER_IMAGE_NAME": {
 			"type": "string",
 			"disabled": false
 		},
@@ -77,7 +53,6 @@
 		}
 
 	},
-	"required": ["api-key", "prod-region"],
 	"form": [{
 		"type": "validator",
 		"url": "/devops/setup/bm-helper/custom_helper.html"
