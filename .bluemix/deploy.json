@@ -14,7 +14,7 @@
 	},
 	"type": "object",
 	"properties": {
-		"FUNC_USER": {
+		"FuncUser": {
 			"type": "string",
 			"disabled": false
 		},
@@ -89,7 +89,7 @@
 					"readonly": false
 				}, {
 					"type": "text",
-					"key": "FUNC_USER",
+					"key": "FuncUser",
 					"readonly": false
 				}
 
