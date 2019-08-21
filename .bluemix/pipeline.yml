@@ -144,6 +144,9 @@ properties:
 - name: DOCKER_PASSWORD
   value: '{{form.pipeline.parameters.docker-password}}'
   type: secure
+- name: DOCKER_REGISTRY
+  value: '{{form.pipeline.parameters.docker-registry}}'
+  type: text
 - name: FUNC_USER
   value: '{{form.pipeline.parameters.func-user}}'
   type: secure

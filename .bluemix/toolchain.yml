@@ -45,6 +45,7 @@ services:
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.input-git-branch}}'
           DOCKER_USERNAME: '{{form.pipeline.parameters.docker-username}}'
           DOCKER_PASSWORD: '{{form.pipeline.parameters.docker-password}}'
+          DOCKER_REGISTRY: '{{form.pipeline.parameters.docker-registry}}'
           FUNC_USER: '{{form.pipeline.parameters.func-user}}'
           FUNC_PASS: '{{form.pipeline.parameters.func-pass}}'
           AF_PSW: '{{form.pipeline.parameters.af-psw}}'

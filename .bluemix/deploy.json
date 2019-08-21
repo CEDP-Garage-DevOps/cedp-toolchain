@@ -37,6 +37,11 @@
 			"disabled": false,
 			"pattern": "\\S"
 		},
+		"docker-registry": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
 		"sonar-devop-token": {
 			"type": "string",
 			"disabled": false,
@@ -52,7 +57,7 @@
 		}
 
 	},
-	"required": ["af-psw", "input-git-branch"],
+	"required": ["af-psw", "input-git-branch", "docker-image-name", "sonar-devop-token", "docker-registry", "docker-password", "docker-username", "func-pass", "func-user"],
 	"form": [{
 		"type": "table",
 		"columnCount": 3,
@@ -128,6 +133,45 @@
 		}, {
 			"type": "password",
 			"key": "af-psw",
+			"readonly": false
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 3,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": "Docker Username"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "Docker Password"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "Docker Registry"
+		}, {
+			"type": "text",
+			"key": "docker-username",
+			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "password",
+			"key": "docker-password",
+			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "text",
+			"key": "docker-registry",
 			"readonly": false
 		}
 		]
