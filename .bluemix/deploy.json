@@ -99,8 +99,34 @@
 			"type": "label",
 			"title": ""
 		}, {
-			"type": "text",
+			"type": "password",
 			"key": "func-pass",
+			"readonly": false
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 3,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": "Sonar DevOps Token"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "AF Password"
+		},  {
+			"type": "password",
+			"key": "sonar-devop-token",
+			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "password",
+			"key": "af-psw",
 			"readonly": false
 		}
 		]
