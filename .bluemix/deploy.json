@@ -78,6 +78,32 @@
 			"readonly": false
 		}
 		]
+	},{
+		"type": "table",
+		"columnCount": 3,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": "Git Input Branch"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "Pipeline Image"
+		},  {
+			"type": "text",
+			"key": "input-git-branch",
+			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "text",
+			"key": "docker-image-name",
+			"readonly": false
+		}
+		]
 	}, {
 		"type": "table",
 		"columnCount": 1,
