@@ -1,6 +1,6 @@
 ---
 stages:
-- name: Init
+- name: Setup
   inputs:
   - service: ${GIT_REPO}
     type: git
@@ -11,17 +11,38 @@ stages:
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
-  - name: Build
+  - name: Init
     type: builder
     artifact_dir: ''
     build_type: customimage
     script: |-
-        #********************************************
         #!/bin/bash
         set -x
         set -e
         ibm-bifrost init diff
+        ibm-bifrost install
     namespace: 'NULL'
+    docker_image: ${DOCKER_IMAGE_NAME}
+- name: Quality
+  inputs:
+    - type: job
+      stage: Setup
+      job: 'Init'
+      dir_name: null
+  triggers:
+    - type: stage
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: 'Quality Test'
+    type: builder
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost quality
     docker_image: ${DOCKER_IMAGE_NAME}
 
 hooks:
