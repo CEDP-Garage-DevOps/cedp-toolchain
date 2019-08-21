@@ -150,12 +150,6 @@
 			"type": "label",
 			"title": "Docker Password"
 		}, {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "label",
-			"title": "Docker Registry"
-		}, {
 			"type": "text",
 			"key": "docker-username",
 			"readonly": false
@@ -166,6 +160,15 @@
 			"type": "password",
 			"key": "docker-password",
 			"readonly": false
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 3,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": "Docker Registry"
 		}, {
 			"type": "label",
 			"title": ""
