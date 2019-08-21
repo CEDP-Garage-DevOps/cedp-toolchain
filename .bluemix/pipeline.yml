@@ -1,60 +1,60 @@
 ---
 stages:
-  - name: Init
-    inputs:
-      - service: ${GIT_REPO}
-        type: git
-        branch: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
-        dir_name: null
-    triggers:
-      - type: commit
-    permission:
-      execute: TOOLCHAIN_ADMINS
-    jobs:
-      - name: Build
-        type: builder
-        artifact_dir: ''
-        build_type: customimage
-        script: |-
-          #********************************************
-          #!/bin/bash
-          set -x
-          set -e
-          ibm-bifrost init diff
-        namespace: 'NULL'
-        docker_image: ${DOCKER_IMAGE_NAME}
+- name: Init
+  inputs:
+  - service: ${GIT_REPO}
+    type: git
+    branch: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+    dir_name: null
+  triggers:
+  - type: commit
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: Build
+    type: builder
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+        #********************************************
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost init diff
+    namespace: 'NULL'
+    docker_image: ${DOCKER_IMAGE_NAME}
 
 hooks:
-  - enabled: true
-    label: null
-    ssl_enabled: false
-    url: http://lms-api/v1/messaging/webhook/publish
+- enabled: true
+  label: null
+  ssl_enabled: false
+  url: http://lms-api/v1/messaging/webhook/publish
 
 properties:
-  - name: DOCKER_IMAGE_NAME
-    value: '{{form.pipeline.parameters.DOCKER_IMAGE_NAME}}'
-    type: text
-  - name: DOCKER_USERNAME
-    value: '{{form.pipeline.parameters.DOCKER_USERNAME}}'
-    type: text
-  - name: DOCKER_PASSWORD
-    value: '{{form.pipeline.parameters.DOCKER_PASSWORD}}'
-    type: secure
-  - name: FUNC_USER
-    value: '{{form.pipeline.parameters.FUNC_USER}}'
-    type: secure
-  - name: FUNC_PASS
-    value: '{{form.pipeline.parameters.FUNC_PASS}}'
-    type: secure
-  - name: AF_PSW
-    value: '{{form.pipeline.parameters.AF_PSW}}'
-    type: secure
-  - name: SONAR_DEVOP_TOKEN
-    value: '{{form.pipeline.parameters.SONAR_DEVOP_TOKEN}}'
-    type: secure
-  - name: INPUT_GIT_BRANCH
-    value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
-    type: text
-  - name: GIT_REPO
-    value: 'https://github.ibm.com/CEDP-Garage/cedp-toolchain.git'
-    type: text
+- name: DOCKER_IMAGE_NAME
+  value: '{{form.pipeline.parameters.DOCKER_IMAGE_NAME}}'
+  type: text
+- name: DOCKER_USERNAME
+  value: '{{form.pipeline.parameters.DOCKER_USERNAME}}'
+  type: text
+- name: DOCKER_PASSWORD
+  value: '{{form.pipeline.parameters.DOCKER_PASSWORD}}'
+  type: secure
+- name: FUNC_USER
+  value: '{{form.pipeline.parameters.FUNC_USER}}'
+  type: secure
+- name: FUNC_PASS
+  value: '{{form.pipeline.parameters.FUNC_PASS}}'
+  type: secure
+- name: AF_PSW
+  value: '{{form.pipeline.parameters.AF_PSW}}'
+  type: secure
+- name: SONAR_DEVOP_TOKEN
+  value: '{{form.pipeline.parameters.SONAR_DEVOP_TOKEN}}'
+  type: secure
+- name: INPUT_GIT_BRANCH
+  value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+  type: text
+- name: GIT_REPO
+  value: 'https://github.ibm.com/CEDP-Garage/cedp-toolchain.git'
+  type: text
