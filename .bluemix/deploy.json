@@ -84,23 +84,23 @@
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
 			"type": "label",
-			"title": "Git Input Branch"
+			"title": "Function UserName"
 		}, {
 			"type": "label",
 			"title": ""
 		}, {
 			"type": "label",
-			"title": "Pipeline Image"
+			"title": "Function Password"
 		},  {
 			"type": "text",
-			"key": "input-git-branch",
+			"key": "func-user",
 			"readonly": false
 		}, {
 			"type": "label",
 			"title": ""
 		}, {
 			"type": "text",
-			"key": "docker-image-name",
+			"key": "func-pass",
 			"readonly": false
 		}
 		]
