@@ -170,9 +170,6 @@
 			"type": "label",
 			"title": "Docker Registry"
 		}, {
-			"type": "label",
-			"title": ""
-		}, {
 			"type": "text",
 			"key": "docker-registry",
 			"readonly": false
