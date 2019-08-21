@@ -52,6 +52,7 @@
 		}
 
 	},
+	"required": ["af-psw", "input-git-branch"],
 	"form": [{
 		"type": "table",
 		"columnCount": 3,
