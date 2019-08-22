@@ -188,7 +188,7 @@
 		]
 	}, {
 		"type": "table",
-		"columnCount": 1,
+		"columnCount": 3,
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
 			"type": "label",
