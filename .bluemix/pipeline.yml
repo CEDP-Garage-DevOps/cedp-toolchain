@@ -147,6 +147,9 @@ properties:
 - name: DOCKER_REGISTRY
   value: '{{form.pipeline.parameters.docker-registry}}'
   type: text
+- name: IBMCLOUD_API_KEY
+  value: '{{form.pipeline.parameters.api-key}}'
+  type: secure
 - name: FUNC_USER
   value: '{{form.pipeline.parameters.func-user}}'
   type: secure
