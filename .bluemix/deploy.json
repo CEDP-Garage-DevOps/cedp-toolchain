@@ -197,8 +197,8 @@
 			"type": "label",
 			"title": ""
 		}, {
-			"type": "select",
-			"key": "prod-region"
+			"type": "label",
+			"title": "Region"
 		}, {
 			"type": "text",
 			"key": "docker-registry",
@@ -206,6 +206,9 @@
 		}, {
 			"type": "label",
 			"title": ""
+		}, {
+			"type": "select",
+			"key": "prod-region"
 		}
 		]
 	}, {
