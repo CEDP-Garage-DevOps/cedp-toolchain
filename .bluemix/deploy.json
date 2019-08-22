@@ -78,9 +78,7 @@
 	}, {
 			"type": "password",
 			"readonly": false,
-			"title": {
-				"$ref": "#/messages/deploy.apikey"
-			},
+			"title": "IBMCLOUD API KEY",
 			"key": "api-key"
 	}, {
 		"type": "table",
