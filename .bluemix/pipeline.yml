@@ -46,8 +46,8 @@ stages:
 - name: Security
   inputs:
     - type: job
-      stage: Quality
-      job: 'Quality Test'
+      stage: Setup
+      job: 'Init'
       dir_name: null
   triggers:
     - type: stage
@@ -67,8 +67,8 @@ stages:
 - name: PublishJar
   inputs:
     - type: job
-      stage: Security
-      job: 'Sonar Check'
+      stage: Setup
+      job: 'Init'
       dir_name: null
   triggers:
     - type: stage
@@ -89,8 +89,8 @@ stages:
 - name: DockerImage
   inputs:
     - type: job
-      stage: PublishJar
-      job: 'Jar'
+      stage: Setup
+      job: 'Init'
       dir_name: null
   triggers:
     - type: stage
@@ -110,8 +110,8 @@ stages:
 - name: AirflowDag
   inputs:
     - type: job
-      stage: DockerImage
-      job: 'Deploy Image'
+      stage: Setup
+      job: 'Init'
       dir_name: null
   triggers:
     - type: stage
