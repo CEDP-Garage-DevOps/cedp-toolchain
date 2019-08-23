@@ -2,9 +2,9 @@
 stages:
 - name: Setup
   inputs:
-  - service: ${GIT_REPO}
+  - service: 'https://github.ibm.com/CEDP-Garage/cedp-garage.git'
     type: git
-    branch: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+    branch: sonar
     dir_name: null
   triggers:
   - type: commit
