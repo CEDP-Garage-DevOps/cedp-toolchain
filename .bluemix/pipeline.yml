@@ -2,7 +2,7 @@
 stages:
 - name: Setup
   inputs:
-  - service: 'https://github.ibm.com/CEDP-Garage/cedp-garage.git'
+  - service: ${GIT_REPO}
     type: git
     branch: sonar
     dir_name: null
