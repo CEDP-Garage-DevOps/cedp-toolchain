@@ -166,5 +166,5 @@ properties:
   value: '{{form.pipeline.parameters.input-git-branch}}'
   type: text
 - name: GIT_REPO
-  value: 'https://github.ibm.com/CEDP-Garage/cedp-garage.git'
+  value: 'https://github.ibm.com/CEDP-Garage/cedp-toolchain.git'
   type: text
