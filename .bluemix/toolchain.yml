@@ -45,7 +45,6 @@ services:
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.input-git-branch}}'
           DOCKER_USERNAME: '{{form.pipeline.parameters.docker-username}}'
           DOCKER_PASSWORD: '{{form.pipeline.parameters.docker-password}}'
-          DOCKER_REGISTRY: '{{form.pipeline.parameters.docker-registry}}'
           IBMCLOUD_API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           FUNC_USER: '{{form.pipeline.parameters.func-user}}'

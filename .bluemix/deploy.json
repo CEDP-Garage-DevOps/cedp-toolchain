@@ -51,11 +51,6 @@
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"docker-registry": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
 		"sonar-devop-token": {
 			"type": "string",
 			"disabled": false,
@@ -71,7 +66,7 @@
 		}
 
 	},
-	"required": ["af-psw", "input-git-branch", "api-key", "prod-region", "docker-image-name", "sonar-devop-token", "docker-registry", "docker-password", "docker-username", "func-pass", "func-user"],
+	"required": ["af-psw", "input-git-branch", "api-key", "prod-region", "docker-image-name", "sonar-devop-token", "docker-password", "docker-username", "func-pass", "func-user"],
 	"form": [{
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
@@ -190,17 +185,10 @@
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
 			"type": "label",
-			"title": "Docker Registry"
-		}, {
-			"type": "label",
 			"title": ""
 		}, {
 			"type": "label",
 			"title": "Region"
-		}, {
-			"type": "text",
-			"key": "docker-registry",
-			"readonly": false
 		}, {
 			"type": "label",
 			"title": ""
