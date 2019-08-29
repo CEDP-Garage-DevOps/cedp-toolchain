@@ -89,8 +89,8 @@ stages:
 - name: DockerImage
   inputs:
     - type: job
-      stage: Setup
-      job: 'Init'
+      stage: PublishJar
+      job: 'Jar'
       dir_name: null
   triggers:
     - type: stage
