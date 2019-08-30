@@ -62,7 +62,7 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        ibm-bifrost security
+        ibm-bifrost sonar
     docker_image: ${DOCKER_IMAGE_NAME}
 - name: PublishJar
   inputs:
