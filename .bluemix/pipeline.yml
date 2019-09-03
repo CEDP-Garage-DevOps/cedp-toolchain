@@ -6,7 +6,7 @@ stages:
     type: git
     branch: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
     dir_name: null
-triggers:
+  triggers:
   - type: commit
     events: '{"push":true,"pull_request_closed":false}'
   permission:
