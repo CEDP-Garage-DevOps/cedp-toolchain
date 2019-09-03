@@ -43,91 +43,7 @@ stages:
         set -e
         ibm-bifrost quality
     docker_image: ${DOCKER_IMAGE_NAME}
-- name: Security
-  inputs:
-    - type: job
-      stage: Setup
-      job: 'Init'
-      dir_name: null
-  triggers:
-    - type: stage
-  permission:
-    execute: TOOLCHAIN_ADMINS
-  jobs:
-  - name: 'Sonar Check'
-    type: builder
-    artifact_dir: ''
-    build_type: customimage
-    script: |-
-        #!/bin/bash
-        set -x
-        set -e
-        ibm-bifrost sonar
-    docker_image: ${DOCKER_IMAGE_NAME}
-- name: PublishJar
-  inputs:
-    - type: job
-      stage: Setup
-      job: 'Init'
-      dir_name: null
-  triggers:
-    - type: stage
-  permission:
-    execute: TOOLCHAIN_ADMINS
-  jobs:
-  - name: 'Jar'
-    type: builder
-    artifact_dir: ''
-    build_type: customimage
-    script: |-
-        #!/bin/bash
-        set -x
-        set -e
-        ibm-bifrost install
-        ibm-bifrost publish
-    docker_image: ${DOCKER_IMAGE_NAME}
-- name: DockerImage
-  inputs:
-    - type: job
-      stage: PublishJar
-      job: 'Jar'
-      dir_name: null
-  triggers:
-    - type: stage
-  permission:
-    execute: TOOLCHAIN_ADMINS
-  jobs:
-  - name: 'Deploy Image'
-    type: builder
-    artifact_dir: ''
-    build_type: customimage
-    script: |-
-        #!/bin/bash
-        set -x
-        set -e
-        ibm-bifrost image
-    docker_image: ${DOCKER_IMAGE_NAME}
-- name: AirflowDag
-  inputs:
-    - type: job
-      stage: Setup
-      job: 'Init'
-      dir_name: null
-  triggers:
-    - type: stage
-  permission:
-    execute: TOOLCHAIN_ADMINS
-  jobs:
-  - name: 'Deploy Dag'
-    type: builder
-    artifact_dir: ''
-    build_type: customimage
-    script: |-
-        #!/bin/bash
-        set -x
-        set -e
-        ibm-bifrost schedule
-    docker_image: ${DOCKER_IMAGE_NAME}
+
 hooks:
 - enabled: true
   label: null
@@ -144,20 +60,8 @@ properties:
 - name: DOCKER_PASSWORD
   value: '{{form.pipeline.parameters.docker-password}}'
   type: secure
-- name: IBMCLOUD_API_KEY
-  value: '{{form.pipeline.parameters.api-key}}'
-  type: secure
-- name: FUNC_USER
-  value: '{{form.pipeline.parameters.func-user}}'
-  type: secure
-- name: FUNC_PASS
-  value: '{{form.pipeline.parameters.func-pass}}'
-  type: secure
 - name: AF_PSW
   value: '{{form.pipeline.parameters.af-psw}}'
-  type: secure
-- name: SONAR_DEVOP_TOKEN
-  value: '{{form.pipeline.parameters.sonar-devop-token}}'
   type: secure
 - name: INPUT_GIT_BRANCH
   value: '{{form.pipeline.parameters.input-git-branch}}'
