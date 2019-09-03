@@ -1,6 +1,6 @@
 ---
 stages:
-- name: Init
+- name: Setup
   inputs:
   - service: ${GIT_REPO}
     type: git
@@ -11,19 +11,123 @@ stages:
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
-  - name: Build
+  - name: Init
     type: builder
     artifact_dir: ''
     build_type: customimage
     script: |-
-      #********************************************
-      #!/bin/bash
-      set -x
-      set -e
-      ibm-bifrost init diff
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost init diff
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
-
+- name: Quality
+  inputs:
+    - type: job
+      stage: Setup
+      job: 'Init'
+      dir_name: null
+  triggers:
+    - type: stage
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: 'Quality Test'
+    type: builder
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost quality
+    docker_image: ${DOCKER_IMAGE_NAME}
+- name: Security
+  inputs:
+    - type: job
+      stage: Setup
+      job: 'Init'
+      dir_name: null
+  triggers:
+    - type: stage
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: 'Sonar Check'
+    type: builder
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost sonar
+    docker_image: ${DOCKER_IMAGE_NAME}
+- name: PublishJar
+  inputs:
+    - type: job
+      stage: Setup
+      job: 'Init'
+      dir_name: null
+  triggers:
+    - type: stage
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: 'Jar'
+    type: builder
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost install
+        ibm-bifrost publish
+    docker_image: ${DOCKER_IMAGE_NAME}
+- name: DockerImage
+  inputs:
+    - type: job
+      stage: PublishJar
+      job: 'Jar'
+      dir_name: null
+  triggers:
+    - type: stage
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: 'Deploy Image'
+    type: builder
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost image
+    docker_image: ${DOCKER_IMAGE_NAME}
+- name: AirflowDag
+  inputs:
+    - type: job
+      stage: Setup
+      job: 'Init'
+      dir_name: null
+  triggers:
+    - type: stage
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: 'Deploy Dag'
+    type: builder
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost schedule
+    docker_image: ${DOCKER_IMAGE_NAME}
 hooks:
 - enabled: true
   label: null
@@ -32,28 +136,31 @@ hooks:
 
 properties:
 - name: DOCKER_IMAGE_NAME
-  value: '{{form.pipeline.parameters.DOCKER_IMAGE_NAME}}'
+  value: '{{form.pipeline.parameters.docker-image-name}}'
   type: text
 - name: DOCKER_USERNAME
-  value: '{{form.pipeline.parameters.DOCKER_USERNAME}}'
+  value: '{{form.pipeline.parameters.docker-username}}'
   type: text
 - name: DOCKER_PASSWORD
-  value: '{{form.pipeline.parameters.DOCKER_PASSWORD}}'
+  value: '{{form.pipeline.parameters.docker-password}}'
+  type: secure
+- name: IBMCLOUD_API_KEY
+  value: '{{form.pipeline.parameters.api-key}}'
   type: secure
 - name: FUNC_USER
-  value: '{{form.pipeline.parameters.FUNC_USER}}'
+  value: '{{form.pipeline.parameters.func-user}}'
   type: secure
 - name: FUNC_PASS
-  value: '{{form.pipeline.parameters.FUNC_PASS}}'
+  value: '{{form.pipeline.parameters.func-pass}}'
   type: secure
 - name: AF_PSW
-  value: '{{form.pipeline.parameters.AF_PSW}}'
+  value: '{{form.pipeline.parameters.af-psw}}'
   type: secure
 - name: SONAR_DEVOP_TOKEN
-  value: '{{form.pipeline.parameters.SONAR_DEVOP_TOKEN}}'
+  value: '{{form.pipeline.parameters.sonar-devop-token}}'
   type: secure
 - name: INPUT_GIT_BRANCH
-  value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+  value: '{{form.pipeline.parameters.input-git-branch}}'
   type: text
 - name: GIT_REPO
   value: 'https://github.ibm.com/CEDP-Garage/cedp-toolchain.git'

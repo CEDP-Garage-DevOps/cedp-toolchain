@@ -13,12 +13,12 @@ template:
     git url: >-
       [https://github.ibm.com/CEDP-Garage/cedp-toolchain](https://github.ibm.com/CEDP-Garage/cedp-toolchain)
     git branch: >-
-      [master](https://github.ibm.com/CEDP-Garage/cedp-tooolchain/tree/master)
+      [kranthi](https://github.ibm.com/CEDP-Garage/cedp-tooolchain/tree/kranthi)
 toolchain:
   name: 'cedp-garage-{{timestamp}}'
   template:
     getting_started:
-      $ref: "#/messages/template.gettingStarted" 
+      $ref: "#/messages/template.gettingStarted"
 services:
   cedp-garage-repo:
     service_id: github_integrated
@@ -41,14 +41,16 @@ services:
           $text: pipeline.yml
         env:
           GIT_REPO: cedp-garage-repo
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.DOCKER_IMAGE_NAME}}'
-          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
-          DOCKER_USERNAME: '{{form.pipeline.parameters.DOCKER_USERNAME}}'
-          DOCKER_PASSWORD: '{{form.pipeline.parameters.DOCKER_PASSWORD}}'
-          FUNC_USER: '{{form.pipeline.parameters.FUNC_USER}}'
-          FUNC_PASS: '{{form.pipeline.parameters.FUNC_PASS}}'
-          AF_PSW: '{{form.pipeline.parameters.AF_PSW}}'
-          SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.SONAR_DEVOP_TOKEN}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.docker-image-name}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.input-git-branch}}'
+          DOCKER_USERNAME: '{{form.pipeline.parameters.docker-username}}'
+          DOCKER_PASSWORD: '{{form.pipeline.parameters.docker-password}}'
+          IBMCLOUD_API_KEY: '{{form.pipeline.parameters.api-key}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          FUNC_USER: '{{form.pipeline.parameters.func-user}}'
+          FUNC_PASS: '{{form.pipeline.parameters.func-pass}}'
+          AF_PSW: '{{form.pipeline.parameters.af-psw}}'
+          SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.sonar-devop-token}}'
         execute: false
   messaging:
     service_id: slack

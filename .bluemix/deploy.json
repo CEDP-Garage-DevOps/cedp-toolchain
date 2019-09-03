@@ -14,150 +14,211 @@
 	},
 	"type": "object",
 	"properties": {
-		"FUNC_USER": {
+		"api-key": {
+			"description": {
+				"$ref": "#/messages/deploy.apikeyDescription"
+			},
+			"type": "string",
+			"pattern": "\\S"
+		},
+		"prod-region": {
+			"description": {
+				"$ref": "#/messages/deploy.regionDescription"
+			},
 			"type": "string",
 			"disabled": false
 		},
-		"FUNC_PASS": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"AF_PSW": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"DOCKER_USERNAME": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"DOCKER_PASSWORD": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"SONAR_DEVOP_TOKEN": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"DOCKER_IMAGE_NAME": {
+		"func-user": {
 			"type": "string",
 			"disabled": false
 		},
-		"INPUT_GIT_BRANCH": {
+		"func-pass": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"af-psw": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"docker-username": {
+			"type": "string",
+			"disabled": false
+		},
+		"docker-password": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"sonar-devop-token": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"docker-image-name": {
+			"type": "string",
+			"disabled": false
+		},
+		"input-git-branch": {
 			"type": "string",
 			"disabled": false
 		}
 
 	},
+	"required": ["af-psw", "input-git-branch", "api-key", "prod-region", "docker-image-name", "sonar-devop-token", "docker-password", "docker-username", "func-pass", "func-user"],
 	"form": [{
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
-		}, {
-			"type": "table",
-			"columnCount": 3,
-			"widths": ["45%", "10%", "45%"],
-			"items": [{
-						"type": "label",
-						"title": "Git Input Branch"
-					}, {
-						"type": "label",
-						"title": ""
-					}, {
-						"type": "label",
-						"title": "Pipeline Image"
-					},  {
-						"type": "text",
-						"key": "INPUT_GIT_BRANCH",
-						"readonly": false
-					}, {
-						"type": "label",
-						"title": ""
-					}, {
-						"type": "text",
-						"key": "DOCKER_IMAGE_NAME",
-						"readonly": false
-					}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 3,
-			"widths": ["45%", "10%", "45%"],
-			"items": [{
-						"type": "label",
-						"title": ""
-					}, {
-						"type": "label",
-						"title": ""
-					}, {
-						"type": "label",
-						"title": ""
-					},{
-						"type": "label",
-						"title": "FUNC_USER"
-					}, {
-						"type": "label",
-						"title": ""
-					}, {
-						"type": "label",
-						"title": "FUNC_PASS"
-					}, {
-						"type": "text",
-						"key": "prod-region"
-					}, {
-						"type": "label",
-						"title": ""
-					}, {
-						"type": "text",
-						"key": "cluster",
-						"readonly": false
-					},   {
-						"type": "label",
-						"title": "DOCKER_PASSWORD"
-					},  {
-						"type": "label",
-						"title": ""
-					},  {
-						"type": "label",
-						"title": "DOCKER_USERNAME"
-					}, {
-						"type": "text",
-						"key": "domain",
-						"readonly": false
-					},  {
-						"type": "label",
-						"title": ""
-					}, {
-						"type": "text",
-						"key": "externalIP",
-						"readonly": false
-					}
-			]
 	}, {
-			"type": "table",
-			"columnCount": 1,
-			"widths": ["100%"],
-			"items": [{
-					"type": "label",
-					"title": {
-						"$ref": "#/messages/deploy.clusterDescription"
-					}
-				}
-			]
+			"type": "password",
+			"readonly": false,
+			"title": "IBMCLOUD API KEY",
+			"key": "api-key"
+	}, {
+		"type": "table",
+		"columnCount": 3,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": "Git Input Branch"
 		}, {
-			"type": "table",
-			"columnCount": 1,
-			"widths": ["100%"],
-			"items": [{
-					"type": "label",
-					"title": {
-						"$ref": "#/messages/deploy.clusternsDescription"
-					}
-				}
-			]
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "Pipeline Image"
+		},  {
+			"type": "text",
+			"key": "input-git-branch",
+			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "text",
+			"key": "docker-image-name",
+			"readonly": false
 		}
+		]
+	},{
+		"type": "table",
+		"columnCount": 3,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": "Function UserName"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "Function Password"
+		},  {
+			"type": "text",
+			"key": "func-user",
+			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "password",
+			"key": "func-pass",
+			"readonly": false
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 3,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": "Sonar DevOps Token"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "AF Password"
+		},  {
+			"type": "password",
+			"key": "sonar-devop-token",
+			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "password",
+			"key": "af-psw",
+			"readonly": false
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 3,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": "Docker Username"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "Docker Password"
+		}, {
+			"type": "text",
+			"key": "docker-username",
+			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "password",
+			"key": "docker-password",
+			"readonly": false
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 1,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "Region"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "select",
+			"key": "prod-region"
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 1,
+		"widths": ["100%"],
+		"items": [{
+			"type": "label",
+			"title": {
+				"$ref": "#/messages/deploy.clusterDescription"
+			}
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 1,
+		"widths": ["100%"],
+		"items": [{
+			"type": "label",
+			"title": {
+				"$ref": "#/messages/deploy.clusternsDescription"
+			}
+		}
+		]
+	}
 	]
 }
