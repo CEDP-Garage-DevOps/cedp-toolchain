@@ -8,6 +8,7 @@ stages:
     dir_name: null
   triggers:
   - type: commit
+    events: '{"push":true,"pull_request":true,"pull_request_closed":false}'
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
