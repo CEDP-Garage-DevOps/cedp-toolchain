@@ -100,7 +100,7 @@
 		]
 	}, {
 		"type": "table",
-		"columnCount": 2,
+		"columnCount": 3,
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
 			"type": "label",
