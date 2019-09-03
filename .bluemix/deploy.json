@@ -84,22 +84,6 @@
 		]
 	},{
 		"type": "table",
-		"columnCount": 1,
-		"widths": ["45%", "10%", "45%"],
-		"items": [{
-			"type": "label",
-			"title": "AF Password"
-		},  {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "password",
-			"key": "af-psw",
-			"readonly": false
-		}
-		]
-	}, {
-		"type": "table",
 		"columnCount": 3,
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
@@ -124,7 +108,23 @@
 			"readonly": false
 		}
 		]
-	}, {
+	},{
+		"type": "table",
+		"columnCount": 1,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": "AF Password"
+		},  {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "password",
+			"key": "af-psw",
+			"readonly": false
+		}
+		]
+	},{
 		"type": "table",
 		"columnCount": 1,
 		"widths": ["100%"],
