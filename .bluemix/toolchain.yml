@@ -13,7 +13,7 @@ template:
     git url: >-
       [https://github.ibm.com/CEDP-Garage/cedp-toolchain](https://github.ibm.com/CEDP-Garage/cedp-toolchain)
     git branch: >-
-      [kranthi](https://github.ibm.com/CEDP-Garage/cedp-tooolchain/tree/kranthi)
+      [master](https://github.ibm.com/CEDP-Garage/cedp-tooolchain/tree/master)
 toolchain:
   name: 'cedp-garage-{{timestamp}}'
   template:
