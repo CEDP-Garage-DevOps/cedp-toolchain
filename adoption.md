@@ -6,7 +6,7 @@ Request access from the organization [admin](https://github.ibm.com/orgs/CEDP-Ga
 
 ## Create and clone the Repository
 
-Create the repository under the CEDP-Garage organization and clone it to the local and add the folder structure as below
+Create the repository under the CEDP-Garage organization and clone it to the local and add the folder structure as below and we should also add the component 
 ```.
    ├── Dockerfile
    ├── airflow
@@ -27,7 +27,7 @@ Create the repository under the CEDP-Garage organization and clone it to the loc
 * airflow  - it contains the dags and scripts which will help to deploy to the cluster
 * build.sbt - this refers to the dependence of the project
 * project - build.properties and required scala plugins
-* build.yml - it contains the project name, build tool, scala version and path to the code, cluster name, path to airflow dag's, and airflow pod instance which uses to deploy in kubernetes
+* [build.yml](https://github.ibm.com/CEDP-Garage/cedp-client360/blob/master/client360/build.yml) - it contains the project name, build tool, scala version and path to the code, cluster name, path to airflow dag's, and airflow pod instance which uses to deploy in kubernetes
 
 ## Branching and Github Flow
 
@@ -45,7 +45,7 @@ After you click the button you will see something like below snippet on screen:
 
 ![ToolChain](https://media.github.ibm.com/user/192214/files/82896600-d004-11e9-85b3-0d86ea829681)
 
-In the above snippet you can see in which branch you have the json template file and need to edit the name and choose correct region and resource group you want to have your pipeline
+In the above snippet you can see in which branch you have the json template file and need to edit the Toolchain Name and choose correct region and resource group you want to have your pipeline
 
 Next click on GitHub Enterprise. Click I understand and paste `http` url of your project git repository
 
