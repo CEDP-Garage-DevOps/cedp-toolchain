@@ -50,7 +50,6 @@ services:
           FUNC_USER: '{{form.pipeline.parameters.func-user}}'
           FUNC_PASS: '{{form.pipeline.parameters.func-pass}}'
           AF_PSW: '{{form.pipeline.parameters.af-psw}}'
-          SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.sonar-devop-token}}'
         execute: false
   messaging:
     service_id: slack
