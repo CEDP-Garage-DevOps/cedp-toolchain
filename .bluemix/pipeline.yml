@@ -127,7 +127,7 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        ibm-bifrost schedule
+        ibm-bifrost schedule staging
     docker_image: ${DOCKER_IMAGE_NAME}
 hooks:
 - enabled: true
