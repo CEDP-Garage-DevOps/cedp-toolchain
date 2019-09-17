@@ -71,9 +71,6 @@ properties:
 - name: AF_PSW
   value: '{{form.pipeline.parameters.af-psw}}'
   type: secure
-- name: SONAR_DEVOP_TOKEN
-  value: '{{form.pipeline.parameters.sonar-devop-token}}'
-  type: secure
 - name: INPUT_GIT_BRANCH
   value: '{{form.pipeline.parameters.input-git-branch}}'
   type: text

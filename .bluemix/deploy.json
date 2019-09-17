@@ -51,11 +51,6 @@
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"sonar-devop-token": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
 		"docker-image-name": {
 			"type": "string",
 			"disabled": false
@@ -137,10 +132,6 @@
 		}, {
 			"type": "label",
 			"title": "AF Password"
-		},  {
-			"type": "password",
-			"key": "sonar-devop-token",
-			"readonly": false
 		}, {
 			"type": "label",
 			"title": ""
