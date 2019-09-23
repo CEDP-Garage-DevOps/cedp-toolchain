@@ -128,7 +128,7 @@ stages:
         set -e
         ibm-bifrost schedule dev
     docker_image: ${DOCKER_IMAGE_NAME}
-- name: AirflowDag
+- name: Validate
   inputs:
     - type: job
       stage: AirflowDag
