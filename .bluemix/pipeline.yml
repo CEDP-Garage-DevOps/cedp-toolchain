@@ -128,6 +128,28 @@ stages:
         set -e
         ibm-bifrost schedule dev
     docker_image: ${DOCKER_IMAGE_NAME}
+- name: AirflowDag
+  inputs:
+    - type: job
+      stage: AirflowDag
+      job: 'Deploy Dag'
+      dir_name: null
+  triggers:
+    - type: stage
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: 'Validate Image'
+    type: builder
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+      #!/bin/bash
+      set -x
+      set -e
+      ibm-bifrost validate
+    docker_image: ${DOCKER_IMAGE_NAME}
+
 hooks:
 - enabled: true
   label: null
