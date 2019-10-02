@@ -120,6 +120,7 @@ stages:
   jobs:
   - name: 'Validate Image'
     type: builder
+    fail_stage: false
     artifact_dir: ''
     build_type: customimage
     script: |-
