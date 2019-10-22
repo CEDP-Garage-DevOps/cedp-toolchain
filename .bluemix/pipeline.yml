@@ -4,7 +4,7 @@ stages:
   inputs:
   - service: ${GIT_REPO}
     type: git
-    branch: dev
+    branch: ${INPUT_GIT_BRANCH}
     dir_name: null
   triggers:
   - type: commit
