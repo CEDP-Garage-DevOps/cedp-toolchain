@@ -9,6 +9,7 @@ template:
   required:
     - cedp-garage-build
     - cedp-garage-repo
+toolchain:
   name: 'cedp-garage-{{timestamp}}'
   template:
     getting_started:

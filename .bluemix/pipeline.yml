@@ -2,13 +2,13 @@
 stages:
 - name: Setup
   inputs:
-  - service: ${GIT_REPO}
-    type: git
-    branch: ${INPUT_GIT_BRANCH}
-    dir_name: null
+    - service: ${GIT_REPO}
+      type: git
+      branch: ${INPUT_GIT_BRANCH}
+      dir_name: null
   triggers:
-  - type: git
-    events: '{"push":false,"pull_request":true,"pull_request_closed":false}'
+    - type: git
+      events: '{"push":false,"pull_request":true,"pull_request_closed":false}'
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
@@ -149,8 +149,9 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        ibm-bifrost schedule staging
+        ibm-bifrost schedule stage
     docker_image: ${DOCKER_IMAGE_NAME}
+
 hooks:
 - enabled: true
   label: null
