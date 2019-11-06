@@ -2,6 +2,7 @@
 stages:
 - name: Setup
   inputs:
+    - service: ${GIT_REPO}
       type: git
       branch: ${INPUT_GIT_BRANCH}
       dir_name: null
