@@ -2,7 +2,6 @@
 stages:
 - name: Setup
   inputs:
-    - service: ${GIT_REPO}
       type: git
       branch: ${INPUT_GIT_BRANCH}
       dir_name: null
@@ -185,7 +184,4 @@ properties:
   type: secure
 - name: INPUT_GIT_BRANCH
   value: '{{form.pipeline.parameters.input-git-branch}}'
-  type: text
-- name: GIT_REPO
-  value: 'https://github.com/ccavales3/cedp-toolchain.git'
   type: text
