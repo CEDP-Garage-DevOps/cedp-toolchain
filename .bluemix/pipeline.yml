@@ -141,7 +141,7 @@ properties:
   value: '{{form.pipeline.parameters.docker-image-name}}'
   type: text
 - name: DOCKER_USERNAME
-  value: '{{form.pipeline.parameters.docker-username}}'
+  value: 'iamapikey'
   type: text
 - name: DOCKER_PASSWORD
   value: '{{form.pipeline.parameters.docker-password}}'
