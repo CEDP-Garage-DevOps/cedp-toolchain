@@ -38,7 +38,7 @@ services:
           GIT_REPO: cedp-garage-repo
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.docker-image-name}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.input-git-branch}}'
-          DOCKER_USERNAME: '{{form.pipeline.parameters.docker-username}}'
+          DOCKER_USERNAME: 'iamapikey'
           DOCKER_PASSWORD: '{{form.pipeline.parameters.docker-password}}'
           IBMCLOUD_API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
