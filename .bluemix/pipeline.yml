@@ -46,14 +46,14 @@ stages:
     docker_image: ${DOCKER_IMAGE_NAME}
   - name: Security
     type: builder
-      artifact_dir: ''
-      build_type: customimage
-      script: |-
-          #!/bin/bash
-          set -x
-          set -e
-          ibm-bifrost sonar
-      docker_image: ${DOCKER_IMAGE_NAME}
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost sonar
+    docker_image: ${DOCKER_IMAGE_NAME}
 - name: PublishJar
   inputs:
     - type: job
@@ -99,15 +99,15 @@ stages:
     docker_image: ${DOCKER_IMAGE_NAME}
   - name: Validate
     type: builder
-      fail_stage: false
-      artifact_dir: ''
-      build_type: customimage
-      script: |-
-          #!/bin/bash
-          set -x
-          set -e
-          ibm-bifrost validate
-      docker_image: ${DOCKER_IMAGE_NAME}
+    fail_stage: false
+    artifact_dir: ''
+    build_type: customimage
+    script: |-
+        #!/bin/bash
+        set -x
+        set -e
+        ibm-bifrost validate
+    docker_image: ${DOCKER_IMAGE_NAME}
 - name: AirflowDag
   inputs:
     - type: job
