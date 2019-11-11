@@ -44,7 +44,7 @@ stages:
         set -e
         ibm-bifrost quality
     docker_image: ${DOCKER_IMAGE_NAME}
-  - name: Security
+  - name: 'Security'
     type: builder
     artifact_dir: ''
     build_type: customimage
@@ -97,7 +97,7 @@ stages:
         set -e
         ibm-bifrost image
     docker_image: ${DOCKER_IMAGE_NAME}
-  - name: Validate
+  - name: 'Validate'
     type: builder
     fail_stage: false
     artifact_dir: ''
