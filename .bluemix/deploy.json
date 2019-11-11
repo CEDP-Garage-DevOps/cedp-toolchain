@@ -179,6 +179,7 @@
 		}, {
 			"type": "text",
 			"key": "docker-username",
+			"value": "iamapikey",
 			"readonly": false
 		}, {
 			"type": "label",
