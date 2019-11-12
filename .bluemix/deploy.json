@@ -162,9 +162,6 @@
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
 			"type": "label",
-			"title": ""
-		}, {
-			"type": "label",
 			"title": "AF Password"
 		}, {
 			"type": "label",
