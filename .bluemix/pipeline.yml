@@ -44,18 +44,7 @@ stages:
         set -e
         ibm-bifrost quality
     docker_image: ${DOCKER_IMAGE_NAME}
-- name: Security
-  inputs:
-    - type: job
-      stage: Setup
-      job: 'Init'
-      dir_name: null
-  triggers:
-    - type: stage
-  permission:
-    execute: TOOLCHAIN_ADMINS
-  jobs:
-  - name: 'Sonar Check'
+  - name: 'Security'
     type: builder
     artifact_dir: ''
     build_type: customimage
@@ -108,18 +97,7 @@ stages:
         set -e
         ibm-bifrost image
     docker_image: ${DOCKER_IMAGE_NAME}
-- name: Validate
-  inputs:
-    - type: job
-      stage: DockerImage
-      job: 'Deploy Image'
-      dir_name: null
-  triggers:
-    - type: stage
-  permission:
-    execute: TOOLCHAIN_ADMINS
-  jobs:
-  - name: 'Validate Image'
+  - name: 'Validate'
     type: builder
     fail_stage: false
     artifact_dir: ''
