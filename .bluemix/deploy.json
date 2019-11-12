@@ -64,7 +64,6 @@
 	"required": [
 		"input-git-branch",
 		"api-key",
-		"prod-region",
 		"docker-image-name",
 		"docker-password",
 		"func-pass",
