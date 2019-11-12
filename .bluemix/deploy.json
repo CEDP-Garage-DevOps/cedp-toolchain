@@ -61,7 +61,15 @@
 		}
 
 	},
-	"required": ["af-psw", "input-git-branch", "api-key", "prod-region", "docker-image-name", "docker-password", "docker-username", "func-pass", "func-user"],
+	"required": [
+		"input-git-branch",
+		"api-key",
+		"prod-region",
+		"docker-image-name",
+		"docker-password",
+		"func-pass",
+		"func-user"
+	],
 	"form": [{
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
@@ -137,7 +145,7 @@
 			"title": ""
 		}, {
 			"type": "password",
-			"key": "af-psw",
+			"key": "af-psw-for_test",
 			"readonly": false
 		}
 		]

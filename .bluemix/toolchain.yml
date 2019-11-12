@@ -57,5 +57,6 @@ form:
   pipeline:
     parameters:
       app-name: '{{services.cedp-garage-repo.parameters.repo_name}}'
+      docker-username: 'iamapikey'
     schema:
       $ref: deploy.json
