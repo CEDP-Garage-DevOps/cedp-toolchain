@@ -42,6 +42,7 @@ services:
           DOCKER_PASSWORD: '{{form.pipeline.parameters.docker-password}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           AF_PSW: '{{form.pipeline.parameters.af-psw}}'
+          SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.sonar-devop-token}}'
         execute: false
   messaging:
     service_id: slack
@@ -54,5 +55,6 @@ form:
   pipeline:
     parameters:
       app-name: '{{services.cedp-garage-repo.parameters.repo_name}}'
+      docker-username: 'iamapikey'
     schema:
       $ref: deploy.json
