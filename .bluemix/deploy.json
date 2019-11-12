@@ -122,7 +122,7 @@
 		]
 	},{
 		"type": "table",
-		"columnCount": 3,
+		"columnCount": 2,
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
 			"type": "label",
@@ -136,7 +136,8 @@
 		},  {
 			"type": "password",
 			"key": "sonar-devop-token",
-			"readonly": false,
+			"readonly": false
+		}, {
 			"type": "label",
 			"title": ""
 		}, {
