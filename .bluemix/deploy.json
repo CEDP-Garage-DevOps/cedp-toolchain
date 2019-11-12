@@ -172,10 +172,10 @@
 			"readonly": false
 		}, {
 			"type": "label",
-			"title": ""
+			"title": "Region"
 		}, {
 			"type": "label",
-			"title": "Region"
+			"title": ""
 		}, {
 			"type": "select",
 			"key": "prod-region"
