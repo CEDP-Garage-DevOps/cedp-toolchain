@@ -67,10 +67,8 @@
 
 	},
 	"required": [
-		"af-psw",
 		"input-git-branch",
 		"api-key",
-		"prod-region",
 		"docker-image-name",
 		"sonar-devop-token",
 		"docker-password",
