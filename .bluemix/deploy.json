@@ -104,7 +104,7 @@
 			"readonly": false
 		}
 		]
-	},{
+	}, {
 		"type": "table",
 		"columnCount": 3,
 		"widths": ["45%", "10%", "45%"],
@@ -132,25 +132,6 @@
 		]
 	}, {
 		"type": "table",
-		"columnCount": 1,
-		"widths": ["45%", "10%", "45%"],
-		"items": [{
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "label",
-			"title": "AF Password"
-		}, {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "password",
-			"key": "af-psw-for_test",
-			"readonly": false
-		}
-		]
-	}, {
-		"type": "table",
 		"columnCount": 3,
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
@@ -172,6 +153,25 @@
 		}, {
 			"type": "password",
 			"key": "docker-password",
+			"readonly": false
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 1,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "AF Password"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "password",
+			"key": "af-psw-for_test",
 			"readonly": false
 		}
 		]
