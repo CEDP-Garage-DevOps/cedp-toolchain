@@ -138,7 +138,7 @@
 		]
 	}, {
 		"type": "table",
-		"columnCount": 4,
+		"columnCount": 3,
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
 			"type": "label",
@@ -166,6 +166,9 @@
 			"type": "text",
 			"key": "af-usr",
 			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
 		}, {
 			"type": "password",
 			"key": "af-psw",
