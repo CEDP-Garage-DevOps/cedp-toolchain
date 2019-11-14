@@ -166,9 +166,6 @@
 			"key": "sonar-devop-token",
 			"readonly": false
 		}, {
-			"type": "label",
-			"title": ""
-		}, {
 			"type": "text",
 			"key": "af-usr",
 			"readonly": false
