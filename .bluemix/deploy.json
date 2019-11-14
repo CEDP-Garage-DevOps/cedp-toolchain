@@ -156,6 +156,9 @@
 			"type": "label",
 			"title": "AF Password"
 		}, {
+			"type": "label",
+			"title": ""
+		}, {
 			"type": "password",
 			"key": "sonar-devop-token",
 			"readonly": false
