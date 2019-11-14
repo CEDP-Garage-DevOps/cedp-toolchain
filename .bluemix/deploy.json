@@ -167,9 +167,6 @@
 			"key": "af-usr",
 			"readonly": false
 		}, {
-			"type": "label",
-			"title": ""
-		}, {
 			"type": "password",
 			"key": "af-psw",
 			"readonly": false
