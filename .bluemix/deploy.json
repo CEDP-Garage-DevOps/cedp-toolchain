@@ -148,6 +148,9 @@
 			"title": ""
 		}, {
 			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
 			"title": "Sonar DevOps Token"
 		}, {
 			"type": "label",
@@ -162,9 +165,6 @@
 			"type": "password",
 			"key": "sonar-devop-token",
 			"readonly": false
-		}, {
-			"type": "label",
-			"title": ""
 		}, {
 			"type": "label",
 			"title": ""
