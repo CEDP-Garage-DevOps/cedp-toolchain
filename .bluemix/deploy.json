@@ -155,7 +155,7 @@
 		}, {
 			"type": "label",
 			"title": "AF Password"
-		},  {
+		}, {
 			"type": "password",
 			"key": "sonar-devop-token",
 			"readonly": false
@@ -166,7 +166,10 @@
 			"type": "text",
 			"key": "af-usr",
 			"readonly": false
-		},{
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
 			"type": "password",
 			"key": "af-psw",
 			"readonly": false
