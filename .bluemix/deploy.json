@@ -123,7 +123,7 @@
 		}, {
 			"type": "label",
 			"title": "Function Password"
-		},  {
+		}, {
 			"type": "text",
 			"key": "func-user",
 			"readonly": false
@@ -138,18 +138,9 @@
 		]
 	}, {
 		"type": "table",
-		"columnCount": 4,
+		"columnCount": 3,
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "label",
-			"title": "AF UserName"
-		}, {
 			"type": "label",
 			"title": "Sonar DevOps Token"
 		}, {
@@ -158,16 +149,9 @@
 		}, {
 			"type": "label",
 			"title": "AF Password"
-		}, {
-			"type": "label",
-			"title": ""
-		}, {
+		},  {
 			"type": "password",
 			"key": "sonar-devop-token",
-			"readonly": false
-		}, {
-			"type": "text",
-			"key": "af-usr",
 			"readonly": false
 		}, {
 			"type": "label",
@@ -176,6 +160,25 @@
 			"type": "password",
 			"key": "af-psw",
 			"readonly": false
+		}
+		]
+	}, {
+		"type": "table",
+		"columnCount": 1,
+		"widths": ["45%", "10%", "45%"],
+		"items": [{
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": "AF UserName"
+		}, {
+			"type": "text",
+			"key": "af-usr",
+			"readonly": false
+		}, {
+			"type": "label",
+			"title": ""
 		}
 		]
 	}, {
