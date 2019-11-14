@@ -20,7 +20,7 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        pip install --extra-index-url https://{AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
+        pip install --extra-index-url https://${AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
         ibm-bifrost init diff
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
@@ -43,7 +43,7 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        pip install --extra-index-url https://{AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
+        pip install --extra-index-url https://${AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
         ibm-bifrost quality
     docker_image: ${DOCKER_IMAGE_NAME}
   - name: 'Security'
@@ -54,7 +54,7 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        pip install --extra-index-url https://{AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
+        pip install --extra-index-url https://${AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
         ibm-bifrost sonar
     docker_image: ${DOCKER_IMAGE_NAME}
 - name: PublishJar
@@ -76,7 +76,7 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        pip install --extra-index-url https://{AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
+        pip install --extra-index-url https://${AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
         ibm-bifrost install
         ibm-bifrost publish
     docker_image: ${DOCKER_IMAGE_NAME}
@@ -99,7 +99,7 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        pip install --extra-index-url https://{AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
+        pip install --extra-index-url https://${AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
         ibm-bifrost image
     docker_image: ${DOCKER_IMAGE_NAME}
   - name: 'Validate'
@@ -111,7 +111,7 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        pip install --extra-index-url https://{AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
+        pip install --extra-index-url https://${AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
         ibm-bifrost validate
     docker_image: ${DOCKER_IMAGE_NAME}
 - name: AirflowDag
@@ -133,7 +133,7 @@ stages:
         #!/bin/bash
         set -x
         set -e
-        pip install --extra-index-url https://{AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
+        pip install --extra-index-url https://${AF_USR}:${AF_PSW}@na.artifactory.swg-devops.com/artifactory/api/pypi/txo-cedp-garage-test-pypi-local/simple ibm-bifrost
         ibm-bifrost schedule dev
     docker_image: ${DOCKER_IMAGE_NAME}
 
