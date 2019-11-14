@@ -142,13 +142,13 @@
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
 			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
 			"title": "AF UserName"
-		}, {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "label",
-			"title": ""
 		}, {
 			"type": "label",
 			"title": "Sonar DevOps Token"
