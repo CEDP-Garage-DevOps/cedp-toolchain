@@ -44,6 +44,7 @@ services:
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           FUNC_USER: '{{form.pipeline.parameters.func-user}}'
           FUNC_PASS: '{{form.pipeline.parameters.func-pass}}'
+          AF_USR: '{{form.pipeline.parameters.af-usr}}'
           AF_PSW: '{{form.pipeline.parameters.af-psw}}'
           SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.sonar-devop-token}}'
         execute: false
@@ -59,5 +60,6 @@ form:
     parameters:
       app-name: '{{services.cedp-garage-repo.parameters.repo_name}}'
       docker-username: 'iamapikey'
+      docker-image-name: 'us.icr.io/cedp-garage/dev:0.1'
     schema:
       $ref: deploy.json

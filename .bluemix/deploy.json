@@ -37,6 +37,10 @@
 			"disabled": false,
 			"pattern": "\\S"
 		},
+		"af-usr": {
+			"type": "string",
+			"disabled": false
+		},
 		"af-psw": {
 			"type": "string",
 			"disabled": false,
@@ -68,12 +72,9 @@
 	},
 	"required": [
 		"input-git-branch",
-		"api-key",
-		"docker-image-name",
-		"sonar-devop-token",
 		"docker-password",
-		"func-pass",
-		"func-user"
+		"af-usr",
+		"af-psw"
 	],
 	"form": [{
 			"type": "validator",
@@ -141,6 +142,12 @@
 		"widths": ["45%", "10%", "45%"],
 		"items": [{
 			"type": "label",
+			"title": "AF UserName"
+		}, {
+			"type": "label",
+			"title": ""
+		}, {
+			"type": "label",
 			"title": "Sonar DevOps Token"
 		}, {
 			"type": "label",
@@ -156,6 +163,10 @@
 			"type": "label",
 			"title": ""
 		}, {
+			"type": "text",
+			"key": "af-usr",
+			"readonly": false
+		},{
 			"type": "password",
 			"key": "af-psw",
 			"readonly": false
