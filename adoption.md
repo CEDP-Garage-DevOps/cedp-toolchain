@@ -97,4 +97,15 @@ Click on Delivery Pipeline and you will see actual steps it will perform:
 1. DockerImage – building dockerimage and send to the container registry
 
 1. AirflowDag - pushing the changed airflow dags to the airflow instance     
-     
+
+
+## Requirements     
+### Testing for development template
+The main required parameters are;
+1. Repository URL -----> the project repository url
+1. Git Input Branch ----> prject pranch on which the toolchain gets triggered
+1. AF UserName -----> JFrog artifactory username
+1. AF Password ----> JFrog artifactory password (i.e they are your w3id credentials)
+1. Docker Password -----> This refers to the IBM Cloud API key
+
+For reference look into the [pipeline](https://cloud.ibm.com/devops/pipelines/ccdb2017-7367-485f-8130-071d4d78e62c?env_id=ibm:yp:us-south)
