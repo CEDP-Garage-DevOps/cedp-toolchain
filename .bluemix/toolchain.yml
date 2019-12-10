@@ -1,4 +1,4 @@
-version: '2'
+version: '1'
 messages:
   $i18n: locales.yml
 template:
@@ -11,11 +11,11 @@ template:
     - cedp-tc-repo
   info:
     git url: >-
-      [https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines](https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines)
+      [https://https://github.com/CEDP-Garage-DevOps/cedp-toolchain](https://https://github.com/CEDP-Garage-DevOps/cedp-toolchain)
     git branch: >-
-      [staging](https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines/tree/staging)
+      [CI](https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines/tree/CI)
 toolchain:
-  name: 'cedp-tc-CD{{timestamp}}'
+  name: 'CEDP-{name_of_project}-CD-{destination}'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted" 
