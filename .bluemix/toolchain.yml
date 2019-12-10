@@ -40,7 +40,7 @@ services:
         content:
           $text: pipeline.yml
         env:
-          DESTINATION: '{{form.pipeline.parameters.description}}' 
+          DESTINATION: '{{form.pipeline.parameters.destination}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
