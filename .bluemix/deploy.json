@@ -32,6 +32,10 @@
 			"type": "string",
 			"disabled": false
 		},
+		"destination": {
+			"type": "string",
+			"disabled": false
+		},
 		"linkpassword": {
 			"type": "string",
 			"disabled": false
@@ -77,7 +81,7 @@
 		}
 	
 	},
-	"required": ["api-key", "prod-region"],
+	"required": ["api-key", "prod-region", "destination"],
 	"form": [{
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
@@ -135,7 +139,7 @@
 					"title": ""
 				}, {
 					"type": "label",
-					"title": "Kubernetes Cluster"
+					"title": "Destination"
 				}, {
 					"type": "select",
 					"key": "prod-region"
@@ -144,22 +148,56 @@
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "cluster",
+					"key": "destination",
 					"readonly": false
-				},   {
-					"type": "label",
-					"title": "Ingress subdomain"
-				},  {
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
 					"type": "label",
 					"title": ""
-				},  {
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Kubernetes Cluster"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Ingress subdomain"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
 					"type": "label",
 					"title": "Ingress PublicIP"
 				}, {
 					"type": "text",
+					"key": "cluster",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
 					"key": "domain",
 					"readonly": false
-				},  {
+				}, {
 					"type": "label",
 					"title": ""
 				}, {
