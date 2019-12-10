@@ -32,6 +32,10 @@
 			"type": "string",
 			"disabled": false
 		},
+		"destination": {
+			"type": "string",
+			"disabled": false
+		},
 		"linkpassword": {
 			"type": "string",
 			"disabled": false
