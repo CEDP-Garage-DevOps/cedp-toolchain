@@ -7,8 +7,7 @@ stages:
     branch: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
     dir_name: null
   triggers:
-  - type: git
-    events: '{"push":false,"pull_request":true,"pull_request_closed":false}'
+  - type: commit
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
@@ -50,12 +49,12 @@ stages:
       set -e
 
       mv git .git
-      ibm-bifrost build_plan dev diff pr
+      ibm-bifrost build_plan "${DESTINATION}" diff commit
       mv .git git
       
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
-- name: Unit tests
+- name: Code
   inputs:
   - type: job
     stage: Plan
@@ -66,7 +65,7 @@ stages:
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
-  - name: 'Test'
+  - name: 'Test & Build'
     type: builder
     artifact_dir: ''
     build_type: customimage
@@ -77,14 +76,65 @@ stages:
       set -e
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
-
+      
       ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
-
+      
       export MAVEN_OPTS="-Xmx1000m"
-      ibm-bifrost build_code test-only
+      ibm-bifrost build_code build-only
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
-- name: 'Sonar Qube'
+
+- name: Docker
+  inputs:
+  - type: job
+    stage: Code
+    job: 'Test & Build'
+    dir_name: null
+  triggers:
+  - type: stage
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: 'Build'
+    type: deployer
+    artifact_dir: ''
+    deploy_type: customimage
+    script: |-
+      #********************************************
+      #!/bin/bash
+      set -x
+      set -e
+      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
+      export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
+      
+      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      
+      ibmcloud cr login
+      
+      ibm-bifrost build_docker build
+    namespace: 'NULL'
+    docker_image: ${DOCKER_IMAGE_NAME}
+  - name: 'Validate'
+    type: deployer
+    artifact_dir: ''
+    deploy_type: customimage
+    script: |-
+      #********************************************
+      #!/bin/bash
+      set -x
+      set -e
+      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
+      export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
+      
+      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      
+      ibmcloud cr login
+      
+      ibm-bifrost build_docker validate
+      
+    namespace: 'NULL'
+    docker_image: ${DOCKER_IMAGE_NAME}
+- name: Deploy
   inputs:
   - type: job
     stage: Plan
@@ -95,10 +145,10 @@ stages:
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
-  - name: 'Validate'
-    type: tester
+  - name: 'Dev'
+    type: deployer
     artifact_dir: ''
-    test_type: customimage
+    deploy_type: customimage
     script: |-
       #********************************************
       #!/bin/bash
@@ -110,17 +160,73 @@ stages:
       
       ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
       
-      sonar-scanner --version
-      ibm-bifrost sonar_validate      
+      ibmcloud cs init
+      ibmcloud cs clusters
+      $(ibmcloud cs cluster-config "${CLUSTER}" | grep export)
+      
+      ibm-bifrost deploy deploy
+    namespace: 'NULL'
+    docker_image: ${DOCKER_IMAGE_NAME}    
+  - name: 'Validate'
+    type: deployer
+    artifact_dir: ''
+    deploy_type: customimage
+    script: |-
+      #********************************************
+      #!/bin/bash
+      set -x
+      set -e
+      
+      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
+      export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
+      
+      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      
+      ibmcloud cs init
+      ibmcloud cs clusters
+      $(ibmcloud cs cluster-config "${CLUSTER}" | grep export)
+      ibm-bifrost deploy validate
       
     namespace: 'NULL'
-    docker_image: ${DOCKER_IMAGE_NAME}        
+    docker_image: ${DOCKER_IMAGE_NAME}
+- name: Versions
+  inputs:
+  - type: job
+    stage: Plan
+    job: 'Build'
+    dir_name: null
+  triggers:
+  - type: stage
+  permission:
+    execute: TOOLCHAIN_ADMINS
+  jobs:
+  - name: 'Push'
+    type: deployer
+    artifact_dir: ''
+    deploy_type: customimage
+    script: |-
+      #!/bin/bash
+      set -x
+      set -e
+
+      pwd
+      mv git .git
+      git config --global user.email "toolchain@cloud.ibm.com"
+      git config --global user.name "IBM Cloud DevOps Toochain"
+
+      ibm-bifrost versions push
+
+    namespace: 'NULL'
+    docker_image: ${DOCKER_IMAGE_NAME}    
 hooks:
 - enabled: true
   label: null
   ssl_enabled: false
   url: http://lms-api/v1/messaging/webhook/publish
 properties:
+- name: DESTINATION
+  value: '{{form.pipeline.parameters.destination}}'
+  type: text
 - name: DOCKER_IMAGE_NAME
   value: '{{form.pipeline.parameters.dockerImageName}}'
   type: text

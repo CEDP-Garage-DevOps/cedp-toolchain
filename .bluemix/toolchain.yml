@@ -1,4 +1,4 @@
-version: '1'
+version: '2'
 messages:
   $i18n: locales.yml
 template:
@@ -11,11 +11,11 @@ template:
     - cedp-tc-repo
   info:
     git url: >-
-      [https://https://github.com/CEDP-Garage-DevOps/cedp-toolchain](https://https://github.com/CEDP-Garage-DevOps/cedp-toolchain)
+      [https://github.com/CEDP-Garage-DevOps/cedp-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain)
     git branch: >-
-      [CI](https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines/tree/CI)
+      [СD_full](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/CD_full)
 toolchain:
-  name: 'CEDP-{name_of_project}-CI-{destination}'
+  name: 'CEDP-{name_of_project}-CD-{destination}'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted" 
@@ -40,6 +40,7 @@ services:
         content:
           $text: pipeline.yml
         env:
+          DESTINATION: '{{form.pipeline.parameters.description}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
@@ -57,7 +58,12 @@ services:
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
         execute: false
   messaging:
-    service_id: slack 
+    service_id: slack
+  dra:
+    service_id: draservicebroker
+    name: is_developer_insights_enabled
+    type: boolean
+    $ref: dra.yml  
 form:
   pipeline:
     parameters:
