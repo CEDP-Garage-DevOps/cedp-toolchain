@@ -204,7 +204,9 @@
 					"type": "text",
 					"key": "externalIP",
 					"readonly": false
-				}, {
+				}
+			]
+		}, {
 			"type": "table",
 			"columnCount": 5,
 			"widths": ["32%", "2%", "32%", "2%", "32%"],
