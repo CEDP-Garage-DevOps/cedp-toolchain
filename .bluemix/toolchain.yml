@@ -15,7 +15,7 @@ template:
     git branch: >-
       [CI](https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines/tree/CI)
 toolchain:
-  name: 'CEDP-{name_of_project}-CD-{destination}'
+  name: 'CEDP-{name_of_project}-CI-{destination}'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted" 
