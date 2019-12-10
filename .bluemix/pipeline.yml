@@ -123,6 +123,7 @@ hooks:
 properties:
 - name: DESTINATION
   value: '{{form.pipeline.parameters.destination}}'
+  type: text
 - name: DOCKER_IMAGE_NAME
   value: '{{form.pipeline.parameters.dockerImageName}}'
   type: text
