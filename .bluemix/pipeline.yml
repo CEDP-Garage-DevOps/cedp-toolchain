@@ -121,6 +121,8 @@ hooks:
   ssl_enabled: false
   url: http://lms-api/v1/messaging/webhook/publish
 properties:
+- name: DESTINATION
+  value: '{{form.pipeline.parameters.destination}}'
 - name: DOCKER_IMAGE_NAME
   value: '{{form.pipeline.parameters.dockerImageName}}'
   type: text
