@@ -28,145 +28,248 @@
 			"type": "string",
 			"disabled": false
 		},
-		"af-psw": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"docker-username": {
+		"registry-region": {
 			"type": "string",
 			"disabled": false
 		},
-		"docker-password": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"sonar-devop-token": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"docker-image-name": {
+		"linkpassword": {
 			"type": "string",
 			"disabled": false
 		},
-		"input-git-branch": {
+		"email-address": {
+			"type": "string",
+			"disabled": false
+		},
+		"skey": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"mpass": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"vault": {
+			"type": "string",
+			"disabled": false
+		},
+		"cluster": {
+			"type": "string",
+			"disabled": false
+		},
+		"domain": {
+			"type": "string",
+			"disabled": false
+		},
+		"externalIP": {
+			"type": "string",
+			"disabled": false
+		},
+
+		"dockerImageName": {
+			"type": "string",
+			"disabled": false
+		},
+		"INPUT_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
 		}
-
+	
 	},
-	"required": [
-		"input-git-branch",
-		"docker-image-name",
-		"docker-username",
-		"docker-password",
-		"sonar-devop-token"
-	],
+	"required": ["api-key", "prod-region"],
 	"form": [{
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
-	}, {
-		"type": "table",
-		"columnCount": 3,
-		"widths": ["45%", "10%", "45%"],
-		"items": [{
-			"type": "label",
-			"title": "Git Input Branch"
-		}, {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "label",
-			"title": "Pipeline Image"
-		},  {
-			"type": "text",
-			"key": "input-git-branch",
-			"readonly": false
-		}, {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "text",
-			"key": "docker-image-name",
-			"readonly": false
-		}
-		]
-	},{
-		"type": "table",
-		"columnCount": 3,
-		"widths": ["45%", "10%", "45%"],
-		"items": [{
-			"type": "label",
-			"title": "Docker Username"
-		}, {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "label",
-			"title": "Docker Password"
-		}, {
-			"type": "text",
-			"key": "docker-username",
-			"readonly": false
-		}, {
-			"type": "label",
-			"title": ""
 		}, {
 			"type": "password",
-			"key": "docker-password",
-			"readonly": false
-		}
-		]
-	},{
-		"type": "table",
-		"columnCount": 3,
-		"widths": ["45%", "10%", "45%"],
-		"items": [{
-			"type": "label",
-			"title": "Sonar DevOps Token"
-		}, {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "label",
-			"title": "AF Password"
-		},  {
-			"type": "password",
-			"key": "sonar-devop-token",
-			"readonly": false
-		}, {
-			"type": "label",
-			"title": ""
-		}, {
-			"type": "password",
-			"key": "af-psw",
-			"readonly": false
-		}
-		]
-	},{
-		"type": "table",
-		"columnCount": 1,
-		"widths": ["100%"],
-		"items": [{
-			"type": "label",
+			"readonly": false,
 			"title": {
-				"$ref": "#/messages/deploy.clusterDescription"
-			}
+				"$ref": "#/messages/deploy.apikey"
+			},
+			"key": "api-key"
+		}, {
+			"type": "table",
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
+			"items": [{
+					"type": "label",
+					"title": "Git Input Branch"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Pipeline Image"
+				},  {
+					"type": "text",
+					"key": "INPUT_GIT_BRANCH",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "dockerImageName",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				},{
+					"type": "label",
+					"title": "Region"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Kubernetes Cluster"
+				}, {
+					"type": "select",
+					"key": "prod-region"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "cluster",
+					"readonly": false
+				},   {
+					"type": "label",
+					"title": "Ingress subdomain"
+				},  {
+					"type": "label",
+					"title": ""
+				},  {
+					"type": "label",
+					"title": "Ingress PublicIP"
+				}, {
+					"type": "text",
+					"key": "domain",
+					"readonly": false
+				},  {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "externalIP",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password Host"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password Vault"
+				}, {
+					"type": "text",
+					"key": "linkpassword",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "email-address",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "vault",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": "1Password Secret key"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password Master password"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "skey",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "mpass",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 1,
+			"widths": ["100%"],
+			"items": [{
+					"type": "label",
+					"title": {
+						"$ref": "#/messages/deploy.clusterDescription"
+					}
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 1,
+			"widths": ["100%"],
+			"items": [{
+					"type": "label",
+					"title": {
+						"$ref": "#/messages/deploy.clusternsDescription"
+					}
+				}
+			]
 		}
-		]
-	}, {
-		"type": "table",
-		"columnCount": 1,
-		"widths": ["100%"],
-		"items": [{
-			"type": "label",
-			"title": {
-				"$ref": "#/messages/deploy.clusternsDescription"
-			}
-		}
-		]
-	}
 	]
 }

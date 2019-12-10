@@ -7,15 +7,20 @@ template:
   description:
     $ref: "#/messages/template.description"
   required:
-    - cedp-garage-build
-    - cedp-garage-repo
+    - cedp-tc-build
+    - cedp-tc-repo
+  info:
+    git url: >-
+      [https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines](https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines)
+    git branch: >-
+      [staging](https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines/tree/staging)
 toolchain:
-  name: 'cedp-garage-{{timestamp}}'
+  name: 'cedp-tc-CD{{timestamp}}'
   template:
     getting_started:
-      $ref: "#/messages/template.gettingStarted"
+      $ref: "#/messages/template.gettingStarted" 
 services:
-  cedp-garage-repo:
+  cedp-tc-repo:
     service_id: github_integrated
     parameters:
       repo_name: ''
@@ -24,37 +29,39 @@ services:
       private_repo: true
       has_issues: false
       enable_traceability: false
-  cedp-garage-build:
+  cedp-tc-build:
     service_id: pipeline
     parameters:
       services:
-        - cedp-garage-repo
+        - cedp-tc-repo
       name: '{{toolchain.name}}'
       ui-pipeline: true
       configuration:
         content:
           $text: pipeline.yml
         env:
-          GIT_REPO: cedp-garage-repo
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.docker-image-name}}'
-          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.input-git-branch}}'
-          DOCKER_USERNAME: '{{form.pipeline.parameters.docker-username}}'
-          DOCKER_PASSWORD: '{{form.pipeline.parameters.docker-password}}'
+          GIT_REPO: cedp-tc-repo
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          AF_PSW: '{{form.pipeline.parameters.af-psw}}'
-          SONAR_DEVOP_TOKEN: '{{form.pipeline.parameters.sonar-devop-token}}'
+          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-cluster-namespace}}'
+          SIGNIN_ADDRESS: '{{form.pipeline.parameters.linkpassword}}'
+          EMAIL_ADDRESS: '{{form.pipeline.parameters.email-address}}'
+          S_KEY: '{{form.pipeline.parameters.skey}}'
+          M_PASS: '{{form.pipeline.parameters.mpass}}'
+          VAULT: '{{form.pipeline.parameters.vault}}'
+          CLUSTER: '{{form.pipeline.parameters.cluster}}'
+          DOMAIN: '{{form.pipeline.parameters.domain}}'
+          EXTERNAL_IP: '{{form.pipeline.parameters.externalIP}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
         execute: false
   messaging:
-    service_id: slack
-  dra:
-    service_id: draservicebroker
-    name: is_developer_insights_enabled
-    type: boolean
-    $ref: dra.yml
+    service_id: slack 
 form:
   pipeline:
     parameters:
-      app-name: '{{services.cedp-garage-repo.parameters.repo_name}}'
-      docker-username: 'iamapikey'
+      app-name: '{{services.cedp-tc-repo.parameters.repo_name}}'
+      prod-cluster-namespace: default
     schema:
       $ref: deploy.json
