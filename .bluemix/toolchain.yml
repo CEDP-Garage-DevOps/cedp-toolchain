@@ -56,7 +56,7 @@ services:
           EXTERNAL_IP: '{{form.pipeline.parameters.externalIP}}'
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
-           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
         execute: false
