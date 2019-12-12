@@ -58,18 +58,6 @@
 			"type": "string",
 			"disabled": false
 		},
-		"cluster": {
-			"type": "string",
-			"disabled": false
-		},
-		"domain": {
-			"type": "string",
-			"disabled": false
-		},
-		"externalIP": {
-			"type": "string",
-			"disabled": false
-		},
 
 		"dockerImageName": {
 			"type": "string",
@@ -78,7 +66,20 @@
 		"INPUT_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
+		},
+		"VERSIONS_GIT_BRANCH": {
+			"type": "string",
+			"disabled": false
+		},
+		"ARTIFACTORY_USER": {
+			"type": "string",
+			"disabled": false
+		},
+		"ARTIFACTORY_APIKEY": {
+			"type": "string",
+			"disabled": false
 		}
+
 	
 	},
 	"required": ["api-key", "prod-region", "destination"],
@@ -94,8 +95,8 @@
 			"key": "api-key"
 		}, {
 			"type": "table",
-			"columnCount": 3,
-			"widths": ["45%", "10%", "45%"],
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
 			"items": [{
 					"type": "label",
 					"title": "Git Input Branch"
@@ -105,7 +106,13 @@
 				}, {
 					"type": "label",
 					"title": "Pipeline Image"
-				},  {
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Git Versions Branch"
+				}, {
 					"type": "text",
 					"key": "INPUT_GIT_BRANCH",
 					"readonly": false
@@ -115,6 +122,13 @@
 				}, {
 					"type": "text",
 					"key": "dockerImageName",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "VERSIONS_GIT_BRANCH",
 					"readonly": false
 				}
 			]
@@ -154,8 +168,8 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
 			"items": [{
 					"type": "label",
 					"title": ""
@@ -165,44 +179,24 @@
 				}, {
 					"type": "label",
 					"title": ""
+				},{
+					"type": "label",
+					"title": "Artifactory User"
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Kubernetes Cluster"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Ingress subdomain"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Ingress PublicIP"
+					"title": "Artifactory ApiKey"
 				}, {
 					"type": "text",
-					"key": "cluster",
-					"readonly": false
+					"key": "ARTIFACTORY_USER"
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
-					"type": "text",
-					"key": "domain",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "externalIP",
+					"type": "password",
+					"key": "ARTIFACTORY_APIKEY",
 					"readonly": false
 				}
 			]
