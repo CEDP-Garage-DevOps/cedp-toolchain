@@ -78,7 +78,12 @@
 		"INPUT_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
+		},
+		"VERSIONS_GIT_BRANCH": {
+			"type": "string",
+			"disabled": false
 		}
+
 	
 	},
 	"required": ["api-key", "prod-region", "destination"],
@@ -94,8 +99,8 @@
 			"key": "api-key"
 		}, {
 			"type": "table",
-			"columnCount": 3,
-			"widths": ["45%", "10%", "45%"],
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
 			"items": [{
 					"type": "label",
 					"title": "Git Input Branch"
@@ -105,7 +110,13 @@
 				}, {
 					"type": "label",
 					"title": "Pipeline Image"
-				},  {
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Git Versions Branch"
+				}, {
 					"type": "text",
 					"key": "INPUT_GIT_BRANCH",
 					"readonly": false
@@ -115,6 +126,13 @@
 				}, {
 					"type": "text",
 					"key": "dockerImageName",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "VERSIONS_GIT_BRANCH",
 					"readonly": false
 				}
 			]
