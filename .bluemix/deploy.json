@@ -191,60 +191,6 @@
 					"title": ""
 				}, {
 					"type": "label",
-					"title": "Kubernetes Cluster"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Ingress subdomain"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Ingress PublicIP"
-				}, {
-					"type": "text",
-					"key": "cluster",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "domain",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "externalIP",
-					"readonly": false
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
-			"items": [{
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
 					"title": "1Password Host"
 				}, {
 					"type": "label",
