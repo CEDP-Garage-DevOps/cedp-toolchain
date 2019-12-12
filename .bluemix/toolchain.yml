@@ -51,11 +51,9 @@ services:
           S_KEY: '{{form.pipeline.parameters.skey}}'
           M_PASS: '{{form.pipeline.parameters.mpass}}'
           VAULT: '{{form.pipeline.parameters.vault}}'
-          CLUSTER: '{{form.pipeline.parameters.cluster}}'
-          DOMAIN: '{{form.pipeline.parameters.domain}}'
-          EXTERNAL_IP: '{{form.pipeline.parameters.externalIP}}'
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
         execute: false
   messaging:
     service_id: slack
