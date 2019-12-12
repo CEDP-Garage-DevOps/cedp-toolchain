@@ -150,6 +150,12 @@
 				}, {
 					"type": "label",
 					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
 				},{
 					"type": "label",
 					"title": "Region"
