@@ -58,18 +58,6 @@
 			"type": "string",
 			"disabled": false
 		},
-		"cluster": {
-			"type": "string",
-			"disabled": false
-		},
-		"domain": {
-			"type": "string",
-			"disabled": false
-		},
-		"externalIP": {
-			"type": "string",
-			"disabled": false
-		},
 
 		"dockerImageName": {
 			"type": "string",
