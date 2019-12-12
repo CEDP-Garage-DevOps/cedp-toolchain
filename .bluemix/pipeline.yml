@@ -4,7 +4,7 @@ stages:
   inputs:
   - service: ${GIT_REPO}
     type: git
-    branch: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+    branch: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
     dir_name: null
   triggers:
   - type: commit
@@ -16,11 +16,15 @@ stages:
     artifact_dir: ''
     build_type: customimage
     script: |-
-      #********************************************
-      #!/bin/bash
+ #********************************************
+#!/bin/bash
       set -x
       set -e
-      env
+      echo '**************************************************************************'
+      echo 'Was triggered'
+      git checkout $(awk '$1 == "branch:" {print $2}' versions.yaml)
+      echo '**************************************************************************'
+
       ibm-bifrost versions pull ${VERSIONS_GIT_BRANCH}
 
       mv .git git
@@ -109,35 +113,7 @@ stages:
       
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
-- name: Versions
-  inputs:
-  - type: job
-    stage: Plan
-    job: 'Build'
-    dir_name: null
-  triggers:
-  - type: stage
-  permission:
-    execute: TOOLCHAIN_ADMINS
-  jobs:
-  - name: 'Push'
-    type: deployer
-    artifact_dir: ''
-    deploy_type: customimage
-    script: |-
-      #!/bin/bash
-      set -x
-      set -e
 
-      pwd
-      mv git .git
-      git config --global user.email "toolchain@cloud.ibm.com"
-      git config --global user.name "IBM Cloud DevOps Toochain"
-
-      ibm-bifrost versions push
-
-    namespace: 'NULL'
-    docker_image: ${DOCKER_IMAGE_NAME}    
 hooks:
 - enabled: true
   label: null
