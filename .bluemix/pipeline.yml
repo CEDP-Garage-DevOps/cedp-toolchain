@@ -163,3 +163,9 @@ properties:
 - name: VERSIONS_GIT_BRANCH 
   value: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
   type: text
+- name: ARTIFACTORY_USER 
+  value: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
+  type: text
+- name: ARTIFACTORY_APIKEY 
+  value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+  type: text

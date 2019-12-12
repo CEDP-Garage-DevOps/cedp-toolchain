@@ -70,7 +70,16 @@
 		"VERSIONS_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
+		},
+		"ARTIFACTORY_USER": {
+			"type": "string",
+			"disabled": false
+		},
+		"ARTIFACTORY_APIKEY": {
+			"type": "string",
+			"disabled": false
 		}
+
 
 	
 	},
@@ -155,6 +164,40 @@
 				}, {
 					"type": "text",
 					"key": "destination",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				},{
+					"type": "label",
+					"title": "Artifactory User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Artifactory ApiKey"
+				}, {
+					"type": "text",
+					"key": "ARTIFACTORY_USER"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "skey",
+					"key": "ARTIFACTORY_APIKEY",
 					"readonly": false
 				}
 			]
