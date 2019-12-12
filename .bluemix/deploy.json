@@ -196,7 +196,7 @@
 					"type": "label",
 					"title": ""
 				}, {
-					"type": "skey",
+					"type": "password",
 					"key": "ARTIFACTORY_APIKEY",
 					"readonly": false
 				}
