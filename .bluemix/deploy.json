@@ -78,6 +78,10 @@
 		"ARTIFACTORY_APIKEY": {
 			"type": "string",
 			"disabled": false
+		},
+		"cluster": {
+			"type": "string",
+			"disabled": false
 		}
 
 
