@@ -135,8 +135,8 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 3,
-			"widths": ["45%", "10%", "45%"],
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
 			"items": [{
 					"type": "label",
 					"title": ""
@@ -156,6 +156,12 @@
 					"type": "label",
 					"title": "Destination"
 				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Kubernetes Cluster"
+				}, {
 					"type": "select",
 					"key": "prod-region"
 				}, {
@@ -164,6 +170,13 @@
 				}, {
 					"type": "text",
 					"key": "destination",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "cluster",
 					"readonly": false
 				}
 			]

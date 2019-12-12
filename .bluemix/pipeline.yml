@@ -169,3 +169,6 @@ properties:
 - name: ARTIFACTORY_APIKEY 
   value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: text
+- name: CLUSTER
+  value: '{{form.pipeline.parameters.cluster}}'
+  type: text
