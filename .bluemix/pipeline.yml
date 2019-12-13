@@ -87,8 +87,8 @@ stages:
 - name: 'Sonar Qube'
   inputs:
   - type: job
-    stage: Plan
-    job: 'Build'
+    stage: 'Unit tests'
+    job: 'Test'
     dir_name: null
   triggers:
   - type: stage
