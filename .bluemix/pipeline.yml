@@ -4,7 +4,7 @@ stages:
   inputs:
   - service: ${GIT_REPO}
     type: git
-    branch: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
+    branch: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
     dir_name: null
   triggers:
   - type: commit
