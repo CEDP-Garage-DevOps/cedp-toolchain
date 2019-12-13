@@ -23,7 +23,6 @@ stages:
       set -e
       env
       ibm-bifrost versions pull "$VERSIONS_GIT_BRANCH"
-
       mv .git git
       
     namespace: 'NULL'
@@ -48,7 +47,6 @@ stages:
       #!/bin/bash
       set -x
       set -e
-
       mv git .git
       ibm-bifrost build_plan "${DESTINATION}" diff pr
       mv .git git
@@ -77,9 +75,7 @@ stages:
       set -e
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
-
       ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
-
       export MAVEN_OPTS="-Xmx1000m"
       ibm-bifrost build_code test-only
     namespace: 'NULL'
