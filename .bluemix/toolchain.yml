@@ -56,6 +56,7 @@ services:
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          IBMCLOUD_HOME: /root
         execute: false
   messaging:
     service_id: slack
