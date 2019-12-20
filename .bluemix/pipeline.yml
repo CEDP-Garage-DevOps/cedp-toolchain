@@ -168,3 +168,4 @@ properties:
 - name: DOMAIN
   value: '{{form.pipeline.parameters.domain}}'
   type: text
+

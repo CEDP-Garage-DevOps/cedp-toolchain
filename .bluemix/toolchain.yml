@@ -57,6 +57,7 @@ services:
           ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
           DOMAIN: '{{form.pipeline.parameters.domain}}'
+          IBMCLOUD_HOME: /root
         execute: false
   messaging:
     service_id: slack
