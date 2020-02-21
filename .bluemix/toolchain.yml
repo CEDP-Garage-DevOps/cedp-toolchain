@@ -15,7 +15,7 @@ template:
     git branch: >-
       [СD_full](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/CD_full)
 toolchain:
-  name: 'CEDP-{name_of_project}-CD-{destination}'
+  name: 'cedp-{name_of_project}-CD-{destination}'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted" 
