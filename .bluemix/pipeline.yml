@@ -214,7 +214,7 @@ stages:
       git config --global user.email "toolchain@cloud.ibm.com"
       git config --global user.name "IBM Cloud DevOps Toochain"
 
-      ibm-bifrost versions push
+      ibm-bifrost versions push ${VERSIONS_GIT_BRANCH}
 
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}    
