@@ -20,7 +20,7 @@ stages:
       #!/bin/bash
       set -x
       set -e
-      env
+      
       ibm-bifrost versions pull ${VERSIONS_GIT_BRANCH}
 
       mv .git git
@@ -79,7 +79,9 @@ stages:
       
       ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
       
-      export MAVEN_OPTS="-Xmx1000m"
+      export MAVEN_OPTS="-Xmx2g"
+      export SBT_OPTS="-Xmx6G"
+      
       ibm-bifrost build_code build-only
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
@@ -145,7 +147,7 @@ stages:
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
-  - name: 'Dev'
+  - name: ${DESTINATION}
     type: deployer
     artifact_dir: ''
     deploy_type: customimage
@@ -281,3 +283,6 @@ properties:
 - name: ARTIFACTORY_APIKEY 
   value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: secure
+- name: IBMCLOUD_HOME 
+  value: '/root'
+  type: text
