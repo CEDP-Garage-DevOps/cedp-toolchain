@@ -20,7 +20,7 @@ stages:
       #!/bin/bash
       set -x
       set -e
-      env 
+      
       ibm-bifrost versions pull ${VERSIONS_GIT_BRANCH}
 
       mv .git git
@@ -217,3 +217,7 @@ properties:
 - name: ARTIFACTORY_APIKEY 
   value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: text
+- name: IBMCLOUD_HOME 
+  value: '/root'
+  type: text
+  
