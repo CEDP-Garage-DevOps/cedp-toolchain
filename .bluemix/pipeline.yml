@@ -21,7 +21,7 @@ stages:
       #!/bin/bash
       set -x
       set -e
-      env
+      
       ibm-bifrost versions pull "$VERSIONS_GIT_BRANCH"
       mv .git git
       
@@ -168,4 +168,7 @@ properties:
 - name: DOMAIN
   value: '{{form.pipeline.parameters.domain}}'
   type: text
-
+- name: IBMCLOUD_HOME 
+  value: '/root'
+  type: text
+  
