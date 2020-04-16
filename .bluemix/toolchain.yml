@@ -50,7 +50,6 @@ services:
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.dev-registry-region}}'
           API_KEY: '{{form.pipeline.parameters.dev-api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.dev-prod-region}}'
-          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.dev-prod-cluster-namespace}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.dev-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.dev-email-address}}'
           S_KEY: '{{form.pipeline.parameters.dev-skey}}'
@@ -64,6 +63,161 @@ services:
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.dev-ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.dev-ARTIFACTORY_APIKEY}}'
+          IBMCLOUD_HOME: /root
+        execute: false
+  cedp-tc-ci-stg-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - cedp-tc-repo
+      name: '{{toolchain.name}}-CI-stg'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: ci-stg.yml
+        env:
+          DESTINATION: '{{form.pipeline.parameters.stg-destination}}' 
+          GIT_REPO: cedp-tc-repo
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.stg-registry-region}}'
+          API_KEY: '{{form.pipeline.parameters.stg-api-key}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.stg-prod-region}}'
+          SIGNIN_ADDRESS: '{{form.pipeline.parameters.stg-linkpassword}}'
+          EMAIL_ADDRESS: '{{form.pipeline.parameters.stg-email-address}}'
+          S_KEY: '{{form.pipeline.parameters.stg-skey}}'
+          M_PASS: '{{form.pipeline.parameters.stg-mpass}}'
+          VAULT: '{{form.pipeline.parameters.stg-vault}}'
+          CLUSTER: '{{form.pipeline.parameters.stg-cluster}}'
+          DOMAIN: '{{form.pipeline.parameters.stg-domain}}'
+          EXTERNAL_IP: '{{form.pipeline.parameters.stg-externalIP}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.stg-dockerImageName}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
+          ARTIFACTORY_USER: '{{form.pipeline.parameters.stg-ARTIFACTORY_USER}}'
+          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.stg-ARTIFACTORY_APIKEY}}'
+          IBMCLOUD_HOME: /root
+        execute: false
+  cedp-tc-ci-prod-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - cedp-tc-repo
+      name: '{{toolchain.name}}-CI-prod'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: ci-prod.yml
+        env:
+          DESTINATION: '{{form.pipeline.parameters.prod-destination}}' 
+          GIT_REPO: cedp-tc-repo
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.prod-registry-region}}'
+          API_KEY: '{{form.pipeline.parameters.prod-api-key}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-prod-region}}'
+          SIGNIN_ADDRESS: '{{form.pipeline.parameters.prod-linkpassword}}'
+          EMAIL_ADDRESS: '{{form.pipeline.parameters.prod-email-address}}'
+          S_KEY: '{{form.pipeline.parameters.prod-skey}}'
+          M_PASS: '{{form.pipeline.parameters.prod-mpass}}'
+          VAULT: '{{form.pipeline.parameters.prod-vault}}'
+          CLUSTER: '{{form.pipeline.parameters.prod-cluster}}'
+          DOMAIN: '{{form.pipeline.parameters.prod-domain}}'
+          EXTERNAL_IP: '{{form.pipeline.parameters.prod-externalIP}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.prod-dockerImageName}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
+          ARTIFACTORY_USER: '{{form.pipeline.parameters.prod-ARTIFACTORY_USER}}'
+          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.prod-ARTIFACTORY_APIKEY}}'
+          IBMCLOUD_HOME: /root
+        execute: false
+  cedp-tc-cd-dev-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - cedp-tc-repo
+      name: '{{toolchain.name}}-CD-dev'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: cd-dev.yml
+        env:
+          DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
+          GIT_REPO: cedp-tc-repo
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.dev-registry-region}}'
+          API_KEY: '{{form.pipeline.parameters.dev-api-key}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.dev-prod-region}}'
+          SIGNIN_ADDRESS: '{{form.pipeline.parameters.dev-linkpassword}}'
+          EMAIL_ADDRESS: '{{form.pipeline.parameters.dev-email-address}}'
+          S_KEY: '{{form.pipeline.parameters.dev-skey}}'
+          M_PASS: '{{form.pipeline.parameters.dev-mpass}}'
+          VAULT: '{{form.pipeline.parameters.dev-vault}}'
+          CLUSTER: '{{form.pipeline.parameters.dev-cluster}}'
+          DOMAIN: '{{form.pipeline.parameters.dev-domain}}'
+          EXTERNAL_IP: '{{form.pipeline.parameters.dev-externalIP}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dev-dockerImageName}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
+          ARTIFACTORY_USER: '{{form.pipeline.parameters.dev-ARTIFACTORY_USER}}'
+          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.dev-ARTIFACTORY_APIKEY}}'
+          IBMCLOUD_HOME: /root
+        execute: false
+  cedp-tc-cd-stg-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - cedp-tc-repo
+      name: '{{toolchain.name}}-CD-stg'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: cd-stg.yml
+        env:
+          DESTINATION: '{{form.pipeline.parameters.stg-destination}}' 
+          GIT_REPO: cedp-tc-repo
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.stg-registry-region}}'
+          API_KEY: '{{form.pipeline.parameters.stg-api-key}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.stg-prod-region}}'
+          SIGNIN_ADDRESS: '{{form.pipeline.parameters.stg-linkpassword}}'
+          EMAIL_ADDRESS: '{{form.pipeline.parameters.stg-email-address}}'
+          S_KEY: '{{form.pipeline.parameters.stg-skey}}'
+          M_PASS: '{{form.pipeline.parameters.stg-mpass}}'
+          VAULT: '{{form.pipeline.parameters.stg-vault}}'
+          CLUSTER: '{{form.pipeline.parameters.stg-cluster}}'
+          DOMAIN: '{{form.pipeline.parameters.stg-domain}}'
+          EXTERNAL_IP: '{{form.pipeline.parameters.stg-externalIP}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.stg-dockerImageName}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
+          ARTIFACTORY_USER: '{{form.pipeline.parameters.stg-ARTIFACTORY_USER}}'
+          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.stg-ARTIFACTORY_APIKEY}}'
+          IBMCLOUD_HOME: /root
+        execute: false
+  cedp-tc-cd-prod-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - cedp-tc-repo
+      name: '{{toolchain.name}}-CD-prod'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: cd-prod.yml
+        env:
+          DESTINATION: '{{form.pipeline.parameters.prod-destination}}' 
+          GIT_REPO: cedp-tc-repo
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.prod-registry-region}}'
+          API_KEY: '{{form.pipeline.parameters.prod-api-key}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-prod-region}}'
+          SIGNIN_ADDRESS: '{{form.pipeline.parameters.prod-linkpassword}}'
+          EMAIL_ADDRESS: '{{form.pipeline.parameters.prod-email-address}}'
+          S_KEY: '{{form.pipeline.parameters.prod-skey}}'
+          M_PASS: '{{form.pipeline.parameters.prod-mpass}}'
+          VAULT: '{{form.pipeline.parameters.prod-vault}}'
+          CLUSTER: '{{form.pipeline.parameters.prod-cluster}}'
+          DOMAIN: '{{form.pipeline.parameters.prod-domain}}'
+          EXTERNAL_IP: '{{form.pipeline.parameters.prod-externalIP}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.prod-dockerImageName}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
+          ARTIFACTORY_USER: '{{form.pipeline.parameters.prod-ARTIFACTORY_USER}}'
+          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.prod-ARTIFACTORY_APIKEY}}'
           IBMCLOUD_HOME: /root
         execute: false
   messaging:
