@@ -257,8 +257,17 @@
 			"readonly": false,
 			"title": {
 				"$ref": "#/messages/deploy.apikey"
-			},
+			}, 
 			"key": "dev-api-key"
+		}, {
+			"type": "table",
+			"columnCount": 1,
+			"widths": ["100%"],
+			"items": [{
+					"type": "label",
+					"title": "Enviroment for Development"
+				}
+			]
 		}, {
 			"type": "table",
 			"columnCount": 5,
@@ -502,15 +511,21 @@
 				}
 			]
 		}, {
-			"type": "validator",
-			"url": "/devops/setup/bm-helper/custom_helper.html"
-		}, {
 			"type": "password",
 			"readonly": false,
 			"title": {
 				"$ref": "#/messages/deploy.apikey"
 			},
 			"key": "stg-api-key"
+		}, {
+			"type": "table",
+			"columnCount": 1,
+			"widths": ["100%"],
+			"items": [{
+					"type": "label",
+					"title": "Enviroment for Staging"
+				}
+			]
 		}, {
 			"type": "table",
 			"columnCount": 5,
@@ -754,8 +769,14 @@
 				}
 			]
 		}, {
-			"type": "validator",
-			"url": "/devops/setup/bm-helper/custom_helper.html"
+			"type": "table",
+			"columnCount": 1,
+			"widths": ["100%"],
+			"items": [{
+					"type": "label",
+					"title": "Enviroment for Production"
+				}
+			]
 		}, {
 			"type": "password",
 			"readonly": false,
