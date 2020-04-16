@@ -511,9 +511,6 @@
 				}
 			]
 		}, {
-			"type": "validator",
-			"url": "/devops/setup/bm-helper/custom_helper.html"
-		}, {
 			"type": "password",
 			"readonly": false,
 			"title": {
@@ -771,9 +768,6 @@
 					"readonly": false
 				}
 			]
-		}, {
-			"type": "validator",
-			"url": "/devops/setup/bm-helper/custom_helper.html"
 		}, {
 			"type": "table",
 			"columnCount": 1,
