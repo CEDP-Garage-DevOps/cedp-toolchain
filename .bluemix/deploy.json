@@ -14,87 +14,241 @@
 	},
 	"type": "object",
 	"properties": {
-		"api-key": {
+		"dev-api-key": {
 			"description": {
 				"$ref": "#/messages/deploy.apikeyDescription"
 			},
 			"type": "string",
 			"pattern": "\\S"
 		},
-		"prod-region": {
+		"dev-prod-region": {
 			"description": {
 				"$ref": "#/messages/deploy.regionDescription"
 			},
 			"type": "string",
 			"disabled": false
 		},
-		"registry-region": {
+		"dev-registry-region": {
 			"type": "string",
 			"disabled": false
 		},
-		"destination": {
+		"dev-destination": {
 			"type": "string",
 			"disabled": false
 		},
-		"linkpassword": {
+		"dev-linkpassword": {
 			"type": "string",
 			"disabled": false
 		},
-		"email-address": {
+		"dev-email-address": {
 			"type": "string",
 			"disabled": false
 		},
-		"skey": {
+		"dev-skey": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"mpass": {
+		"dev-mpass": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
 		},
-		"vault": {
+		"dev-vault": {
 			"type": "string",
 			"disabled": false
 		},
-		"cluster": {
+		"dev-cluster": {
 			"type": "string",
 			"disabled": false
 		},
-		"domain": {
+		"dev-domain": {
 			"type": "string",
 			"disabled": false
 		},
-		"externalIP": {
+		"dev-externalIP": {
 			"type": "string",
 			"disabled": false
 		},
 
-		"dockerImageName": {
+		"dev-dockerImageName": {
 			"type": "string",
 			"disabled": false
 		},
-		"INPUT_GIT_BRANCH": {
+		"dev-INPUT_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
 		},
-		"VERSIONS_GIT_BRANCH": {
+		"dev-VERSIONS_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
 		},
-		"ARTIFACTORY_USER": {
+		"dev-ARTIFACTORY_USER": {
 			"type": "string",
 			"disabled": false
 		},
-		"ARTIFACTORY_APIKEY": {
+		"dev-ARTIFACTORY_APIKEY": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-api-key": {
+			"description": {
+				"$ref": "#/messages/deploy.apikeyDescription"
+			},
+			"type": "string",
+			"pattern": "\\S"
+		},
+		"stg-prod-region": {
+			"description": {
+				"$ref": "#/messages/deploy.regionDescription"
+			},
+			"type": "string",
+			"disabled": false
+		},
+		"stg-registry-region": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-destination": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-linkpassword": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-email-address": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-skey": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"stg-mpass": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"stg-vault": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-cluster": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-domain": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-externalIP": {
+			"type": "string",
+			"disabled": false
+		},
+
+		"stg-dockerImageName": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-INPUT_GIT_BRANCH": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-VERSIONS_GIT_BRANCH": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-ARTIFACTORY_USER": {
+			"type": "string",
+			"disabled": false
+		},
+		"stg-ARTIFACTORY_APIKEY": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-api-key": {
+			"description": {
+				"$ref": "#/messages/deploy.apikeyDescription"
+			},
+			"type": "string",
+			"pattern": "\\S"
+		},
+		"prod-prod-region": {
+			"description": {
+				"$ref": "#/messages/deploy.regionDescription"
+			},
+			"type": "string",
+			"disabled": false
+		},
+		"prod-registry-region": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-destination": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-linkpassword": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-email-address": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-skey": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"prod-mpass": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"prod-vault": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-cluster": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-domain": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-externalIP": {
+			"type": "string",
+			"disabled": false
+		},
+
+		"prod-dockerImageName": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-INPUT_GIT_BRANCH": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-VERSIONS_GIT_BRANCH": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-ARTIFACTORY_USER": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-ARTIFACTORY_APIKEY": {
 			"type": "string",
 			"disabled": false
 		}
 
 	
 	},
-	"required": ["api-key", "prod-region", "destination"],
+	"required": ["dev-api-key", "dev-prod-region", "dev-destination", "stg-api-key", "stg-prod-region", "stg-destination", "stg-api-key", "stg-prod-region", "stg-destination"],
 	"form": [{
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
@@ -104,7 +258,7 @@
 			"title": {
 				"$ref": "#/messages/deploy.apikey"
 			},
-			"key": "api-key"
+			"key": "dev-api-key"
 		}, {
 			"type": "table",
 			"columnCount": 5,
@@ -126,21 +280,21 @@
 					"title": "Git Versions Branch"
 				}, {
 					"type": "text",
-					"key": "INPUT_GIT_BRANCH",
+					"key": "dev-INPUT_GIT_BRANCH",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "dockerImageName",
+					"key": "dev-dockerImageName",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "VERSIONS_GIT_BRANCH",
+					"key": "dev-VERSIONS_GIT_BRANCH",
 					"readonly": false
 				}
 			]
@@ -168,13 +322,13 @@
 					"title": "Destination"
 				}, {
 					"type": "select",
-					"key": "prod-region"
+					"key": "dev-prod-region"
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "destination",
+					"key": "dev-destination",
 					"readonly": false
 				}
 			]
@@ -202,13 +356,13 @@
 					"title": "Artifactory ApiKey"
 				}, {
 					"type": "text",
-					"key": "ARTIFACTORY_USER"
+					"key": "dev-ARTIFACTORY_USER"
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "password",
-					"key": "ARTIFACTORY_APIKEY",
+					"key": "dev-ARTIFACTORY_APIKEY",
 					"readonly": false
 				}
 			]
@@ -248,21 +402,21 @@
 					"title": "Ingress PublicIP"
 				}, {
 					"type": "text",
-					"key": "cluster",
+					"key": "dev-cluster",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "domain",
+					"key": "dev-domain",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "externalIP",
+					"key": "dev-externalIP",
 					"readonly": false
 				}
 		
@@ -303,21 +457,21 @@
 					"title": "1Password Vault"
 				}, {
 					"type": "text",
-					"key": "linkpassword",
+					"key": "dev-linkpassword",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "email-address",
+					"key": "dev-email-address",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "vault",
+					"key": "dev-vault",
 					"readonly": false
 				}, {
 					"type": "label",
@@ -336,18 +490,523 @@
 					"title": ""
 				}, {
 					"type": "password",
-					"key": "skey",
+					"key": "dev-skey",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "password",
-					"key": "mpass",
+					"key": "dev-mpass",
 					"readonly": false
 				}
 			]
 		}, {
+			"type": "validator",
+			"url": "/devops/setup/bm-helper/custom_helper.html"
+		}, {
+			"type": "password",
+			"readonly": false,
+			"title": {
+				"$ref": "#/messages/deploy.apikey"
+			},
+			"key": "stg-api-key"
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": "Git Input Branch"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Pipeline Image"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Git Versions Branch"
+				}, {
+					"type": "text",
+					"key": "stg-INPUT_GIT_BRANCH",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "stg-dockerImageName",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "stg-VERSIONS_GIT_BRANCH",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				},{
+					"type": "label",
+					"title": "Region"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Destination"
+				}, {
+					"type": "select",
+					"key": "stg-prod-region"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "stg-destination",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				},{
+					"type": "label",
+					"title": "Artifactory User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Artifactory ApiKey"
+				}, {
+					"type": "text",
+					"key": "stg-ARTIFACTORY_USER"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "stg-ARTIFACTORY_APIKEY",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Kubernetes Cluster"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Ingress subdomain"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Ingress PublicIP"
+				}, {
+					"type": "text",
+					"key": "stg-cluster",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "stg-domain",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "stg-externalIP",
+					"readonly": false
+				}
+		
+			]
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password Host"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password Vault"
+				}, {
+					"type": "text",
+					"key": "stg-linkpassword",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "stg-email-address",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "stg-vault",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": "1Password Secret key"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password Master password"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "stg-skey",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "stg-mpass",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "validator",
+			"url": "/devops/setup/bm-helper/custom_helper.html"
+		}, {
+			"type": "password",
+			"readonly": false,
+			"title": {
+				"$ref": "#/messages/deploy.apikey"
+			},
+			"key": "prod-api-key"
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": "Git Input Branch"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Pipeline Image"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Git Versions Branch"
+				}, {
+					"type": "text",
+					"key": "prod-INPUT_GIT_BRANCH",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "prod-dockerImageName",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "prod-VERSIONS_GIT_BRANCH",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				},{
+					"type": "label",
+					"title": "Region"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Destination"
+				}, {
+					"type": "select",
+					"key": "prod-prod-region"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "prod-destination",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				},{
+					"type": "label",
+					"title": "Artifactory User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Artifactory ApiKey"
+				}, {
+					"type": "text",
+					"key": "prod-ARTIFACTORY_USER"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "prod-ARTIFACTORY_APIKEY",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Kubernetes Cluster"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Ingress subdomain"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Ingress PublicIP"
+				}, {
+					"type": "text",
+					"key": "prod-cluster",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "prod-domain",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "prod-externalIP",
+					"readonly": false
+				}
+		
+			]
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password Host"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password Vault"
+				}, {
+					"type": "text",
+					"key": "prod-linkpassword",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "prod-email-address",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "prod-vault",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": "1Password Secret key"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "1Password Master password"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "prod-skey",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "prod-mpass",
+					"readonly": false
+				}
+			]
+		},
+		{
 			"type": "table",
 			"columnCount": 1,
 			"widths": ["100%"],
