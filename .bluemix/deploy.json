@@ -21,7 +21,7 @@
 			"type": "string",
 			"pattern": "\\S"
 		},
-		"dev-prod-region": {
+		"prod-region": {
 			"description": {
 				"$ref": "#/messages/deploy.regionDescription"
 			},
@@ -71,7 +71,7 @@
 			"disabled": false
 		},
 
-		"dev-dockerImageName": {
+		"dockerImageName": {
 			"type": "string",
 			"disabled": false
 		},
@@ -88,13 +88,6 @@
 			"disabled": false
 		},
 		"dev-ARTIFACTORY_APIKEY": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-prod-region": {
-			"description": {
-				"$ref": "#/messages/deploy.regionDescription"
-			},
 			"type": "string",
 			"disabled": false
 		},
@@ -140,11 +133,6 @@
 			"type": "string",
 			"disabled": false
 		},
-
-		"stg-dockerImageName": {
-			"type": "string",
-			"disabled": false
-		},
 		"stg-INPUT_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
@@ -158,13 +146,6 @@
 			"disabled": false
 		},
 		"stg-ARTIFACTORY_APIKEY": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-prod-region": {
-			"description": {
-				"$ref": "#/messages/deploy.regionDescription"
-			},
 			"type": "string",
 			"disabled": false
 		},
@@ -210,11 +191,6 @@
 			"type": "string",
 			"disabled": false
 		},
-
-		"prod-dockerImageName": {
-			"type": "string",
-			"disabled": false
-		},
 		"prod-INPUT_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
@@ -232,7 +208,7 @@
 			"disabled": false
 		}
 	},
-	"required": ["api-key", "dev-prod-region", "dev-destination", "stg-prod-region", "stg-destination", "prod-prod-region", "prod-destination"],
+	"required": ["api-key", "prod-region", "dev-destination", "stg-destination", "prod-destination"],
 	"form": [ {
 			"type": "password",
 			"readonly": false,
@@ -240,7 +216,41 @@
 				"$ref": "#/messages/deploy.apikey"
 			},
 			"key": "api-key"
-		}, {
+		},  {
+			"type": "table",
+			"columnCount": 3,
+			"widths": ["45%", "10%", "45%"],
+			"items": [{
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": ""
+				},{
+					"type": "label",
+					"title": "Region"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Pipeline Image"
+				}, {
+					"type": "select",
+					"key": "prod-region"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "dockerImageName",
+					"readonly": false
+				}
+			]
+		},{
 			"type": "table",
 			"columnCount": 1,
 			"widths": ["100%"],
@@ -264,7 +274,7 @@
 					"title": ""
 				}, {
 					"type": "label",
-					"title": "Pipeline Image"
+					"title": "Destination"
 				}, {
 					"type": "label",
 					"title": ""
@@ -280,7 +290,7 @@
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "dev-dockerImageName",
+					"key": "dev-destination",
 					"readonly": false
 				}, {
 					"type": "label",
@@ -288,40 +298,6 @@
 				}, {
 					"type": "text",
 					"key": "dev-VERSIONS_GIT_BRANCH",
-					"readonly": false
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 3,
-			"widths": ["45%", "10%", "45%"],
-			"items": [{
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				},{
-					"type": "label",
-					"title": "Region"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Destination"
-				}, {
-					"type": "select",
-					"key": "dev-prod-region"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "dev-destination",
 					"readonly": false
 				}
 			]
@@ -515,7 +491,7 @@
 					"title": ""
 				}, {
 					"type": "label",
-					"title": "Pipeline Image"
+					"title": "Destination"
 				}, {
 					"type": "label",
 					"title": ""
@@ -531,7 +507,7 @@
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "stg-dockerImageName",
+					"key": "stg-destination",
 					"readonly": false
 				}, {
 					"type": "label",
@@ -539,40 +515,6 @@
 				}, {
 					"type": "text",
 					"key": "stg-VERSIONS_GIT_BRANCH",
-					"readonly": false
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 3,
-			"widths": ["45%", "10%", "45%"],
-			"items": [{
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				},{
-					"type": "label",
-					"title": "Region"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Destination"
-				}, {
-					"type": "select",
-					"key": "stg-prod-region"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "stg-destination",
 					"readonly": false
 				}
 			]
@@ -766,7 +708,7 @@
 					"title": ""
 				}, {
 					"type": "label",
-					"title": "Pipeline Image"
+					"title": "Destination"
 				}, {
 					"type": "label",
 					"title": ""
@@ -782,7 +724,7 @@
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "prod-dockerImageName",
+					"key": "prod-destination",
 					"readonly": false
 				}, {
 					"type": "label",
@@ -790,40 +732,6 @@
 				}, {
 					"type": "text",
 					"key": "prod-VERSIONS_GIT_BRANCH",
-					"readonly": false
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 3,
-			"widths": ["45%", "10%", "45%"],
-			"items": [{
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				},{
-					"type": "label",
-					"title": "Region"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Destination"
-				}, {
-					"type": "select",
-					"key": "prod-prod-region"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "prod-destination",
 					"readonly": false
 				}
 			]
