@@ -245,8 +245,6 @@
 			"type": "string",
 			"disabled": false
 		}
-
-	
 	},
 	"required": ["dev-api-key", "dev-prod-region", "dev-destination", "stg-api-key", "stg-prod-region", "stg-destination", "stg-api-key", "stg-prod-region", "stg-destination"],
 	"form": [{
@@ -261,13 +259,6 @@
 		}, {
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
-		}, {
-			"type": "password",
-			"readonly": false,
-			"title": {
-				"$ref": "#/messages/deploy.apikey"
-			}, 
-			"key": "dev-api-key"
 		}, {
 			"type": "table",
 			"columnCount": 5,
