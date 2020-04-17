@@ -47,9 +47,10 @@ services:
         env:
           DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
           GIT_REPO: cedp-tc-repo
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.dev-registry-region}}'
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.dev-prod-cluster-namespace}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.dev-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.dev-email-address}}'
           S_KEY: '{{form.pipeline.parameters.dev-skey}}'
@@ -58,7 +59,7 @@ services:
           CLUSTER: '{{form.pipeline.parameters.dev-cluster}}'
           DOMAIN: '{{form.pipeline.parameters.dev-domain}}'
           EXTERNAL_IP: '{{form.pipeline.parameters.dev-externalIP}}'
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dev-dockerImageName}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.dev-ARTIFACTORY_USER}}'
@@ -78,9 +79,10 @@ services:
         env:
           DESTINATION: '{{form.pipeline.parameters.stg-destination}}' 
           GIT_REPO: cedp-tc-repo
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.stg-registry-region}}'
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.stg-prod-cluster-namespace}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.stg-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.stg-email-address}}'
           S_KEY: '{{form.pipeline.parameters.stg-skey}}'
@@ -89,7 +91,7 @@ services:
           CLUSTER: '{{form.pipeline.parameters.stg-cluster}}'
           DOMAIN: '{{form.pipeline.parameters.stg-domain}}'
           EXTERNAL_IP: '{{form.pipeline.parameters.stg-externalIP}}'
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.stg-dockerImageName}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.stg-ARTIFACTORY_USER}}'
@@ -109,9 +111,10 @@ services:
         env:
           DESTINATION: '{{form.pipeline.parameters.prod-destination}}' 
           GIT_REPO: cedp-tc-repo
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.prod-registry-region}}'
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-prod-cluster-namespace}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.prod-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.prod-email-address}}'
           S_KEY: '{{form.pipeline.parameters.prod-skey}}'
@@ -120,7 +123,7 @@ services:
           CLUSTER: '{{form.pipeline.parameters.prod-cluster}}'
           DOMAIN: '{{form.pipeline.parameters.prod-domain}}'
           EXTERNAL_IP: '{{form.pipeline.parameters.prod-externalIP}}'
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.prod-dockerImageName}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.prod-ARTIFACTORY_USER}}'
@@ -140,9 +143,10 @@ services:
         env:
           DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
           GIT_REPO: cedp-tc-repo
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.dev-registry-region}}'
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.dev-prod-cluster-namespace}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.dev-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.dev-email-address}}'
           S_KEY: '{{form.pipeline.parameters.dev-skey}}'
@@ -151,13 +155,12 @@ services:
           CLUSTER: '{{form.pipeline.parameters.dev-cluster}}'
           DOMAIN: '{{form.pipeline.parameters.dev-domain}}'
           EXTERNAL_IP: '{{form.pipeline.parameters.dev-externalIP}}'
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dev-dockerImageName}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.dev-ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.dev-ARTIFACTORY_APIKEY}}'
           IBMCLOUD_HOME: /root
-        execute: false
   cedp-tc-cd-stg-build:
     service_id: pipeline
     parameters:
@@ -171,9 +174,10 @@ services:
         env:
           DESTINATION: '{{form.pipeline.parameters.stg-destination}}' 
           GIT_REPO: cedp-tc-repo
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.stg-registry-region}}'
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.stg-prod-cluster-namespace}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.stg-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.stg-email-address}}'
           S_KEY: '{{form.pipeline.parameters.stg-skey}}'
@@ -182,7 +186,7 @@ services:
           CLUSTER: '{{form.pipeline.parameters.stg-cluster}}'
           DOMAIN: '{{form.pipeline.parameters.stg-domain}}'
           EXTERNAL_IP: '{{form.pipeline.parameters.stg-externalIP}}'
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.stg-dockerImageName}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.stg-ARTIFACTORY_USER}}'
@@ -202,9 +206,10 @@ services:
         env:
           DESTINATION: '{{form.pipeline.parameters.prod-destination}}' 
           GIT_REPO: cedp-tc-repo
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.prod-registry-region}}'
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-prod-cluster-namespace}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.prod-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.prod-email-address}}'
           S_KEY: '{{form.pipeline.parameters.prod-skey}}'
@@ -213,7 +218,7 @@ services:
           CLUSTER: '{{form.pipeline.parameters.prod-cluster}}'
           DOMAIN: '{{form.pipeline.parameters.prod-domain}}'
           EXTERNAL_IP: '{{form.pipeline.parameters.prod-externalIP}}'
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.prod-dockerImageName}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.prod-ARTIFACTORY_USER}}'

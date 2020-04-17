@@ -28,7 +28,7 @@
 			"type": "string",
 			"disabled": false
 		},
-		"dev-registry-region": {
+		"registry-region": {
 			"type": "string",
 			"disabled": false
 		},
@@ -91,10 +91,6 @@
 			"type": "string",
 			"disabled": false
 		},
-		"stg-registry-region": {
-			"type": "string",
-			"disabled": false
-		},
 		"stg-destination": {
 			"type": "string",
 			"disabled": false
@@ -146,10 +142,6 @@
 			"disabled": false
 		},
 		"stg-ARTIFACTORY_APIKEY": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-registry-region": {
 			"type": "string",
 			"disabled": false
 		},

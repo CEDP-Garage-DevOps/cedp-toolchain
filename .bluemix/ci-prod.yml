@@ -126,7 +126,7 @@ properties:
   value: '{{form.pipeline.parameters.prod-destination}}'
   type: text
 - name: DOCKER_IMAGE_NAME
-  value: '{{form.pipeline.parameters.prod-dockerImageName}}'
+  value: '{{form.pipeline.parameters.dockerImageName}}'
   type: text
 - name: IBM_CLOUD_API_KEY
   value: '{{form.pipeline.parameters.api-key}}'
@@ -153,7 +153,7 @@ properties:
   value: '{{form.pipeline.parameters.prod-vault}}'
   type: text
 - name: REGISTRY_REGION_ID
-  value: '{{form.pipeline.parameters.prod-registry-region}}'
+  value: '{{form.pipeline.parameters.registry-region}}'
   type: text
 - name: INPUT_GIT_BRANCH 
   value: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'

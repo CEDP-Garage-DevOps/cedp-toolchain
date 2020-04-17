@@ -222,7 +222,7 @@ properties:
   value: '{{form.pipeline.parameters.dev-destination}}'
   type: text
 - name: DOCKER_IMAGE_NAME
-  value: '{{form.pipeline.parameters.dev-dockerImageName}}'
+  value: '{{form.pipeline.parameters.dockerImageName}}'
   type: text
 - name: IBM_CLOUD_API_KEY
   value: '{{form.pipeline.parameters.api-key}}'
@@ -249,7 +249,7 @@ properties:
   value: '{{form.pipeline.parameters.dev-vault}}'
   type: text
 - name: REGISTRY_REGION_ID
-  value: '{{form.pipeline.parameters.dev-registry-region}}'
+  value: '{{form.pipeline.parameters.registry-region}}'
   type: text
 - name: CLUSTER
   value: '{{form.pipeline.parameters.dev-cluster}}'
