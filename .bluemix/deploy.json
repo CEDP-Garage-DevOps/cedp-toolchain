@@ -14,7 +14,7 @@
 	},
 	"type": "object",
 	"properties": {
-		"dev-api-key": {
+		"api-key": {
 			"description": {
 				"$ref": "#/messages/deploy.apikeyDescription"
 			},
@@ -91,13 +91,6 @@
 			"type": "string",
 			"disabled": false
 		},
-		"stg-api-key": {
-			"description": {
-				"$ref": "#/messages/deploy.apikeyDescription"
-			},
-			"type": "string",
-			"pattern": "\\S"
-		},
 		"stg-prod-region": {
 			"description": {
 				"$ref": "#/messages/deploy.regionDescription"
@@ -167,13 +160,6 @@
 		"stg-ARTIFACTORY_APIKEY": {
 			"type": "string",
 			"disabled": false
-		},
-		"prod-api-key": {
-			"description": {
-				"$ref": "#/messages/deploy.apikeyDescription"
-			},
-			"type": "string",
-			"pattern": "\\S"
 		},
 		"prod-prod-region": {
 			"description": {
@@ -246,7 +232,7 @@
 			"disabled": false
 		}
 	},
-	"required": ["dev-api-key", "dev-prod-region", "dev-destination", "stg-api-key", "stg-prod-region", "stg-destination", "stg-api-key", "stg-prod-region", "stg-destination"],
+	"required": ["api-key", "dev-prod-region", "dev-destination", "stg-prod-region", "stg-destination", "prod-prod-region", "prod-destination"],
 	"form": [{
 			"type": "table",
 			"columnCount": 1,
@@ -511,13 +497,6 @@
 				}
 			]
 		}, {
-			"type": "password",
-			"readonly": false,
-			"title": {
-				"$ref": "#/messages/deploy.apikey"
-			},
-			"key": "stg-api-key"
-		}, {
 			"type": "table",
 			"columnCount": 5,
 			"widths": ["32%", "2%", "32%", "2%", "32%"],
@@ -768,13 +747,6 @@
 					"title": "Enviroment for Production"
 				}
 			]
-		}, {
-			"type": "password",
-			"readonly": false,
-			"title": {
-				"$ref": "#/messages/deploy.apikey"
-			},
-			"key": "prod-api-key"
 		}, {
 			"type": "table",
 			"columnCount": 5,

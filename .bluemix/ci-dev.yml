@@ -129,13 +129,13 @@ properties:
   value: '{{form.pipeline.parameters.dev-dockerImageName}}'
   type: text
 - name: IBM_CLOUD_API_KEY
-  value: '{{form.pipeline.parameters.dev-api-key}}'
+  value: '{{form.pipeline.parameters.api-key}}'
   type: secure
 - name: DOCKER_USERNAME
   value: 'iamapikey'
   type: text
 - name: DOCKER_PASSWORD
-  value: '{{form.pipeline.parameters.dev-api-key}}'
+  value: '{{form.pipeline.parameters.api-key}}'
   type: secure 
 - name: SIGNIN_ADDRESS
   value: '{{form.pipeline.parameters.dev-linkpassword}}'
