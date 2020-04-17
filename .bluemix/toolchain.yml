@@ -48,7 +48,7 @@ services:
           DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.dev-registry-region}}'
-          API_KEY: '{{form.pipeline.parameters.dev-api-key}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.dev-prod-region}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.dev-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.dev-email-address}}'
@@ -79,7 +79,7 @@ services:
           DESTINATION: '{{form.pipeline.parameters.stg-destination}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.stg-registry-region}}'
-          API_KEY: '{{form.pipeline.parameters.stg-api-key}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.stg-prod-region}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.stg-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.stg-email-address}}'
@@ -110,7 +110,7 @@ services:
           DESTINATION: '{{form.pipeline.parameters.prod-destination}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.prod-registry-region}}'
-          API_KEY: '{{form.pipeline.parameters.prod-api-key}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-prod-region}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.prod-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.prod-email-address}}'
@@ -141,7 +141,7 @@ services:
           DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.dev-registry-region}}'
-          API_KEY: '{{form.pipeline.parameters.dev-api-key}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.dev-prod-region}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.dev-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.dev-email-address}}'
@@ -172,7 +172,7 @@ services:
           DESTINATION: '{{form.pipeline.parameters.stg-destination}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.stg-registry-region}}'
-          API_KEY: '{{form.pipeline.parameters.stg-api-key}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.stg-prod-region}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.stg-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.stg-email-address}}'
@@ -203,7 +203,7 @@ services:
           DESTINATION: '{{form.pipeline.parameters.prod-destination}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.prod-registry-region}}'
-          API_KEY: '{{form.pipeline.parameters.prod-api-key}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-prod-region}}'
           SIGNIN_ADDRESS: '{{form.pipeline.parameters.prod-linkpassword}}'
           EMAIL_ADDRESS: '{{form.pipeline.parameters.prod-email-address}}'
