@@ -250,6 +250,15 @@
 	},
 	"required": ["dev-api-key", "dev-prod-region", "dev-destination", "stg-api-key", "stg-prod-region", "stg-destination", "stg-api-key", "stg-prod-region", "stg-destination"],
 	"form": [{
+			"type": "table",
+			"columnCount": 1,
+			"widths": ["100%"],
+			"items": [{
+					"type": "label",
+					"title": "Enviroment for Development"
+				}
+			]
+		}, {
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
 		}, {
@@ -259,15 +268,6 @@
 				"$ref": "#/messages/deploy.apikey"
 			}, 
 			"key": "dev-api-key"
-		}, {
-			"type": "table",
-			"columnCount": 1,
-			"widths": ["100%"],
-			"items": [{
-					"type": "label",
-					"title": "Enviroment for Development"
-				}
-			]
 		}, {
 			"type": "table",
 			"columnCount": 5,
@@ -511,13 +511,6 @@
 				}
 			]
 		}, {
-			"type": "password",
-			"readonly": false,
-			"title": {
-				"$ref": "#/messages/deploy.apikey"
-			},
-			"key": "stg-api-key"
-		}, {
 			"type": "table",
 			"columnCount": 1,
 			"widths": ["100%"],
@@ -526,6 +519,13 @@
 					"title": "Enviroment for Staging"
 				}
 			]
+		}, {
+			"type": "password",
+			"readonly": false,
+			"title": {
+				"$ref": "#/messages/deploy.apikey"
+			},
+			"key": "stg-api-key"
 		}, {
 			"type": "table",
 			"columnCount": 5,
