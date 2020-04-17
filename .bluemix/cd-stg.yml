@@ -80,8 +80,6 @@ stages:
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
       export MAVEN_OPTS="-Xmx1000m"
-      curl -u ${ARTIFACTORY_USER}:${ARTIFACTORY_APIKEY} https://na.artifactory.swg-devops.com/artifactory/api/npm/auth/  > ~/.npmrc
-      npm config set @cedp:registry https://na.artifactory.swg-devops.com/artifactory/api/npm/txo-cedp-garage-test-npm-local/
       ibm-bifrost build_code build-only
       
     namespace: 'NULL'

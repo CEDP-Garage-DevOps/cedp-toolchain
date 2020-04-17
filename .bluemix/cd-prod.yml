@@ -23,7 +23,7 @@ stages:
       set -x
       set -e
       env
-      ibm-bifrost versions pull ${VERSIONS_GIT_BRANCH}
+      ibm-bifrost versions pull versions-stg
       mv .git git
       
     namespace: 'NULL'
@@ -129,7 +129,7 @@ stages:
       mv git .git
       git config --global user.email "toolchain@cloud.ibm.com"
       git config --global user.name "IBM Cloud DevOps Toochain"
-      ibm-bifrost versions push versions-prod
+      ibm-bifrost versions push ${VERSIONS_GIT_BRANCH}
       
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
