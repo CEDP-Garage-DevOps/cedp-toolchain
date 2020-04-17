@@ -233,7 +233,14 @@
 		}
 	},
 	"required": ["api-key", "dev-prod-region", "dev-destination", "stg-prod-region", "stg-destination", "prod-prod-region", "prod-destination"],
-	"form": [{
+	"form": [ {
+			"type": "password",
+			"readonly": false,
+			"title": {
+				"$ref": "#/messages/deploy.apikey"
+			},
+			"key": "api-key"
+		}, {
 			"type": "table",
 			"columnCount": 1,
 			"widths": ["100%"],
