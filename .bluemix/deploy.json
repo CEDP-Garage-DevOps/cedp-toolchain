@@ -272,6 +272,30 @@
 			"widths": ["32%", "2%", "32%", "2%", "32%"],
 			"items": [{
 					"type": "text",
+					"key": "dev-destination",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": "|"
+				}, {
+					"type": "text",
+					"key": "stg-destination",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": "|"
+				}, {
+					"type": "text",
+					"key": "prod-destination",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "text",
 					"key": "dev-INPUT_GIT_BRANCH",
 					"readonly": false
 				}, {
@@ -287,30 +311,6 @@
 				}, {
 					"type": "text",
 					"key": "prod-INPUT_GIT_BRANCH",
-					"readonly": false
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
-			"items": [{
-					"type": "text",
-					"key": "dev-destination",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "stg-destination",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "prod-destination",
 					"readonly": false
 				}
 			]
