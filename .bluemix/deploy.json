@@ -242,18 +242,30 @@
 					"readonly": false
 				}
 			]
-		},{
-			"type": "table",
-			"columnCount": 1,
-			"widths": ["100%"],
-			"items": [{
-					"type": "label",
-					"title": "Enviroment for Development"
-				}
-			]
 		}, {
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": "Env for Development"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Env for Staging"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Env for Production"
+				}
+			]
 		}, {
 			"type": "table",
 			"columnCount": 5,
@@ -381,95 +393,6 @@
 					"readonly": false
 				}
 		
-			]
-		}, {
-			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
-			"items": [{
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password Host"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password User"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password Vault"
-				}, {
-					"type": "text",
-					"key": "dev-linkpassword",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "dev-email-address",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "dev-vault",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": "1Password Secret key"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password Master password"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "dev-skey",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "dev-mpass",
-					"readonly": false
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 1,
-			"widths": ["100%"],
-			"items": [{
-					"type": "label",
-					"title": "Enviroment for Staging"
-				}
 			]
 		}, {
 			"type": "table",
@@ -605,95 +528,6 @@
 			"widths": ["32%", "2%", "32%", "2%", "32%"],
 			"items": [{
 					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password Host"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password User"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password Vault"
-				}, {
-					"type": "text",
-					"key": "stg-linkpassword",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "stg-email-address",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "stg-vault",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": "1Password Secret key"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password Master password"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "stg-skey",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "stg-mpass",
-					"readonly": false
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 1,
-			"widths": ["100%"],
-			"items": [{
-					"type": "label",
-					"title": "Enviroment for Production"
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
-			"items": [{
-					"type": "label",
 					"title": "Git Input Branch"
 				}, {
 					"type": "label",
@@ -815,86 +649,6 @@
 					"readonly": false
 				}
 		
-			]
-		}, {
-			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
-			"items": [{
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password Host"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password User"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password Vault"
-				}, {
-					"type": "text",
-					"key": "prod-linkpassword",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "prod-email-address",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "prod-vault",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": "1Password Secret key"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "1Password Master password"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "prod-skey",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "prod-mpass",
-					"readonly": false
-				}
 			]
 		},
 		{
