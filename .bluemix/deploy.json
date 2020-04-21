@@ -247,9 +247,12 @@
 			"url": "/devops/setup/bm-helper/custom_helper.html"
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 6,
+			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
 			"items": [{
+					"type": "label",
+					"title": "Name of variable"
+				}, {
 					"type": "label",
 					"title": "Env for Development"
 				}, {
@@ -268,22 +271,25 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 6,
+			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
 			"items": [{
+					"type": "label",
+					"title": "Destionation"
+				}, {
 					"type": "text",
 					"key": "dev-destination",
 					"readonly": false
 				}, {
 					"type": "label",
-					"title": "|"
+					"title": ""
 				}, {
 					"type": "text",
 					"key": "stg-destination",
 					"readonly": false
 				}, {
 					"type": "label",
-					"title": "|"
+					"title": ""
 				}, {
 					"type": "text",
 					"key": "prod-destination",
@@ -292,9 +298,12 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 6,
+			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
 			"items": [{
+					"type": "label",
+					"title": "Git input branch"
+				}, {
 					"type": "text",
 					"key": "dev-INPUT_GIT_BRANCH",
 					"readonly": false
@@ -316,9 +325,12 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 6,
+			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
 			"items": [{
+					"type": "label",
+					"title": "Git versions branch"
+				}, {
 					"type": "text",
 					"key": "dev-VERSIONS_GIT_BRANCH",
 					"readonly": false
@@ -340,9 +352,12 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 6,
+			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
 			"items": [{
+					"type": "label",
+					"title": "Artifactory user"
+				}, {
 					"type": "text",
 					"key": "dev-ARTIFACTORY_USER",
 					"readonly": false
@@ -364,9 +379,12 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 6,
+			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
 			"items": [{
+					"type": "label",
+					"title": "Artifactory APIkey"
+				}, {
 					"type": "text",
 					"key": "dev-ARTIFACTORY_APIKEY",
 					"readonly": false
@@ -388,9 +406,12 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 6,
+			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
 			"items": [{
+					"type": "label",
+					"title": "Cluster"
+				}, {
 					"type": "text",
 					"key": "dev-cluster",
 					"readonly": false
@@ -413,9 +434,12 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 6,
+			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
 			"items": [{
+					"type": "label",
+					"title": "Ingress subdomain"
+				}, {
 					"type": "text",
 					"key": "dev-domain",
 					"readonly": false
@@ -438,9 +462,12 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"columnCount": 6,
+			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
 			"items": [{
+					"type": "label",
+					"title": "External IP"
+				}, {
 					"type": "text",
 					"key": "dev-externalIP",
 					"readonly": false
