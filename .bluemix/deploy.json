@@ -263,7 +263,7 @@
 			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
-					"title": "Name of variable"
+					"title": ""
 				}, {
 					"type": "label",
 					"title": "Env for Development"
