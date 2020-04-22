@@ -91,6 +91,10 @@
 			"type": "string",
 			"disabled": false
 		},
+		"dev-CREDENTIALS": {
+			"type": "string",
+			"disabled": false
+		},
 		"stg-destination": {
 			"type": "string",
 			"disabled": false
@@ -145,6 +149,10 @@
 			"type": "string",
 			"disabled": false
 		},
+		"stg-CREDENTIALS": {
+			"type": "string",
+			"disabled": false
+		},
 		"prod-destination": {
 			"type": "string",
 			"disabled": false
@@ -196,6 +204,10 @@
 			"disabled": false
 		},
 		"prod-ARTIFACTORY_APIKEY": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-CREDENTIALS": {
 			"type": "string",
 			"disabled": false
 		}
