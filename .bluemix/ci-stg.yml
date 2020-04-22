@@ -136,21 +136,9 @@ properties:
 - name: DOCKER_PASSWORD
   value: '{{form.pipeline.parameters.api-key}}'
   type: secure 
-- name: SIGNIN_ADDRESS
-  value: '{{form.pipeline.parameters.stg-linkpassword}}'
-  type: text
-- name: EMAIL_ADDRESS
-  value: '{{form.pipeline.parameters.stg-email-address}}'
-  type: text
-- name: S_KEY
-  value: '{{form.pipeline.parameters.stg-skey}}'
+- name: CREDENTIALS
+  value: '{{form.pipeline.parameters.stg-CREDENTIALS}}'
   type: secure
-- name: M_PASS
-  value: '{{form.pipeline.parameters.stg-mpass}}'
-  type: secure
-- name: VAULT
-  value: '{{form.pipeline.parameters.stg-vault}}'
-  type: text
 - name: REGISTRY_REGION_ID
   value: '{{form.pipeline.parameters.registry-region}}'
   type: text

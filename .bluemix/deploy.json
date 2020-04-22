@@ -248,7 +248,7 @@
 		}, {
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
 					"title": "Name of variable"
@@ -299,7 +299,7 @@
 		}, {
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
 					"title": "Git input branch"
@@ -326,7 +326,7 @@
 		}, {
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
 					"title": "Git versions branch"
@@ -353,7 +353,7 @@
 		}, {
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
 					"title": "Artifactory user"
@@ -380,7 +380,7 @@
 		}, {
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
 					"title": "Artifactory APIkey"
@@ -407,7 +407,7 @@
 		}, {
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
 					"title": "Cluster"
@@ -435,7 +435,7 @@
 		}, {
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
 					"title": "Ingress subdomain"
@@ -463,27 +463,27 @@
 		}, {
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["8%","30%", "1%", "30%", "1%", "30%"],
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
-					"title": "External IPs"
+					"title": "Credentials"
 				}, {
 					"type": "text",
-					"key": "dev-externalIP",
+					"key": "dev-CREDENTIALS",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "stg-externalIP",
+					"key": "stg-CREDENTIALS",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "text",
-					"key": "prod-externalIP",
+					"key": "prod-CREDENTIALS",
 					"readonly": false
 				}
 		
