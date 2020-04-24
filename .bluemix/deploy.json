@@ -478,6 +478,34 @@
 			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
+					"title": "External IP"
+				}, {
+					"type": "text",
+					"key": "dev-externalIP",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "stg-externalIP",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "prod-externalIP",
+					"readonly": false
+				}
+		
+			]
+		},{
+			"type": "table",
+			"columnCount": 6,
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
+			"items": [{
+					"type": "label",
 					"title": "Credentials"
 				}, {
 					"type": "password",
