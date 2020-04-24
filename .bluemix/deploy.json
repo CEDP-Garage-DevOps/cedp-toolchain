@@ -397,21 +397,21 @@
 					"type": "label",
 					"title": "Artifactory APIkey"
 				}, {
-					"type": "text",
+					"type": "password",
 					"key": "dev-ARTIFACTORY_APIKEY",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
-					"type": "text",
+					"type": "password",
 					"key": "stg-ARTIFACTORY_APIKEY",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
-					"type": "text",
+					"type": "password",
 					"key": "prod-ARTIFACTORY_APIKEY",
 					"readonly": false
 				}
@@ -480,21 +480,21 @@
 					"type": "label",
 					"title": "Credentials"
 				}, {
-					"type": "text",
+					"type": "password",
 					"key": "dev-CREDENTIALS",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
-					"type": "text",
+					"type": "password",
 					"key": "stg-CREDENTIALS",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
-					"type": "text",
+					"type": "password",
 					"key": "prod-CREDENTIALS",
 					"readonly": false
 				}
