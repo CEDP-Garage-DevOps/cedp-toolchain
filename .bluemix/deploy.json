@@ -83,11 +83,11 @@
 			"type": "string",
 			"disabled": false
 		},
-		"dev-ARTIFACTORY_USER": {
+		"ARTIFACTORY_USER": {
 			"type": "string",
 			"disabled": false
 		},
-		"dev-ARTIFACTORY_APIKEY": {
+		"ARTIFACTORY_APIKEY": {
 			"type": "string",
 			"disabled": false
 		},
@@ -141,14 +141,6 @@
 			"type": "string",
 			"disabled": false
 		},
-		"stg-ARTIFACTORY_USER": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-ARTIFACTORY_APIKEY": {
-			"type": "string",
-			"disabled": false
-		},
 		"stg-CREDENTIALS": {
 			"type": "string",
 			"disabled": false
@@ -199,14 +191,6 @@
 			"type": "string",
 			"disabled": false
 		},
-		"prod-ARTIFACTORY_USER": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-ARTIFACTORY_APIKEY": {
-			"type": "string",
-			"disabled": false
-		},
 		"prod-CREDENTIALS": {
 			"type": "string",
 			"disabled": false
@@ -222,45 +206,65 @@
 			"key": "api-key"
 		},  {
 			"type": "table",
-			"columnCount": 3,
-			"widths": ["45%", "10%", "45%"],
+			"columnCount": 1,
+			"widths": ["100%"],
 			"items": [{
 					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": ""
-				},{
-					"type": "label",
 					"title": "Region"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Pipeline Image"
 				}, {
 					"type": "select",
 					"key": "prod-region"
 				}, {
 					"type": "label",
 					"title": ""
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": "Pipeline Image"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Artifactory User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Artifactory APIkey"
 				}, {
 					"type": "text",
 					"key": "dockerImageName",
 					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "ARTIFACTORY_USER",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "ARTIFACTORY_APIKEY",
+					"readonly": false
 				}
 			]
-		}, {
+		},  {
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
 		}, {
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
+			"widths": ["14%", "28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
 					"title": ""

@@ -152,10 +152,10 @@ properties:
   value: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
   type: text
 - name: ARTIFACTORY_USER 
-  value: '{{form.pipeline.parameters.prod-ARTIFACTORY_USER}}'
+  value: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
   type: text
 - name: ARTIFACTORY_APIKEY 
-  value: '{{form.pipeline.parameters.prod-ARTIFACTORY_APIKEY}}'
+  value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: secure
 - name: DOMAIN
   value: '{{form.pipeline.parameters.prod-domain}}'

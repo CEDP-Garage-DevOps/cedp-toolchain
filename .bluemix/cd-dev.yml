@@ -256,10 +256,10 @@ properties:
   value: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
   type: text
 - name: ARTIFACTORY_USER 
-  value: '{{form.pipeline.parameters.dev-ARTIFACTORY_USER}}'
+  value: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
   type: text
 - name: ARTIFACTORY_APIKEY 
-  value: '{{form.pipeline.parameters.dev-ARTIFACTORY_APIKEY}}'
+  value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: secure
 - name: IBMCLOUD_HOME 
   value: '/root'
