@@ -136,9 +136,6 @@ properties:
 - name: DOCKER_PASSWORD
   value: '{{form.pipeline.parameters.api-key}}'
   type: secure 
-- name: CREDENTIALS
-  value: '{{form.pipeline.parameters.stg-CREDENTIALS}}'
-  type: secure
 - name: REGISTRY_REGION_ID
   value: '{{form.pipeline.parameters.registry-region}}'
   type: text

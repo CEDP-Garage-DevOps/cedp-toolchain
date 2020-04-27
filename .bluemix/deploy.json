@@ -91,10 +91,6 @@
 			"type": "string",
 			"disabled": false
 		},
-		"dev-CREDENTIALS": {
-			"type": "string",
-			"disabled": false
-		},
 		"stg-destination": {
 			"type": "string",
 			"disabled": false
@@ -141,10 +137,6 @@
 			"type": "string",
 			"disabled": false
 		},
-		"stg-CREDENTIALS": {
-			"type": "string",
-			"disabled": false
-		},
 		"prod-destination": {
 			"type": "string",
 			"disabled": false
@@ -188,10 +180,6 @@
 			"disabled": false
 		},
 		"prod-VERSIONS_GIT_BRANCH": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-CREDENTIALS": {
 			"type": "string",
 			"disabled": false
 		}
@@ -450,36 +438,7 @@
 				}
 		
 			]
-		},{
-			"type": "table",
-			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
-					"type": "label",
-					"title": "Credentials"
-				}, {
-					"type": "password",
-					"key": "dev-CREDENTIALS",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "stg-CREDENTIALS",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "prod-CREDENTIALS",
-					"readonly": false
-				}
-		
-			]
-		},
-		{
+		}, {
 			"type": "table",
 			"columnCount": 1,
 			"widths": ["100%"],
