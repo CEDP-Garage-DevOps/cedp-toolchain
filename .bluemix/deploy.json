@@ -372,60 +372,6 @@
 			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
 			"items": [{
 					"type": "label",
-					"title": "Artifactory user"
-				}, {
-					"type": "text",
-					"key": "dev-ARTIFACTORY_USER",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "stg-ARTIFACTORY_USER",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "text",
-					"key": "prod-ARTIFACTORY_USER",
-					"readonly": false
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
-					"type": "label",
-					"title": "Artifactory APIkey"
-				}, {
-					"type": "password",
-					"key": "dev-ARTIFACTORY_APIKEY",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "stg-ARTIFACTORY_APIKEY",
-					"readonly": false
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "password",
-					"key": "prod-ARTIFACTORY_APIKEY",
-					"readonly": false
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
-					"type": "label",
 					"title": "Cluster"
 				}, {
 					"type": "text",
