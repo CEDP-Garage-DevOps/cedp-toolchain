@@ -22,7 +22,7 @@ stages:
       #!/bin/bash
       set -x
       set -e
-      env
+      
       ibm-bifrost versions pull ${STG_VERSIONS_GIT_BRANCH}
       mv .git git
       
