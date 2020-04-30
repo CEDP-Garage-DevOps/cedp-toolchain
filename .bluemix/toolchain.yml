@@ -191,6 +191,7 @@ services:
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
+          STG_VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
           IBMCLOUD_HOME: /root
