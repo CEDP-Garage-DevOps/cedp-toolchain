@@ -80,8 +80,11 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export HOME=${IBMCLOUD_HOME}
+      
       ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
-      export MAVEN_OPTS="-Xmx1000m"
+      
+      export MAVEN_OPTS="-Xmx2g"
+      
       ibm-bifrost build_code test-only
       
     namespace: 'NULL'
@@ -108,8 +111,12 @@ stages:
       set -e
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
+      
       ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      
+      mv git .git
       sonar-scanner --version
+      
       ibm-bifrost sonar_validate
 
     namespace: 'NULL'      
