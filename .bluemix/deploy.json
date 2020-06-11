@@ -213,8 +213,8 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 3,
-			"widths": ["50%", "3%", "47%"],
+			"columnCount": 1,
+			"widths": ["50%", "3%", "50%"],
 			"items": [{
 					"type": "label",
 					"title": "Pipeline Image"
