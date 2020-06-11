@@ -213,7 +213,7 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 2,
+			"columnCount": 5,
 			"widths": ["32%", "2%", "32%", "2%", "32%"],
 			"items": [{
 					"type": "label",

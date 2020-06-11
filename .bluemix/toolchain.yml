@@ -58,6 +58,7 @@ services:
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
@@ -85,6 +86,7 @@ services:
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
@@ -112,6 +114,7 @@ services:
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
@@ -139,6 +142,7 @@ services:
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
   cedp-tc-cd-stg-build:
@@ -165,6 +169,7 @@ services:
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
@@ -193,6 +198,7 @@ services:
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
           STG_VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
