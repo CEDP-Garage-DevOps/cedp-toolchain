@@ -248,7 +248,7 @@
 					"title": "Verdaccio Password"
 				}, {
 					"type": "text",
-					"key": "w3emilId",
+					"key": "w3EmailId",
 					"readonly": false
 				}, {
 					"type": "label",
