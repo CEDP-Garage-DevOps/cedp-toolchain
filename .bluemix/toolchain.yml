@@ -57,8 +57,8 @@ services:
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
-          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
-          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
   cedp-tc-ci-stg-build:
@@ -84,8 +84,8 @@ services:
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
-          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
-          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
   cedp-tc-ci-prod-build:
@@ -111,8 +111,8 @@ services:
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
-          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
-          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
   cedp-tc-cd-dev-build:
@@ -138,8 +138,8 @@ services:
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
-          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
-          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
   cedp-tc-cd-stg-build:
     service_id: pipeline
@@ -164,8 +164,8 @@ services:
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
-          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
-          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
   cedp-tc-cd-prod-build:
@@ -192,8 +192,8 @@ services:
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
           STG_VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
-          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
-          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           IBMCLOUD_HOME: /root
         execute: false
   messaging:

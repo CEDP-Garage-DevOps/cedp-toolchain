@@ -83,11 +83,15 @@
 			"type": "string",
 			"disabled": false
 		},
-		"ARTIFACTORY_USER": {
+		"VERDACCIO_EMAIL": {
 			"type": "string",
 			"disabled": false
 		},
-		"ARTIFACTORY_APIKEY": {
+		"VERDACCIO_USER": {
+			"type": "string",
+			"disabled": false
+		},
+		"VERDACCIO_PASSWORD": {
 			"type": "string",
 			"disabled": false
 		},
@@ -209,23 +213,11 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 5,
+			"columnCount": 2,
 			"widths": ["32%", "2%", "32%", "2%", "32%"],
 			"items": [{
 					"type": "label",
 					"title": "Pipeline Image"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Artifactory User"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Artifactory APIkey"
 				}, {
 					"type": "text",
 					"key": "dockerImageName",
@@ -233,16 +225,44 @@
 				}, {
 					"type": "label",
 					"title": ""
+				}
+			]
+	    }, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": "Verdaccio Email"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Verdaccio User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Verdaccio Password"
 				}, {
 					"type": "text",
-					"key": "ARTIFACTORY_USER",
+					"key": "w3emilId",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "VERDACCIO_USER",
 					"readonly": false
 				}, {
 					"type": "label",
 					"title": ""
 				}, {
 					"type": "password",
-					"key": "ARTIFACTORY_APIKEY",
+					"key": "VERDACCIO_PASSWORD",
 					"readonly": false
 				}
 			]
