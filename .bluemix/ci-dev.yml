@@ -158,7 +158,7 @@ properties:
 - name: VERDACCIO_USER 
   value: '{{form.pipeline.parameters.VERDACCIO_USER}}'
   type: text
-- name: VERDACCIO_Email
+- name: VERDACCIO_EMAIL
   value: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
   type: text
 - name: VERDACCIO_PASSWORD 
