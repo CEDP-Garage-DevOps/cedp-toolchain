@@ -10,15 +10,12 @@ template:
     - cedp-tc-ci-dev-build
     - cedp-tc-ci-stg-build
     - cedp-tc-ci-prod-build
-    - cedp-tc-cd-dev-build
-    - cedp-tc-cd-stg-build
-    - cedp-tc-cd-prod-build
     - cedp-tc-repo
   info:
     git url: >-
       [https://github.com/CEDP-Garage-DevOps/cedp-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain)
     git branch: >-
-      [full-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/full-toolchain)
+      [full-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/CI-new )
 toolchain:
   name: 'cedp-{name_of_project}'
   template:
@@ -60,6 +57,8 @@ services:
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
           VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
+          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
+          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
           IBMCLOUD_HOME: /root
         execute: false
   cedp-tc-ci-stg-build:
@@ -88,6 +87,8 @@ services:
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
           VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
+          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
+          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
           IBMCLOUD_HOME: /root
         execute: false
   cedp-tc-ci-prod-build:
@@ -116,90 +117,8 @@ services:
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
           VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
-          IBMCLOUD_HOME: /root
-        execute: false
-  cedp-tc-cd-dev-build:
-    service_id: pipeline
-    parameters:
-      services:
-        - cedp-tc-repo
-      name: '{{toolchain.name}}-CD-dev'
-      ui-pipeline: true
-      configuration:
-        content:
-          $text: cd-dev.yml
-        env:
-          DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
-          GIT_REPO: cedp-tc-repo
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
-          API_KEY: '{{form.pipeline.parameters.api-key}}'
-          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-cluster-namespace}}'
-          CLUSTER: '{{form.pipeline.parameters.dev-cluster}}'
-          DOMAIN: '{{form.pipeline.parameters.dev-domain}}'
-          EXTERNAL_IP: '{{form.pipeline.parameters.dev-externalIP}}'
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
-          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
-          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
-          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
-          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
-          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
-          IBMCLOUD_HOME: /root
-  cedp-tc-cd-stg-build:
-    service_id: pipeline
-    parameters:
-      services:
-        - cedp-tc-repo
-      name: '{{toolchain.name}}-CD-stg'
-      ui-pipeline: true
-      configuration:
-        content:
-          $text: cd-stg.yml
-        env:
-          DESTINATION: '{{form.pipeline.parameters.stg-destination}}' 
-          GIT_REPO: cedp-tc-repo
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
-          API_KEY: '{{form.pipeline.parameters.api-key}}'
-          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-cluster-namespace}}'
-          CLUSTER: '{{form.pipeline.parameters.stg-cluster}}'
-          DOMAIN: '{{form.pipeline.parameters.stg-domain}}'
-          EXTERNAL_IP: '{{form.pipeline.parameters.stg-externalIP}}'
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
-          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
-          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
-          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
-          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
-          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
-          IBMCLOUD_HOME: /root
-        execute: false
-  cedp-tc-cd-prod-build:
-    service_id: pipeline
-    parameters:
-      services:
-        - cedp-tc-repo
-      name: '{{toolchain.name}}-CD-prod'
-      ui-pipeline: true
-      configuration:
-        content:
-          $text: cd-prod.yml
-        env:
-          DESTINATION: '{{form.pipeline.parameters.prod-destination}}' 
-          GIT_REPO: cedp-tc-repo
-          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
-          API_KEY: '{{form.pipeline.parameters.api-key}}'
-          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-cluster-namespace}}'
-          CLUSTER: '{{form.pipeline.parameters.prod-cluster}}'
-          DOMAIN: '{{form.pipeline.parameters.prod-domain}}'
-          EXTERNAL_IP: '{{form.pipeline.parameters.prod-externalIP}}'
-          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
-          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
-          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
-          STG_VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
-          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
-          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
-          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
+          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
+          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
           IBMCLOUD_HOME: /root
         execute: false
   messaging:

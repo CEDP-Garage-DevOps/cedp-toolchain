@@ -95,6 +95,14 @@
 			"type": "string",
 			"disabled": false
 		},
+		"ARTIFACTORY_USER": {
+			"type": "string",
+			"disabled": false
+		},
+		"ARTIFACTORY_APIKEY": {
+			"type": "string",
+			"disabled": false
+		},
 		"stg-destination": {
 			"type": "string",
 			"disabled": false
@@ -213,11 +221,23 @@
 			]
 		}, {
 			"type": "table",
-			"columnCount": 1,
-			"widths": ["50%", "3%", "50%"],
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
 			"items": [{
 					"type": "label",
 					"title": "Pipeline Image"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Artifactory User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "Artifactory API Key"
 				}, {
 					"type": "text",
 					"key": "dockerImageName",
@@ -225,9 +245,20 @@
 				}, {
 					"type": "label",
 					"title": ""
+				}, {
+					"type": "text",
+					"key": "ARTIFACTORY_USER",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "ARTIFACTORY_APIKEY",
+					"readonly": false
 				}
 			]
-	    }, {
+		}{
 			"type": "table",
 			"columnCount": 5,
 			"widths": ["32%", "2%", "32%", "2%", "32%"],

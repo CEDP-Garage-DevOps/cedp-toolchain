@@ -23,7 +23,7 @@ stages:
       set -x
       set -e
       
-      ibm-bifrost versions pull "$VERSIONS_GIT_BRANCH"
+      ibm-bifrost versions --pull "$VERSIONS_GIT_BRANCH"
       mv .git git
       
     namespace: 'NULL'
@@ -51,7 +51,7 @@ stages:
       set -e
       
       mv git .git
-      ibm-bifrost build_plan "${DESTINATION}" diff pr
+      ibm-bifrost plan -d "${DESTINATION}" diff -pr
       mv .git git
       
     namespace: 'NULL'
@@ -60,14 +60,50 @@ stages:
   inputs:
   - type: job
     stage: Plan
-    job: 'Build'
+    job: Build
     dir_name: null
   triggers:
   - type: stage
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
-  - name: 'Test'
+  - name: Docker Lint
+    type: tester
+    curatedDockerImage: default
+    script: |-
+      #********************************************
+      #!/bin/bash
+      set -x
+      set -e
+      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
+      export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
+      export HOME=${IBMCLOUD_HOME}
+      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      export MAVEN_OPTS="-Xmx2g"
+
+      ibm-bifrost docker --lint
+    test_type: customimage
+    namespace: 'NULL'
+    docker_image: ${DOCKER_IMAGE_NAME}
+  - name: Deploy Lint
+    type: tester
+    curatedDockerImage: default
+    script: |-
+      #********************************************
+      #!/bin/bash
+      set -x
+      set -e
+      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
+      export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
+      export HOME=${IBMCLOUD_HOME}
+      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      export MAVEN_OPTS="-Xmx2g"
+
+      ibm-bifrost deploy --lint
+    test_type: customimage
+    namespace: 'NULL'
+    docker_image: ${DOCKER_IMAGE_NAME}
+  - name: Test Code
     type: builder
     curatedDockerImage: default
     artifact_dir: ''
@@ -80,13 +116,13 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export HOME=${IBMCLOUD_HOME}
-      
+
       ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
-      
+
       export MAVEN_OPTS="-Xmx2g"
-      
-      ibm-bifrost build_code test-only
-      
+
+      ibm-bifrost code --lint
+      ibm-bifrost code --test
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
 - name: 'Sonar Qube'
@@ -117,7 +153,7 @@ stages:
       mv git .git
       sonar-scanner --version
       
-      ibm-bifrost sonar_validate
+      ibm-bifrost sonar --scan
 
     namespace: 'NULL'      
     docker_image: ${DOCKER_IMAGE_NAME}
@@ -163,6 +199,12 @@ properties:
   type: text
 - name: VERDACCIO_PASSWORD 
   value: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
+  type: secure
+- name: ARTIFACTORY_USER
+  value: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
+  type: text
+- name: ARTIFACTORY_APIKEY 
+  value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: secure
 - name: DOMAIN
   value: '{{form.pipeline.parameters.dev-domain}}'
