@@ -7,15 +7,15 @@ template:
   description:
     $ref: "#/messages/template.description"
   required:
-    - cedp-tc-ci-dev-build
-    - cedp-tc-ci-stg-build
-    - cedp-tc-ci-prod-build
+    - cedp-tc-cd-dev-build
+    - cedp-tc-cd-stg-build
+    - cedp-tc-cd-prod-build
     - cedp-tc-repo
   info:
     git url: >-
       [https://github.com/CEDP-Garage-DevOps/cedp-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain)
     git branch: >-
-      [full-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/CI-new )
+      [full-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/CD-2.0)
 toolchain:
   name: 'cedp-{name_of_project}'
   template:
@@ -31,16 +31,16 @@ services:
       private_repo: true
       has_issues: false
       enable_traceability: false
-  cedp-tc-ci-dev-build:
+  cedp-tc-cd-dev-build:
     service_id: pipeline
     parameters:
       services:
         - cedp-tc-repo
-      name: '{{toolchain.name}}-CI-dev'
+      name: '{{toolchain.name}}-CD-dev'
       ui-pipeline: true
       configuration:
         content:
-          $text: ci-dev.yml
+          $text: cd-dev.yml
         env:
           DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
           GIT_REPO: cedp-tc-repo
@@ -60,17 +60,16 @@ services:
           ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
           IBMCLOUD_HOME: /root
-        execute: false
-  cedp-tc-ci-stg-build:
+  cedp-tc-cd-stg-build:
     service_id: pipeline
     parameters:
       services:
         - cedp-tc-repo
-      name: '{{toolchain.name}}-CI-stg'
+      name: '{{toolchain.name}}-CD-stg'
       ui-pipeline: true
       configuration:
         content:
-          $text: ci-stg.yml
+          $text: cd-stg.yml
         env:
           DESTINATION: '{{form.pipeline.parameters.stg-destination}}' 
           GIT_REPO: cedp-tc-repo
@@ -91,16 +90,16 @@ services:
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
           IBMCLOUD_HOME: /root
         execute: false
-  cedp-tc-ci-prod-build:
+  cedp-tc-cd-prod-build:
     service_id: pipeline
     parameters:
       services:
         - cedp-tc-repo
-      name: '{{toolchain.name}}-CI-prod'
+      name: '{{toolchain.name}}-CD-prod'
       ui-pipeline: true
       configuration:
         content:
-          $text: ci-prod.yml
+          $text: cd-prod.yml
         env:
           DESTINATION: '{{form.pipeline.parameters.prod-destination}}' 
           GIT_REPO: cedp-tc-repo
@@ -114,6 +113,7 @@ services:
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
           INPUT_GIT_BRANCH: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
           VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
+          STG_VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
           VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
