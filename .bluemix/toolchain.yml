@@ -15,7 +15,7 @@ template:
     git url: >-
       [https://github.com/CEDP-Garage-DevOps/cedp-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain)
     git branch: >-
-      [full-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/CI-new )
+      [full-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/CI-2.0 )
 toolchain:
   name: 'cedp-{name_of_project}'
   template:
