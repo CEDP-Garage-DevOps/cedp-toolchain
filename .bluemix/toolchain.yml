@@ -36,7 +36,7 @@ services:
     parameters:
       services:
         - cedp-tc-repo
-      name: '{{toolchain.name}}-CD-dev'
+      name: '{{toolchain.name}}-dev'
       ui-pipeline: true
       configuration:
         content:
@@ -65,7 +65,7 @@ services:
     parameters:
       services:
         - cedp-tc-repo
-      name: '{{toolchain.name}}-CD-stg'
+      name: '{{toolchain.name}}-stg'
       ui-pipeline: true
       configuration:
         content:
@@ -95,7 +95,7 @@ services:
     parameters:
       services:
         - cedp-tc-repo
-      name: '{{toolchain.name}}-CD-prod'
+      name: '{{toolchain.name}}-prod'
       ui-pipeline: true
       configuration:
         content:
