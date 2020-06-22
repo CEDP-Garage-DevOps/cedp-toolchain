@@ -78,7 +78,8 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export HOME=${IBMCLOUD_HOME}
-      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      export ORGANIZATION=https://cloud.ibm.com
+      ibm-bifrost login --public-cloud
       export MAVEN_OPTS="-Xmx2g"
 
       ibm-bifrost docker --lint
@@ -96,7 +97,8 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export HOME=${IBMCLOUD_HOME}
-      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      export ORGANIZATION=https://cloud.ibm.com
+      ibm-bifrost login --public-cloud
       export MAVEN_OPTS="-Xmx2g"
 
       ibm-bifrost deploy --lint
@@ -116,11 +118,9 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export HOME=${IBMCLOUD_HOME}
-
-      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
-
+      export ORGANIZATION=https://cloud.ibm.com
+      ibm-bifrost login --public-cloud
       export MAVEN_OPTS="-Xmx2g"
-
       ibm-bifrost code --lint
       ibm-bifrost code --test
     namespace: 'NULL'
@@ -148,7 +148,8 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       
-      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      export ORGANIZATION=https://cloud.ibm.com
+      ibm-bifrost login --public-cloud
       
       mv git .git
       sonar-scanner --version
@@ -206,6 +207,18 @@ properties:
 - name: ARTIFACTORY_APIKEY 
   value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: secure
+- name: ARTIFACTORY_URL 
+  value: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
+  type: text
+- name: ICP_USER 
+  value: '{{form.pipeline.parameters.ICP_USER}}'
+  type: text
+- name: ICP_PASSWORD 
+  value: '{{form.pipeline.parameters.ICP_PASSWORD}}'
+  type: secure
+- name: NAMESPACE 
+  value: '{{form.pipeline.parameters.prod-namespace}}'
+  type: text
 - name: DOMAIN
   value: '{{form.pipeline.parameters.stg-domain}}'
   type: text
