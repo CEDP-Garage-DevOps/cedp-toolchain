@@ -59,6 +59,10 @@ services:
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          ARTIFACTORY_URL: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
+          ICP_USER: '{{form.pipeline.parameters.ICP_USER}}'
+          ICP_PASSWORD: '{{form.pipeline.parameters.ICP_PASSWORD}}'
+          NAMESPACE: '{{form.pipeline.parameters.dev-namespace}}'
           IBMCLOUD_HOME: /root
   cedp-tc-cd-stg-build:
     service_id: pipeline
@@ -88,6 +92,10 @@ services:
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          ARTIFACTORY_URL: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
+          ICP_USER: '{{form.pipeline.parameters.ICP_USER}}'
+          ICP_PASSWORD: '{{form.pipeline.parameters.ICP_PASSWORD}}'
+          NAMESPACE: '{{form.pipeline.parameters.stg-namespace}}'
           IBMCLOUD_HOME: /root
         execute: false
   cedp-tc-cd-prod-build:
@@ -119,6 +127,10 @@ services:
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
           ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
           ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          ARTIFACTORY_URL: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
+          ICP_USER: '{{form.pipeline.parameters.ICP_USER}}'
+          ICP_PASSWORD: '{{form.pipeline.parameters.ICP_PASSWORD}}'
+          NAMESPACE: '{{form.pipeline.parameters.prod-namespace}}'
           IBMCLOUD_HOME: /root
         execute: false
   messaging:

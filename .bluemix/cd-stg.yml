@@ -272,6 +272,18 @@ properties:
 - name: ARTIFACTORY_APIKEY 
   value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: secure
+- name: ARTIFACTORY_URL 
+  value: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
+  type: text
+- name: ICP_USER 
+  value: '{{form.pipeline.parameters.ICP_USER}}'
+  type: text
+- name: ICP_PASSWORD 
+  value: '{{form.pipeline.parameters.ICP_PASSWORD}}'
+  type: secure
+- name: NAMESPACE 
+  value: '{{form.pipeline.parameters.stg-namespace}}'
+  type: text
 - name: IBMCLOUD_HOME 
   value: '/root'
   type: text

@@ -93,13 +93,40 @@
 		},
 		"VERDACCIO_PASSWORD": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"pattern": "\\S"
 		},
 		"ARTIFACTORY_USER": {
 			"type": "string",
 			"disabled": false
 		},
 		"ARTIFACTORY_APIKEY": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"ARTIFACTORY_URL": {
+			"type": "string",
+			"disabled": false
+		},
+		"ICP_USER": {
+			"type": "string",
+			"disabled": false
+		},
+		"ICP_PASSWORD": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S"
+		},
+		"dev-namespace": {
+			"type": "string",
+			"disabled": false
+		},
+	    "stg-namespace": {
+			"type": "string",
+			"disabled": false
+		},
+		"prod-namespace": {
 			"type": "string",
 			"disabled": false
 		},
@@ -231,6 +258,45 @@
 					"title": ""
 				}, {
 					"type": "label",
+					"title": "ICP User"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
+					"title": "ICP passwrd"
+				}, {
+					"type": "text",
+					"key": "dockerImageName",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "ICP_USER",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "password",
+					"key": "ICP_PASSWORD",
+					"readonly": false
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 5,
+			"widths": ["32%", "2%", "32%", "2%", "32%"],
+			"items": [{
+					"type": "label",
+					"title": "Artifactory URL"
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "label",
 					"title": "Artifactory User"
 				}, {
 					"type": "label",
@@ -240,7 +306,7 @@
 					"title": "Artifactory API Key"
 				}, {
 					"type": "text",
-					"key": "dockerImageName",
+					"key": "ARTIFACTORY_URL",
 					"readonly": false
 				}, {
 					"type": "label",
@@ -322,6 +388,33 @@
 				}, {
 					"type": "label",
 					"title": "Env for Production"
+				}
+			]
+		}, {
+			"type": "table",
+			"columnCount": 6,
+			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
+			"items": [{
+					"type": "label",
+					"title": "Namespace"
+				}, {
+					"type": "text",
+					"key": "dev-namespace",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "stg-namespace",
+					"readonly": false
+				}, {
+					"type": "label",
+					"title": ""
+				}, {
+					"type": "text",
+					"key": "prod-namespace",
+					"readonly": false
 				}
 			]
 		}, {

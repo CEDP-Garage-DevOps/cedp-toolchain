@@ -157,7 +157,8 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export IBMCLOUD_HOME=${IBMCLOUD_HOME}
-      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      export ORGANIZATION=https://cloud.ibm.com
+      ibm-bifrost login --public-cloud
       ibmcloud cs init
       ibmcloud cs clusters
       ibmcloud ks cluster config --cluster ${CLUSTER}
@@ -177,7 +178,8 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export IBMCLOUD_HOME=${IBMCLOUD_HOME}
-      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+      export ORGANIZATION=https://cloud.ibm.com
+      ibm-bifrost login --public-cloud
       ibmcloud cs init
       ibmcloud cs clusters
       ibmcloud ks cluster config --cluster ${CLUSTER}
@@ -270,6 +272,18 @@ properties:
 - name: ARTIFACTORY_APIKEY 
   value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: secure
+- name: ARTIFACTORY_URL 
+  value: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
+  type: text
+- name: ICP_USER 
+  value: '{{form.pipeline.parameters.ICP_USER}}'
+  type: text
+- name: ICP_PASSWORD 
+  value: '{{form.pipeline.parameters.ICP_PASSWORD}}'
+  type: secure
+- name: NAMESPACE 
+  value: '{{form.pipeline.parameters.dev-namespace}}'
+  type: text
 - name: IBMCLOUD_HOME 
   value: '/root'
   type: text
