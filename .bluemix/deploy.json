@@ -68,7 +68,6 @@
 			"type": "string",
 			"disabled": false,
 			"description": "Branch to store image versions"
-			
 		},
 		"VERDACCIO_EMAIL": {
 			"type": "string",
@@ -138,38 +137,24 @@
 			"key": "api-key"
 		},
 		{
+			"type": "select",
+			"key": "registry-region"
+		},
+		{
 			"type": "section",
-			"title" : "Required parameters",
+			"title": "Required parameters",
 			"description": "Required parameters to execute toolchains",
 			"items": [
 				{
 					"type": "table",
-					"columnCount": 3,
+					"columnCount": 1,
 					"widths": [
-						"45%",
-						"10%",
-						"45%"
+						"100%"
 					],
 					"items": [
 						{
 							"type": "label",
-							"title": "Region"
-						},
-						{
-							"type": "label",
-							"title": ""
-						},
-						{
-							"type": "label",
 							"title": "Pipeline Image"
-						},
-						{
-							"type": "select",
-							"key": "registry-region"
-						},
-						{
-							"type": "label",
-							"title": ""
 						},
 						{
 							"type": "text",
@@ -231,7 +216,7 @@
 							"type": "password",
 							"key": "destination",
 							"readonly": false
-						}						
+						}
 					]
 				},
 				{
@@ -294,7 +279,7 @@
 		},
 		{
 			"type": "section",
-			"title" : "Optional parameters",
+			"title": "Optional parameters",
 			"description": "Additional parameters which you can enter based on your use case",
 			"items": [
 				{
@@ -343,16 +328,14 @@
 							"readonly": false
 						},
 						{
+							"type": "label",
+							"title": ""
+						},
+						{
 							"type": "text",
 							"key": "ICP_NAMESPACE",
 							"readonly": false
-						},
-						{
-							"type": "label",
-							"title": ""
 						}
-						
-						
 					]
 				},
 				{
