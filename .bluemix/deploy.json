@@ -174,9 +174,8 @@
 					"title": "ICP passwrd"
 				},
 				{
-					"type": "text",
-					"key": "dockerImageName",
-					"readonly": false
+					"type": "label",
+					"title": ""
 				},
 				{
 					"type": "label",
@@ -328,52 +327,11 @@
 			"items": [
 				{
 					"type": "label",
-					"title": "Namespace"
-				},
-				{
-					"type": "text",
-					"key": "dev-namespace",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "stg-namespace",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "prod-namespace",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 6,
-			"widths": [
-				"14%",
-				"28%",
-				"1%",
-				"28%",
-				"1%",
-				"28%"
-			],
-			"items": [
-				{
-					"type": "label",
 					"title": "Destionation"
 				},
 				{
 					"type": "text",
-					"key": "dev-destination",
+					"key": "destination",
 					"readonly": false
 				},
 				{
@@ -414,7 +372,7 @@
 				},
 				{
 					"type": "text",
-					"key": "dev-INPUT_GIT_BRANCH",
+					"key": "INPUT_GIT_BRANCH",
 					"readonly": false
 				},
 				{
@@ -455,7 +413,7 @@
 				},
 				{
 					"type": "text",
-					"key": "dev-VERSIONS_GIT_BRANCH",
+					"key": "VERSIONS_GIT_BRANCH",
 					"readonly": false
 				},
 				{
@@ -496,7 +454,7 @@
 				},
 				{
 					"type": "text",
-					"key": "dev-cluster",
+					"key": "cluster",
 					"readonly": false
 				},
 				{
@@ -537,7 +495,7 @@
 				},
 				{
 					"type": "text",
-					"key": "dev-domain",
+					"key": "domain",
 					"readonly": false
 				},
 				{
@@ -578,7 +536,7 @@
 				},
 				{
 					"type": "text",
-					"key": "dev-externalIP",
+					"key": "externalIP",
 					"readonly": false
 				},
 				{
