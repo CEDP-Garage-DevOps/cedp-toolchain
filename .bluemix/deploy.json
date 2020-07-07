@@ -73,45 +73,45 @@
 		"VERDACCIO_EMAIL": {
 			"type": "string",
 			"disabled": false,
-			"description": ""
+			"description": " "
 		},
 		"VERDACCIO_USER": {
 			"type": "string",
 			"disabled": false,
-			"description": ""
+			"description": " "
 		},
 		"VERDACCIO_PASSWORD": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S",
-			"description": ""
+			"description": " "
 		},
 		"ARTIFACTORY_USER": {
 			"type": "string",
 			"disabled": false,
-			"description": ""
+			"description": " "
 		},
 		"ARTIFACTORY_APIKEY": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S",
-			"description": ""
+			"description": " "
 		},
 		"ARTIFACTORY_URL": {
 			"type": "string",
 			"disabled": false,
-			"description": ""
+			"description": " "
 		},
 		"ICP_USER": {
 			"type": "string",
 			"disabled": false,
-			"description": ""
+			"description": " "
 		},
 		"ICP_PASSWORD": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S",
-			"description": ""
+			"description": " "
 		}
 	},
 	"required": [
