@@ -22,12 +22,16 @@
 			"pattern": "\\S"
 		},
 		"registry-region": {
-			"description": {
-				"$ref": "#/messages/deploy.regionDescription"
-			},
-			"type": "string",
-			"disabled": false
-		},
+            "description": {
+                "$ref": "#/messages/deploy.registryRegionDescription"
+            },
+            "type": "string",
+            "disabled": false,
+            "validator": {
+                "v-type": "k8s-region",
+                "params": ["api-key"]
+            }
+        },
 		"destination": {
 			"type": "string",
 			"disabled": false
@@ -142,8 +146,105 @@
 					"key": "dockerImageName",
 					"readonly": false
 				}
-				
 			]
+		},
+		{
+			"type": "table",
+			"columnCount": 3,
+			"widths": [
+				"45%",
+				"10%",
+				"45%"
+			],
+			"items": [
+				{
+					"type": "label",
+					"title": "Git input branch"
+				},
+				{
+					"type": "label",
+					"title": ""
+				},
+				{
+					"type": "label",
+					"title": "Git versions branch"
+				},
+				{
+					"type": "text",
+					"key": "INPUT_GIT_BRANCH",
+					"readonly": false
+				},
+				{
+					"type": "label",
+					"title": ""
+				},
+				{
+					"type": "password",
+					"key": "VERSIONS_GIT_BRANCH",
+					"readonly": false
+				}
+			]
+		},
+		{
+			"type": "table",
+			"columnCount": 5,
+			"widths": [
+				"32%",
+				"2%",
+				"32%",
+				"2%",
+				"32%"
+			],
+			"items": [
+				{
+					"type": "label",
+					"title": "Cluster"
+				},
+				{
+					"type": "label",
+					"title": ""
+				},
+				{
+					"type": "label",
+					"title": "Ingress subdomain"
+				},
+				{
+					"type": "label",
+					"title": ""
+				},
+				{
+					"type": "label",
+					"title": "External IP"
+				},
+				{
+					"type": "text",
+					"key": "cluster",
+					"readonly": false
+				},
+				{
+					"type": "label",
+					"title": ""
+				},
+				{
+					"type": "text",
+					"key": "domain",
+					"readonly": false
+				},
+				{
+					"type": "label",
+					"title": ""
+				},
+				{
+					"type": "password",
+					"key": "externalIP",
+					"readonly": false
+				}
+			]
+		},
+		{
+			"type": "label",
+			"readonly": false,
+			"title": "Optional"
 		},
 		{
 			"type": "table",
@@ -297,252 +398,6 @@
 		{
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
-		},
-		{
-			"type": "table",
-			"columnCount": 6,
-			"widths": [
-				"14%",
-				"28%",
-				"1%",
-				"28%",
-				"1%",
-				"28%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "Destionation"
-				},
-				{
-					"type": "text",
-					"key": "destination",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "stg-destination",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "prod-destination",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 6,
-			"widths": [
-				"14%",
-				"28%",
-				"1%",
-				"28%",
-				"1%",
-				"28%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "Git input branch"
-				},
-				{
-					"type": "text",
-					"key": "INPUT_GIT_BRANCH",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "stg-INPUT_GIT_BRANCH",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "prod-INPUT_GIT_BRANCH",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 6,
-			"widths": [
-				"14%",
-				"28%",
-				"1%",
-				"28%",
-				"1%",
-				"28%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "Git versions branch"
-				},
-				{
-					"type": "text",
-					"key": "VERSIONS_GIT_BRANCH",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "stg-VERSIONS_GIT_BRANCH",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "prod-VERSIONS_GIT_BRANCH",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 6,
-			"widths": [
-				"14%",
-				"28%",
-				"1%",
-				"28%",
-				"1%",
-				"28%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "Cluster"
-				},
-				{
-					"type": "text",
-					"key": "cluster",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "stg-cluster",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "prod-cluster",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 6,
-			"widths": [
-				"14%",
-				"28%",
-				"1%",
-				"28%",
-				"1%",
-				"28%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "Ingress subdomain"
-				},
-				{
-					"type": "text",
-					"key": "domain",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "stg-domain",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "prod-domain",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 6,
-			"widths": [
-				"14%",
-				"28%",
-				"1%",
-				"28%",
-				"1%",
-				"28%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "External IP"
-				},
-				{
-					"type": "text",
-					"key": "externalIP",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "stg-externalIP",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "prod-externalIP",
-					"readonly": false
-				}
-			]
 		},
 		{
 			"type": "table",
