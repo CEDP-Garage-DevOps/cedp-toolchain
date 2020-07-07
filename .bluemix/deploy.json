@@ -129,7 +129,7 @@
 					"items": [
 						{
 							"type": "label",
-							"title": "Region"
+							"title": "Region",
 							"description" : "Image Registry region"
 						},
 						{
