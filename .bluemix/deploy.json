@@ -21,7 +21,10 @@
 			"type": "string",
 			"pattern": "\\S"
 		},
-		"registry-region": {
+		"prod-region": {
+			"description": {
+				"$ref": "#/messages/deploy.regionDescription"
+			},
 			"type": "string",
 			"disabled": false
 		},
@@ -144,23 +147,13 @@
 		},
 		{
 			"type": "table",
-			"columnCount": 5,
+			"columnCount": 3,
 			"widths": [
-				"32%",
-				"2%",
-				"32%",
-				"2%",
-				"32%"
+				"45%",
+				"10%",
+				"45%"
 			],
 			"items": [
-				{
-					"type": "label",
-					"title": "Pipeline Image"
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
 				{
 					"type": "label",
 					"title": "ICP User"
@@ -172,14 +165,6 @@
 				{
 					"type": "label",
 					"title": "ICP passwrd"
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "label",
-					"title": ""
 				},
 				{
 					"type": "text",
