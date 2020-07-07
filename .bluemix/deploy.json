@@ -36,66 +36,82 @@
 		},
 		"destination": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": "Destination specified in build.yaml"
 		},
 		"cluster": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": "Cluster name or URL"
 		},
 		"domain": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": "Cluster subdomain"
 		},
 		"externalIP": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": "Cluster subdomain IP address"
 		},
 		"dockerImageName": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": "Bifrost Image"
 		},
 		"INPUT_GIT_BRANCH": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": "Branch to trigger pipeline"
 		},
 		"VERSIONS_GIT_BRANCH": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": "Branch to store image versions"
+			
 		},
 		"VERDACCIO_EMAIL": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": ""
 		},
 		"VERDACCIO_USER": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": ""
 		},
 		"VERDACCIO_PASSWORD": {
 			"type": "string",
 			"disabled": false,
-			"pattern": "\\S"
+			"pattern": "\\S",
+			"description": ""
 		},
 		"ARTIFACTORY_USER": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": ""
 		},
 		"ARTIFACTORY_APIKEY": {
 			"type": "string",
 			"disabled": false,
-			"pattern": "\\S"
+			"pattern": "\\S",
+			"description": ""
 		},
 		"ARTIFACTORY_URL": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": ""
 		},
 		"ICP_USER": {
 			"type": "string",
-			"disabled": false
+			"disabled": false,
+			"description": ""
 		},
 		"ICP_PASSWORD": {
 			"type": "string",
 			"disabled": false,
-			"pattern": "\\S"
+			"pattern": "\\S",
+			"description": ""
 		}
 	},
 	"required": [
@@ -129,8 +145,7 @@
 					"items": [
 						{
 							"type": "label",
-							"title": "Region",
-							"description" : "Image Registry region"
+							"title": "Region"
 						},
 						{
 							"type": "label",
