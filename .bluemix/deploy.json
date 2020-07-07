@@ -29,7 +29,7 @@
 			"type": "string",
 			"disabled": false
 		},
-		"сluster": {
+		"cluster": {
 			"type": "string",
 			"disabled": false
 		},
