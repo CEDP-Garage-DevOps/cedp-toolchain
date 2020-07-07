@@ -21,7 +21,7 @@
 			"type": "string",
 			"pattern": "\\S"
 		},
-		"prod-region": {
+		"registry-region": {
 			"description": {
 				"$ref": "#/messages/deploy.regionDescription"
 			},
@@ -94,7 +94,7 @@
 	},
 	"required": [
 		"api-key",
-		"prod-region",
+		"registry-region",
 		"destination",
 		"dockerImageName",
 		"сluster"
@@ -131,7 +131,7 @@
 				},
 				{
 					"type": "select",
-					"key": "prod-region"
+					"key": "registry-region"
 				},
 				{
 					"type": "label",
