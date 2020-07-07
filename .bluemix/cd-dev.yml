@@ -222,7 +222,7 @@ hooks:
 defaultBaseImageVersion: latest
 properties:
 - name: DESTINATION
-  value: '{{form.pipeline.parameters.dev-destination}}'
+  value: '{{form.pipeline.parameters.destination}}'
   type: text
 - name: DOCKER_IMAGE_NAME
   value: '{{form.pipeline.parameters.dockerImageName}}'
@@ -240,22 +240,22 @@ properties:
   value: '{{form.pipeline.parameters.registry-region}}'
   type: text
 - name: CLUSTER
-  value: '{{form.pipeline.parameters.dev-cluster}}'
+  value: '{{form.pipeline.parameters.cluster}}'
   type: text
 - name: DOMAIN
-  value: '{{form.pipeline.parameters.dev-domain}}'
+  value: '{{form.pipeline.parameters.domain}}'
   type: text
 - name: EXTERNAL_IP
-  value: '{{form.pipeline.parameters.dev-externalIP}}'
+  value: '{{form.pipeline.parameters.externalIP}}'
   type: text
 - name: INPUT_GIT_BRANCH 
-  value: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
+  value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
   type: text
 - name: GIT_REPO 
   value: 'https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines.git'
   type: text
 - name: VERSIONS_GIT_BRANCH 
-  value: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
+  value: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
   type: text
 - name: VERDACCIO_USER 
   value: '{{form.pipeline.parameters.VERDACCIO_USER}}'
@@ -281,9 +281,6 @@ properties:
 - name: ICP_PASSWORD 
   value: '{{form.pipeline.parameters.ICP_PASSWORD}}'
   type: secure
-- name: NAMESPACE 
-  value: '{{form.pipeline.parameters.dev-namespace}}'
-  type: text
 - name: IBMCLOUD_HOME 
   value: '/root'
   type: text
