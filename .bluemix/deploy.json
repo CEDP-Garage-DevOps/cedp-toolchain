@@ -22,16 +22,18 @@
 			"pattern": "\\S"
 		},
 		"registry-region": {
-            "description": {
-                "$ref": "#/messages/deploy.registryRegionDescription"
-            },
-            "type": "string",
-            "disabled": false,
-            "validator": {
-                "v-type": "k8s-region",
-                "params": ["api-key"]
-            }
-        },
+			"description": {
+				"$ref": "#/messages/deploy.registryRegionDescription"
+			},
+			"type": "string",
+			"disabled": false,
+			"validator": {
+				"v-type": "k8s-region",
+				"params": [
+					"api-key"
+				]
+			}
+		},
 		"destination": {
 			"type": "string",
 			"disabled": false
@@ -105,139 +107,145 @@
 	],
 	"form": [
 		{
-			"type": "password",
-			"readonly": false,
-			"title": {
-				"$ref": "#/messages/deploy.apikey"
-			},
-			"key": "api-key"
-		},
-		{
-			"type": "table",
-			"columnCount": 3,
-			"widths": [
-				"45%",
-				"10%",
-				"45%"
-			],
+			"type": "section",
+			"description": "Required parameters",
 			"items": [
-				{
-					"type": "label",
-					"title": "Region"
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "label",
-					"title": "Pipeline Image"
-				},
-				{
-					"type": "select",
-					"key": "registry-region"
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "dockerImageName",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 3,
-			"widths": [
-				"45%",
-				"10%",
-				"45%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "Git input branch"
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "label",
-					"title": "Git versions branch"
-				},
-				{
-					"type": "text",
-					"key": "INPUT_GIT_BRANCH",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
 				{
 					"type": "password",
-					"key": "VERSIONS_GIT_BRANCH",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 5,
-			"widths": [
-				"32%",
-				"2%",
-				"32%",
-				"2%",
-				"32%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "Cluster"
+					"readonly": false,
+					"title": {
+						"$ref": "#/messages/deploy.apikey"
+					},
+					"key": "api-key"
 				},
 				{
-					"type": "label",
-					"title": ""
+					"type": "table",
+					"columnCount": 3,
+					"widths": [
+						"45%",
+						"10%",
+						"45%"
+					],
+					"items": [
+						{
+							"type": "label",
+							"title": "Region"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "Pipeline Image"
+						},
+						{
+							"type": "select",
+							"key": "registry-region"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "text",
+							"key": "dockerImageName",
+							"readonly": false
+						}
+					]
 				},
 				{
-					"type": "label",
-					"title": "Ingress subdomain"
+					"type": "table",
+					"columnCount": 3,
+					"widths": [
+						"45%",
+						"10%",
+						"45%"
+					],
+					"items": [
+						{
+							"type": "label",
+							"title": "Git input branch"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "Git versions branch"
+						},
+						{
+							"type": "text",
+							"key": "INPUT_GIT_BRANCH",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "password",
+							"key": "VERSIONS_GIT_BRANCH",
+							"readonly": false
+						}
+					]
 				},
 				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "label",
-					"title": "External IP"
-				},
-				{
-					"type": "text",
-					"key": "cluster",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "domain",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "password",
-					"key": "externalIP",
-					"readonly": false
+					"type": "table",
+					"columnCount": 5,
+					"widths": [
+						"32%",
+						"2%",
+						"32%",
+						"2%",
+						"32%"
+					],
+					"items": [
+						{
+							"type": "label",
+							"title": "Cluster"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "Ingress subdomain"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "External IP"
+						},
+						{
+							"type": "text",
+							"key": "cluster",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "text",
+							"key": "domain",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "password",
+							"key": "externalIP",
+							"readonly": false
+						}
+					]
 				}
 			]
 		},
