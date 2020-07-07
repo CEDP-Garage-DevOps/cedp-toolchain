@@ -107,17 +107,17 @@
 	],
 	"form": [
 		{
+			"type": "password",
+			"readonly": false,
+			"title": {
+				"$ref": "#/messages/deploy.apikey"
+			},
+			"key": "api-key"
+		},
+		{
 			"type": "section",
 			"description": "Required parameters",
 			"items": [
-				{
-					"type": "password",
-					"readonly": false,
-					"title": {
-						"$ref": "#/messages/deploy.apikey"
-					},
-					"key": "api-key"
-				},
 				{
 					"type": "table",
 					"columnCount": 3,
@@ -250,190 +250,157 @@
 			]
 		},
 		{
-			"type": "label",
-			"readonly": false,
-			"title": "Optional"
-		},
-		{
-			"type": "table",
-			"columnCount": 3,
-			"widths": [
-				"45%",
-				"10%",
-				"45%"
-			],
+			"type": "section",
+			"description": "Optional parameters",
 			"items": [
 				{
-					"type": "label",
-					"title": "ICP User"
+					"type": "table",
+					"columnCount": 3,
+					"widths": [
+						"45%",
+						"10%",
+						"45%"
+					],
+					"items": [
+						{
+							"type": "label",
+							"title": "ICP User"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "ICP passwrd"
+						},
+						{
+							"type": "text",
+							"key": "ICP_USER",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "password",
+							"key": "ICP_PASSWORD",
+							"readonly": false
+						}
+					]
 				},
 				{
-					"type": "label",
-					"title": ""
+					"type": "table",
+					"columnCount": 5,
+					"widths": [
+						"32%",
+						"2%",
+						"32%",
+						"2%",
+						"32%"
+					],
+					"items": [
+						{
+							"type": "label",
+							"title": "Artifactory URL"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "Artifactory User"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "Artifactory API Key"
+						},
+						{
+							"type": "text",
+							"key": "ARTIFACTORY_URL",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "text",
+							"key": "ARTIFACTORY_USER",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "password",
+							"key": "ARTIFACTORY_APIKEY",
+							"readonly": false
+						}
+					]
 				},
 				{
-					"type": "label",
-					"title": "ICP passwrd"
-				},
-				{
-					"type": "text",
-					"key": "ICP_USER",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "password",
-					"key": "ICP_PASSWORD",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 5,
-			"widths": [
-				"32%",
-				"2%",
-				"32%",
-				"2%",
-				"32%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "Artifactory URL"
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "label",
-					"title": "Artifactory User"
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "label",
-					"title": "Artifactory API Key"
-				},
-				{
-					"type": "text",
-					"key": "ARTIFACTORY_URL",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "ARTIFACTORY_USER",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "password",
-					"key": "ARTIFACTORY_APIKEY",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 5,
-			"widths": [
-				"32%",
-				"2%",
-				"32%",
-				"2%",
-				"32%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": "Verdaccio Email"
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "label",
-					"title": "Verdaccio User"
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "label",
-					"title": "Verdaccio Password"
-				},
-				{
-					"type": "text",
-					"key": "VERDACCIO_EMAIL",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "text",
-					"key": "VERDACCIO_USER",
-					"readonly": false
-				},
-				{
-					"type": "label",
-					"title": ""
-				},
-				{
-					"type": "password",
-					"key": "VERDACCIO_PASSWORD",
-					"readonly": false
-				}
-			]
-		},
-		{
-			"type": "validator",
-			"url": "/devops/setup/bm-helper/custom_helper.html"
-		},
-		{
-			"type": "table",
-			"columnCount": 1,
-			"widths": [
-				"100%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": {
-						"$ref": "#/messages/deploy.clusterDescription"
-					}
-				}
-			]
-		},
-		{
-			"type": "table",
-			"columnCount": 1,
-			"widths": [
-				"100%"
-			],
-			"items": [
-				{
-					"type": "label",
-					"title": {
-						"$ref": "#/messages/deploy.clusternsDescription"
-					}
+					"type": "table",
+					"columnCount": 5,
+					"widths": [
+						"32%",
+						"2%",
+						"32%",
+						"2%",
+						"32%"
+					],
+					"items": [
+						{
+							"type": "label",
+							"title": "Verdaccio Email"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "Verdaccio User"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "Verdaccio Password"
+						},
+						{
+							"type": "text",
+							"key": "VERDACCIO_EMAIL",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "text",
+							"key": "VERDACCIO_USER",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "password",
+							"key": "VERDACCIO_PASSWORD",
+							"readonly": false
+						}
+					]
 				}
 			]
 		}
