@@ -46,8 +46,6 @@ services:
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
-          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-cluster-namespace}}'
           CLUSTER: '{{form.pipeline.parameters.dev-cluster}}'
           DOMAIN: '{{form.pipeline.parameters.dev-domain}}'
           EXTERNAL_IP: '{{form.pipeline.parameters.dev-externalIP}}'
@@ -62,9 +60,7 @@ services:
           ARTIFACTORY_URL: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
           ICP_USER: '{{form.pipeline.parameters.ICP_USER}}'
           ICP_PASSWORD: '{{form.pipeline.parameters.ICP_PASSWORD}}'
-          NAMESPACE: '{{form.pipeline.parameters.dev-namespace}}'
           IBMCLOUD_HOME: /root
-  cedp-tc-cd-stg-build:
     service_id: pipeline
     parameters:
       services:
@@ -98,7 +94,6 @@ services:
           NAMESPACE: '{{form.pipeline.parameters.stg-namespace}}'
           IBMCLOUD_HOME: /root
         execute: false
-  cedp-tc-cd-prod-build:
     service_id: pipeline
     parameters:
       services:

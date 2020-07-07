@@ -21,65 +21,35 @@
 			"type": "string",
 			"pattern": "\\S"
 		},
-		"prod-region": {
-			"description": {
-				"$ref": "#/messages/deploy.regionDescription"
-			},
-			"type": "string",
-			"disabled": false
-		},
 		"registry-region": {
 			"type": "string",
 			"disabled": false
 		},
-		"dev-destination": {
+		"destination": {
 			"type": "string",
 			"disabled": false
 		},
-		"dev-linkpassword": {
+		"сluster": {
 			"type": "string",
 			"disabled": false
 		},
-		"dev-email-address": {
+		"domain": {
 			"type": "string",
 			"disabled": false
 		},
-		"dev-skey": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"dev-mpass": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"dev-vault": {
+		"externalIP": {
 			"type": "string",
 			"disabled": false
 		},
-		"dev-cluster": {
-			"type": "string",
-			"disabled": false
-		},
-		"dev-domain": {
-			"type": "string",
-			"disabled": false
-		},
-		"dev-externalIP": {
-			"type": "string",
-			"disabled": false
-		},
-
 		"dockerImageName": {
 			"type": "string",
 			"disabled": false
 		},
-		"dev-INPUT_GIT_BRANCH": {
+		"INPUT_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
 		},
-		"dev-VERSIONS_GIT_BRANCH": {
+		"VERSIONS_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false
 		},
@@ -117,487 +87,543 @@
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S"
-		},
-		"dev-namespace": {
-			"type": "string",
-			"disabled": false
-		},
-	    "stg-namespace": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-namespace": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-destination": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-linkpassword": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-email-address": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-skey": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"stg-mpass": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"stg-vault": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-cluster": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-domain": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-externalIP": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-INPUT_GIT_BRANCH": {
-			"type": "string",
-			"disabled": false
-		},
-		"stg-VERSIONS_GIT_BRANCH": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-destination": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-linkpassword": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-email-address": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-skey": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"prod-mpass": {
-			"type": "string",
-			"disabled": false,
-			"pattern": "\\S"
-		},
-		"prod-vault": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-cluster": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-domain": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-externalIP": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-INPUT_GIT_BRANCH": {
-			"type": "string",
-			"disabled": false
-		},
-		"prod-VERSIONS_GIT_BRANCH": {
-			"type": "string",
-			"disabled": false
 		}
 	},
-	"required": ["api-key", "prod-region", "dev-destination", "stg-destination", "prod-destination"],
-	"form": [ {
+	"required": [
+		"api-key",
+		"prod-region",
+		"destination",
+		"dockerImageName",
+		"сluster"
+	],
+	"form": [
+		{
 			"type": "password",
 			"readonly": false,
 			"title": {
 				"$ref": "#/messages/deploy.apikey"
 			},
 			"key": "api-key"
-		},  {
+		},
+		{
 			"type": "table",
-			"columnCount": 1,
-			"widths": ["100%"],
-			"items": [{
+			"columnCount": 3,
+			"widths": [
+				"45%",
+				"10%",
+				"45%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "Region"
-				}, {
-					"type": "select",
-					"key": "prod-region"
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
-			"items": [{
+				},
+				{
 					"type": "label",
 					"title": "Pipeline Image"
-				}, {
+				},
+				{
+					"type": "select",
+					"key": "prod-region"
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
-					"type": "label",
-					"title": "ICP User"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "ICP passwrd"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "dockerImageName",
 					"readonly": false
-				}, {
+				}
+				
+			]
+		},
+		{
+			"type": "table",
+			"columnCount": 5,
+			"widths": [
+				"32%",
+				"2%",
+				"32%",
+				"2%",
+				"32%"
+			],
+			"items": [
+				{
+					"type": "label",
+					"title": "Pipeline Image"
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
+					"type": "label",
+					"title": "ICP User"
+				},
+				{
+					"type": "label",
+					"title": ""
+				},
+				{
+					"type": "label",
+					"title": "ICP passwrd"
+				},
+				{
+					"type": "text",
+					"key": "dockerImageName",
+					"readonly": false
+				},
+				{
+					"type": "label",
+					"title": ""
+				},
+				{
 					"type": "text",
 					"key": "ICP_USER",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "password",
 					"key": "ICP_PASSWORD",
 					"readonly": false
 				}
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
-			"items": [{
+			"widths": [
+				"32%",
+				"2%",
+				"32%",
+				"2%",
+				"32%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "Artifactory URL"
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "label",
 					"title": "Artifactory User"
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "label",
 					"title": "Artifactory API Key"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "ARTIFACTORY_URL",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "ARTIFACTORY_USER",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "password",
 					"key": "ARTIFACTORY_APIKEY",
 					"readonly": false
 				}
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 5,
-			"widths": ["32%", "2%", "32%", "2%", "32%"],
-			"items": [{
+			"widths": [
+				"32%",
+				"2%",
+				"32%",
+				"2%",
+				"32%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "Verdaccio Email"
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "label",
 					"title": "Verdaccio User"
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "label",
 					"title": "Verdaccio Password"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "VERDACCIO_EMAIL",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "VERDACCIO_USER",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "password",
 					"key": "VERDACCIO_PASSWORD",
 					"readonly": false
 				}
 			]
-		},  {
+		},
+		{
 			"type": "validator",
 			"url": "/devops/setup/bm-helper/custom_helper.html"
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["14%", "28%", "1%", "28%", "1%", "28%"],
-			"items": [{
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Env for Development"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Env for Staging"
-				}, {
-					"type": "label",
-					"title": ""
-				}, {
-					"type": "label",
-					"title": "Env for Production"
-				}
-			]
-		}, {
-			"type": "table",
-			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
+			"widths": [
+				"14%",
+				"28%",
+				"1%",
+				"28%",
+				"1%",
+				"28%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "Namespace"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "dev-namespace",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "stg-namespace",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "prod-namespace",
 					"readonly": false
 				}
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
+			"widths": [
+				"14%",
+				"28%",
+				"1%",
+				"28%",
+				"1%",
+				"28%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "Destionation"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "dev-destination",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "stg-destination",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "prod-destination",
 					"readonly": false
 				}
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
+			"widths": [
+				"14%",
+				"28%",
+				"1%",
+				"28%",
+				"1%",
+				"28%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "Git input branch"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "dev-INPUT_GIT_BRANCH",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "stg-INPUT_GIT_BRANCH",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "prod-INPUT_GIT_BRANCH",
 					"readonly": false
 				}
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
+			"widths": [
+				"14%",
+				"28%",
+				"1%",
+				"28%",
+				"1%",
+				"28%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "Git versions branch"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "dev-VERSIONS_GIT_BRANCH",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "stg-VERSIONS_GIT_BRANCH",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "prod-VERSIONS_GIT_BRANCH",
 					"readonly": false
 				}
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
+			"widths": [
+				"14%",
+				"28%",
+				"1%",
+				"28%",
+				"1%",
+				"28%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "Cluster"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "dev-cluster",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "stg-cluster",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "prod-cluster",
 					"readonly": false
 				}
-		
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
+			"widths": [
+				"14%",
+				"28%",
+				"1%",
+				"28%",
+				"1%",
+				"28%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "Ingress subdomain"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "dev-domain",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "stg-domain",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "prod-domain",
 					"readonly": false
 				}
-		
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 6,
-			"widths": ["14%","28%", "1%", "28%", "1%", "28%"],
-			"items": [{
+			"widths": [
+				"14%",
+				"28%",
+				"1%",
+				"28%",
+				"1%",
+				"28%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": "External IP"
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "dev-externalIP",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "stg-externalIP",
 					"readonly": false
-				}, {
+				},
+				{
 					"type": "label",
 					"title": ""
-				}, {
+				},
+				{
 					"type": "text",
 					"key": "prod-externalIP",
 					"readonly": false
 				}
-		
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 1,
-			"widths": ["100%"],
-			"items": [{
+			"widths": [
+				"100%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": {
 						"$ref": "#/messages/deploy.clusterDescription"
 					}
 				}
 			]
-		}, {
+		},
+		{
 			"type": "table",
 			"columnCount": 1,
-			"widths": ["100%"],
-			"items": [{
+			"widths": [
+				"100%"
+			],
+			"items": [
+				{
 					"type": "label",
 					"title": {
 						"$ref": "#/messages/deploy.clusternsDescription"
