@@ -8,14 +8,12 @@ template:
     $ref: "#/messages/template.description"
   required:
     - cedp-tc-cd-dev-build
-    - cedp-tc-cd-stg-build
-    - cedp-tc-cd-prod-build
     - cedp-tc-repo
   info:
     git url: >-
       [https://github.com/CEDP-Garage-DevOps/cedp-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain)
     git branch: >-
-      [full-toolchain](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/CD-2.0)
+      [toolchain-dev-2.0](https://github.com/CEDP-Garage-DevOps/cedp-toolchain/tree/toolchain-dev-2.0)
 toolchain:
   name: 'cedp-{name_of_project}'
   template:
@@ -42,16 +40,16 @@ services:
         content:
           $text: cd-dev.yml
         env:
-          DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
+          DESTINATION: '{{form.pipeline.parameters.destination}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
-          CLUSTER: '{{form.pipeline.parameters.dev-cluster}}'
-          DOMAIN: '{{form.pipeline.parameters.dev-domain}}'
-          EXTERNAL_IP: '{{form.pipeline.parameters.dev-externalIP}}'
+          CLUSTER: '{{form.pipeline.parameters.cluster}}'
+          DOMAIN: '{{form.pipeline.parameters.domain}}'
+          EXTERNAL_IP: '{{form.pipeline.parameters.externalIP}}'
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
-          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
-          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
           VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
