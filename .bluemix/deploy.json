@@ -107,6 +107,11 @@
 			"disabled": false,
 			"description": " "
 		},
+		"ICP_NAMESPACE": {
+			"type": "string",
+			"disabled": false,
+			"description": " "
+		},
 		"ICP_PASSWORD": {
 			"type": "string",
 			"disabled": false,
@@ -294,11 +299,13 @@
 			"items": [
 				{
 					"type": "table",
-					"columnCount": 3,
+					"columnCount": 5,
 					"widths": [
-						"45%",
-						"10%",
-						"45%"
+						"32%",
+						"2%",
+						"32%",
+						"2%",
+						"32%"
 					],
 					"items": [
 						{
@@ -311,7 +318,15 @@
 						},
 						{
 							"type": "label",
-							"title": "ICP passwrd"
+							"title": "ICP Password"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "ICP Namespace"
 						},
 						{
 							"type": "text",
@@ -326,7 +341,18 @@
 							"type": "password",
 							"key": "ICP_PASSWORD",
 							"readonly": false
+						},
+						{
+							"type": "text",
+							"key": "ICP_NAMESPACE",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
 						}
+						
+						
 					]
 				},
 				{
