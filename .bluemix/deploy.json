@@ -141,6 +141,10 @@
 			"key": "registry-region"
 		},
 		{
+			"type": "label",
+			"title": " "
+		},
+		{
 			"type": "section",
 			"title": "Required parameters",
 			"description": "Required parameters to execute toolchains",
