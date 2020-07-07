@@ -132,7 +132,8 @@
 		},
 		{
 			"type": "section",
-			"description": "Required parameters",
+			"title" : "Required parameters",
+			"description": "Required parameters to execute toolchains",
 			"items": [
 				{
 					"type": "table",
@@ -172,11 +173,13 @@
 				},
 				{
 					"type": "table",
-					"columnCount": 3,
+					"columnCount": 5,
 					"widths": [
-						"45%",
-						"10%",
-						"45%"
+						"32%",
+						"2%",
+						"32%",
+						"2%",
+						"32%"
 					],
 					"items": [
 						{
@@ -192,6 +195,14 @@
 							"title": "Git versions branch"
 						},
 						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "Destination"
+						},
+						{
 							"type": "text",
 							"key": "INPUT_GIT_BRANCH",
 							"readonly": false
@@ -204,7 +215,16 @@
 							"type": "password",
 							"key": "VERSIONS_GIT_BRANCH",
 							"readonly": false
-						}
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "password",
+							"key": "destination",
+							"readonly": false
+						}						
 					]
 				},
 				{
