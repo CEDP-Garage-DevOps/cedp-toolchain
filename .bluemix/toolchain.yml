@@ -73,18 +73,16 @@ services:
         content:
           $text: ci-dev.yml
         env:
-          DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
+          DESTINATION: '{{form.pipeline.parameters.destination}}' 
           GIT_REPO: cedp-tc-repo
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
-          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-cluster-namespace}}'
-          CLUSTER: '{{form.pipeline.parameters.dev-cluster}}'
-          DOMAIN: '{{form.pipeline.parameters.dev-domain}}'
-          EXTERNAL_IP: '{{form.pipeline.parameters.dev-externalIP}}'
+          CLUSTER: '{{form.pipeline.parameters.cluster}}'
+          DOMAIN: '{{form.pipeline.parameters.domain}}'
+          EXTERNAL_IP: '{{form.pipeline.parameters.externalIP}}'
           DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
-          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
-          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
           VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
           VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
           VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
@@ -93,7 +91,7 @@ services:
           ARTIFACTORY_URL: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
           ICP_USER: '{{form.pipeline.parameters.ICP_USER}}'
           ICP_PASSWORD: '{{form.pipeline.parameters.ICP_PASSWORD}}'
-          NAMESPACE: '{{form.pipeline.parameters.dev-namespace}}'
+          ICP_NAMESPACE: '{{form.pipeline.parameters.ICP_NAMESPACE}}'
           IBMCLOUD_HOME: /root
         execute: false
   messaging:
