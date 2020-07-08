@@ -8,6 +8,7 @@ template:
     $ref: "#/messages/template.description"
   required:
     - cedp-tc-cd-dev-build
+    - cedp-tc-ci-dev-build
     - cedp-tc-repo
   info:
     git url: >-
@@ -58,7 +59,43 @@ services:
           ARTIFACTORY_URL: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
           ICP_USER: '{{form.pipeline.parameters.ICP_USER}}'
           ICP_PASSWORD: '{{form.pipeline.parameters.ICP_PASSWORD}}'
+          ICP_NAMESPACE: '{{form.pipeline.parameters.ICP_NAMESPACE}}'
           IBMCLOUD_HOME: /root
+        execute: false
+  cedp-tc-ci-dev-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - cedp-tc-repo
+      name: '{{toolchain.name}}-dev'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: ci-dev.yml
+        env:
+          DESTINATION: '{{form.pipeline.parameters.dev-destination}}' 
+          GIT_REPO: cedp-tc-repo
+          REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          PROD_CLUSTER_NAMESPACE: '{{form.pipeline.parameters.prod-cluster-namespace}}'
+          CLUSTER: '{{form.pipeline.parameters.dev-cluster}}'
+          DOMAIN: '{{form.pipeline.parameters.dev-domain}}'
+          EXTERNAL_IP: '{{form.pipeline.parameters.dev-externalIP}}'
+          DOCKER_IMAGE_NAME: '{{form.pipeline.parameters.dockerImageName}}'
+          INPUT_GIT_BRANCH: '{{form.pipeline.parameters.dev-INPUT_GIT_BRANCH}}'
+          VERSIONS_GIT_BRANCH: '{{form.pipeline.parameters.dev-VERSIONS_GIT_BRANCH}}'
+          VERDACCIO_USER: '{{form.pipeline.parameters.VERDACCIO_USER}}'
+          VERDACCIO_EMAIL: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
+          VERDACCIO_PASSWORD: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
+          ARTIFACTORY_USER: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
+          ARTIFACTORY_APIKEY: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
+          ARTIFACTORY_URL: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
+          ICP_USER: '{{form.pipeline.parameters.ICP_USER}}'
+          ICP_PASSWORD: '{{form.pipeline.parameters.ICP_PASSWORD}}'
+          NAMESPACE: '{{form.pipeline.parameters.dev-namespace}}'
+          IBMCLOUD_HOME: /root
+        execute: false
   messaging:
     service_id: slack
   dra:
