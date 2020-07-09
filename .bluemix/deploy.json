@@ -40,7 +40,7 @@
 			"description": "Destination specified in build.yaml"
 		},
 		"deployment-type": {
-			"title": "Repository type",
+			"title": "Choose deployment target",
 			"type": "string",
 			"enum": [
 				"public_kubernetes",
@@ -155,7 +155,7 @@
 		},
 		{
 			"type": "section",
-			"title": "Required parameters",
+			"title": "Pipeline parameters",
 			"description": "Required parameters to execute toolchains",
 			"items": [
 				{
@@ -173,28 +173,6 @@
 							"type": "text",
 							"key": "dockerImageName",
 							"readonly": false
-						}
-					]
-				},
-				{
-					"type": "table",
-					"columnCount": 1,
-					"widths": [
-						"100%"
-					],
-					"items": [
-						{
-							"type": "label",
-							"title": "Choose deployment target"
-						},
-						{
-							"type": "selectfieldset",
-							"key": "deployment-type",
-							"titleMap": {
-								"public_kubernetes": "IBM Public Cloud Kubernetes Cluster",
-								"public_openshift": "IBM Public Cloud Openshift Cluster",
-								"private_kubernetes": "IBM Cloud Private Cluster"
-							}
 						}
 					]
 				},
@@ -255,58 +233,181 @@
 					]
 				},
 				{
-					"type": "table",
-					"columnCount": 5,
-					"widths": [
-						"32%",
-						"2%",
-						"32%",
-						"2%",
-						"32%"
-					],
+					"type": "selectfieldset",
+					"key": "deployment-type",
+					"titleMap": {
+						"public_kubernetes": "IBM Public Cloud Kubernetes Cluster",
+						"public_openshift": "IBM Public Cloud Openshift Cluster",
+						"private_kubernetes": "IBM Cloud Private Cluster"
+					},
 					"items": [
 						{
-							"type": "label",
-							"title": "Cluster"
+							"type": "table",
+							"columnCount": 5,
+							"widths": [
+								"32%",
+								"2%",
+								"32%",
+								"2%",
+								"32%"
+							],
+							"items": [
+								{
+									"type": "label",
+									"title": "Cluster"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "Ingress subdomain"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "External IP"
+								},
+								{
+									"type": "text",
+									"key": "cluster",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "text",
+									"key": "domain",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "password",
+									"key": "externalIP",
+									"readonly": false
+								}
+							]
 						},
 						{
-							"type": "label",
-							"title": ""
+							"type": "table",
+							"columnCount": 5,
+							"widths": [
+								"32%",
+								"2%",
+								"32%",
+								"2%",
+								"32%"
+							],
+							"items": [
+								{
+									"type": "label",
+									"title": "Cluster"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "Ingress subdomain"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "External IP"
+								},
+								{
+									"type": "text",
+									"key": "cluster",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "text",
+									"key": "domain",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "password",
+									"key": "externalIP",
+									"readonly": false
+								}
+							]
 						},
 						{
-							"type": "label",
-							"title": "Ingress subdomain"
-						},
-						{
-							"type": "label",
-							"title": ""
-						},
-						{
-							"type": "label",
-							"title": "External IP"
-						},
-						{
-							"type": "text",
-							"key": "cluster",
-							"readonly": false
-						},
-						{
-							"type": "label",
-							"title": ""
-						},
-						{
-							"type": "text",
-							"key": "domain",
-							"readonly": false
-						},
-						{
-							"type": "label",
-							"title": ""
-						},
-						{
-							"type": "password",
-							"key": "externalIP",
-							"readonly": false
+							"type": "table",
+							"columnCount": 5,
+							"widths": [
+								"32%",
+								"2%",
+								"32%",
+								"2%",
+								"32%"
+							],
+							"items": [
+								{
+									"type": "label",
+									"title": "Cluster"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "Ingress subdomain"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "External IP"
+								},
+								{
+									"type": "text",
+									"key": "cluster",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "text",
+									"key": "domain",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "password",
+									"key": "externalIP",
+									"readonly": false
+								}
+							]
 						}
 					]
 				}
