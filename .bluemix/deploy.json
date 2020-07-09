@@ -217,7 +217,7 @@
 							"title": ""
 						},
 						{
-							"type": "password",
+							"type": "text",
 							"key": "VERSIONS_GIT_BRANCH",
 							"readonly": false
 						},
@@ -226,7 +226,7 @@
 							"title": ""
 						},
 						{
-							"type": "password",
+							"type": "text",
 							"key": "destination",
 							"readonly": false
 						}
