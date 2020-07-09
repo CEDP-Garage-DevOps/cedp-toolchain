@@ -406,6 +406,49 @@
 									"type": "password",
 									"key": "externalIP",
 									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": "ICP User"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "ICP Password"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "ICP Namespace"
+								},
+								{
+									"type": "text",
+									"key": "ICP_USER",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "password",
+									"key": "ICP_PASSWORD",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "text",
+									"key": "ICP_NAMESPACE",
+									"readonly": false
 								}
 							]
 						}
@@ -418,62 +461,6 @@
 			"title": "Optional parameters",
 			"description": "Additional parameters which you can enter based on your use case",
 			"items": [
-				{
-					"type": "table",
-					"columnCount": 5,
-					"widths": [
-						"32%",
-						"2%",
-						"32%",
-						"2%",
-						"32%"
-					],
-					"items": [
-						{
-							"type": "label",
-							"title": "ICP User"
-						},
-						{
-							"type": "label",
-							"title": ""
-						},
-						{
-							"type": "label",
-							"title": "ICP Password"
-						},
-						{
-							"type": "label",
-							"title": ""
-						},
-						{
-							"type": "label",
-							"title": "ICP Namespace"
-						},
-						{
-							"type": "text",
-							"key": "ICP_USER",
-							"readonly": false
-						},
-						{
-							"type": "label",
-							"title": ""
-						},
-						{
-							"type": "password",
-							"key": "ICP_PASSWORD",
-							"readonly": false
-						},
-						{
-							"type": "label",
-							"title": ""
-						},
-						{
-							"type": "text",
-							"key": "ICP_NAMESPACE",
-							"readonly": false
-						}
-					]
-				},
 				{
 					"type": "table",
 					"columnCount": 5,
