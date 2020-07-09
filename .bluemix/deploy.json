@@ -39,6 +39,15 @@
 			"disabled": false,
 			"description": "Destination specified in build.yaml"
 		},
+		"deployment-type": {
+			"title": "Repository type",
+			"type": "string",
+			"enum": [
+				"public-kubernetes",
+				"public-openshift",
+				"private-kubernetes"
+			]
+		},
 		"cluster": {
 			"type": "string",
 			"disabled": false,
@@ -164,6 +173,29 @@
 							"type": "text",
 							"key": "dockerImageName",
 							"readonly": false
+						}
+					]
+				},
+				{
+					"type": "table",
+					"columnCount": 1,
+					"widths": [
+						"100%"
+					],
+					"items": [
+						{
+							"type": "label",
+							"title": "Choose deployment target"
+						},
+						{
+							"type": "selectfieldset",
+							"key": "deployment-type",
+							"titleMap": {
+								"new": "New",
+								"fork": "Fork",
+								"link": "Existing",
+								"clone": "Clone"
+							}
 						}
 					]
 				},
