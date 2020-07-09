@@ -290,7 +290,7 @@
 									"title": ""
 								},
 								{
-									"type": "password",
+									"type": "text",
 									"key": "externalIP",
 									"readonly": false
 								}
@@ -346,7 +346,7 @@
 									"title": ""
 								},
 								{
-									"type": "password",
+									"type": "text",
 									"key": "externalIP",
 									"readonly": false
 								}
@@ -404,7 +404,7 @@
 									"title": ""
 								},
 								{
-									"type": "password",
+									"type": "text",
 									"description": "Ingress domain IP",
 									"key": "externalIP",
 									"readonly": false
