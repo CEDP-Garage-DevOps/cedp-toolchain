@@ -43,9 +43,9 @@
 			"title": "Repository type",
 			"type": "string",
 			"enum": [
-				"public-kubernetes",
-				"public-openshift",
-				"private-kubernetes"
+				"public_kubernetes",
+				"public_openshift",
+				"private_kubernetes"
 			]
 		},
 		"cluster": {
@@ -191,9 +191,9 @@
 							"type": "selectfieldset",
 							"key": "deployment-type",
 							"titleMap": {
-								"public-kubernetes": "IBM Public Cloud Kubernetes Cluster",
-								"public-openshift": "IBM Public Cloud Openshift Cluster",
-								"private-kubernetes": "IBM Cloud Private Cluster"
+								"public_kubernetes": "IBM Public Cloud Kubernetes Cluster",
+								"public_openshift": "IBM Public Cloud Openshift Cluster",
+								"private_kubernetes": "IBM Cloud Private Cluster"
 							}
 						}
 					]
