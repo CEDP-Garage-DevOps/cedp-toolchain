@@ -51,17 +51,17 @@
 		"cluster": {
 			"type": "string",
 			"disabled": false,
-			"description": "Cluster name or URL"
+			"description": "Cluster name"
 		},
 		"domain": {
 			"type": "string",
 			"disabled": false,
-			"description": "Cluster subdomain"
+			"description": "Ingress subdomain"
 		},
 		"externalIP": {
 			"type": "string",
 			"disabled": false,
-			"description": "Cluster subdomain IP address"
+			"description": "Ingress subdomain IP address"
 		},
 		"dockerImageName": {
 			"type": "string",
@@ -366,7 +366,7 @@
 							"items": [
 								{
 									"type": "label",
-									"title": "Cluster"
+									"title": "Cluster URL"
 								},
 								{
 									"type": "label",
@@ -374,7 +374,7 @@
 								},
 								{
 									"type": "label",
-									"title": "Ingress subdomain"
+									"title": "Ingress domain"
 								},
 								{
 									"type": "label",
@@ -386,6 +386,7 @@
 								},
 								{
 									"type": "text",
+									"description": "ICP Console URL",
 									"key": "cluster",
 									"readonly": false
 								},
@@ -395,6 +396,7 @@
 								},
 								{
 									"type": "text",
+									"description": "Ingress domain",
 									"key": "domain",
 									"readonly": false
 								},
@@ -404,6 +406,7 @@
 								},
 								{
 									"type": "password",
+									"description": "Ingress domain IP",
 									"key": "externalIP",
 									"readonly": false
 								},
