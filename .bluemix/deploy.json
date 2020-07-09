@@ -191,10 +191,9 @@
 							"type": "selectfieldset",
 							"key": "deployment-type",
 							"titleMap": {
-								"new": "New",
-								"fork": "Fork",
-								"link": "Existing",
-								"clone": "Clone"
+								"public-kubernetes": "IBM Public Cloud Kubernetes Cluster",
+								"public-openshift": "IBM Public Cloud Openshift Cluster",
+								"private-kubernetes": "IBM Cloud Private Cluster"
 							}
 						}
 					]
