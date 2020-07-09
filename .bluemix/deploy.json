@@ -132,7 +132,6 @@
 		"registry-region",
 		"destination",
 		"dockerImageName",
-		"сluster",
 		"INPUT_GIT_BRANCH",
 		"VERSIONS_GIT_BRANCH"
 	],
