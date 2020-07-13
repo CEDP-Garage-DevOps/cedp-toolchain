@@ -284,3 +284,10 @@ properties:
 - name: IBMCLOUD_HOME 
   value: '/root'
   type: text
+- name: KEY_PROTECT_NAME 
+  value: '{{form.pipeline.parameters.key-protect-name}}'
+  type: text
+  - name: DEPLOYMENT_TYPE 
+  value: '{{form.pipeline.parameters.deployment-type}}'
+  type: text
+  
