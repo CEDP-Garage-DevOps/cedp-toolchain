@@ -78,9 +78,10 @@ stages:
       set -e
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
-      export ORGANIZATION=https://cloud.ibm.com
-      ibm-bifrost login --public-cloud
       export MAVEN_OPTS="-Xmx1000m"
+      
+      ibm-bifrost login --public-cloud
+      
       ibm-bifrost code --build
       
     namespace: 'NULL'
@@ -108,9 +109,10 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export IBMCLOUD_HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
+      
       ibm-bifrost login --public-cloud
-      ibmcloud cr login
+      ibm-bifrost login --public-registry
+      
       ibm-bifrost docker --build
       
     namespace: 'NULL'
@@ -127,9 +129,10 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export IBMCLOUD_HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
+
       ibm-bifrost login --public-cloud
-      ibmcloud cr login
+      ibm-bifrost login --public-registry
+      
       ibm-bifrost docker --validate
       
     namespace: 'NULL'
@@ -157,11 +160,11 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export IBMCLOUD_HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
+      
       ibm-bifrost login --public-cloud
-      ibmcloud cs init
-      ibmcloud cs clusters
-      ibmcloud ks cluster config --cluster ${CLUSTER}
+      
+      ibm-bifrost login --${DEPLOYMENT_TYPE}
+      
       ibm-bifrost deploy --run
       
     namespace: 'NULL'
@@ -178,11 +181,10 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export IBMCLOUD_HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
+      
       ibm-bifrost login --public-cloud
-      ibmcloud cs init
-      ibmcloud cs clusters
-      ibmcloud ks cluster config --cluster ${CLUSTER}
+      ibm-bifrost login --${DEPLOYMENT_TYPE}
+      
       ibm-bifrost deploy --validate
       
     namespace: 'NULL'
@@ -287,7 +289,7 @@ properties:
 - name: KEY_PROTECT_NAME 
   value: '{{form.pipeline.parameters.key-protect-name}}'
   type: text
-  - name: DEPLOYMENT_TYPE 
+- name: DEPLOYMENT_TYPE 
   value: '{{form.pipeline.parameters.deployment-type}}'
   type: text
   
