@@ -68,6 +68,11 @@
 			"disabled": false,
 			"description": "Bifrost Image"
 		},
+		"key-protect-name": {
+			"type": "string",
+			"disabled": false,
+			"description": "Key Protect instance name for credentials management"
+		},
 		"INPUT_GIT_BRANCH": {
 			"type": "string",
 			"disabled": false,
@@ -171,6 +176,15 @@
 						{
 							"type": "text",
 							"key": "dockerImageName",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": "Key Protect Instance Name"
+						},
+						{
+							"type": "text",
+							"key": "key-protect-name",
 							"readonly": false
 						}
 					]
