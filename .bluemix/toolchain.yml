@@ -61,6 +61,8 @@ services:
           ICP_PASSWORD: '{{form.pipeline.parameters.ICP_PASSWORD}}'
           ICP_NAMESPACE: '{{form.pipeline.parameters.ICP_NAMESPACE}}'
           IBMCLOUD_HOME: /root
+          KEY_PROTECT_NAME: '{{form.pipeline.parameters.key-protect-name}}'
+          DEPLOYMENT_TYPE: '{{form.pipeline.parameters.deployment-type}}'
         execute: false
   cedp-tc-ci-dev-build:
     service_id: pipeline
@@ -93,6 +95,8 @@ services:
           ICP_PASSWORD: '{{form.pipeline.parameters.ICP_PASSWORD}}'
           ICP_NAMESPACE: '{{form.pipeline.parameters.ICP_NAMESPACE}}'
           IBMCLOUD_HOME: /root
+          KEY_PROTECT_NAME: '{{form.pipeline.parameters.key-protect-name}}'
+          DEPLOYMENT_TYPE: '{{form.pipeline.parameters.deployment-type}}'
         execute: false
   messaging:
     service_id: slack
