@@ -79,7 +79,8 @@ stages:
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export HOME=${IBMCLOUD_HOME}
       export MAVEN_OPTS="-Xmx2g"
-            
+      
+      ibm-bifrost login --public-cloud
       ibm-bifrost docker --lint
     test_type: customimage
     namespace: 'NULL'
@@ -116,8 +117,8 @@ stages:
       export HOME=${IBMCLOUD_HOME}
       export MAVEN_OPTS="-Xmx2g"
       
+      ibm-bifrost login --public-cloud
       ibm-bifrost code --lint
-      
       ibm-bifrost code --test
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
@@ -144,7 +145,8 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       mv git .git
-           
+      
+      ibm-bifrost login --public-cloud
       ibm-bifrost sonar --scan
 
     namespace: 'NULL'      
