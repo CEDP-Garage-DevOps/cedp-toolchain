@@ -183,6 +183,7 @@ stages:
       export IBMCLOUD_HOME=${IBMCLOUD_HOME}
       
       ibm-bifrost login --public-cloud
+      
       ibm-bifrost login --${DEPLOYMENT_TYPE}
       
       ibm-bifrost deploy --validate
