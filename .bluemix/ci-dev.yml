@@ -49,7 +49,9 @@ stages:
       #!/bin/bash
       set -x
       set -e
+      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       
+      ibm-bifrost login --public-cloud
       mv git .git
       ibm-bifrost plan -d "${DESTINATION}" diff -pr
       mv .git git
