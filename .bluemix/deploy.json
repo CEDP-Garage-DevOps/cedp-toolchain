@@ -43,9 +43,9 @@
 			"title": "Choose deployment target",
 			"type": "string",
 			"enum": [
-				"public_kubernetes",
-				"public_openshift",
-				"private_kubernetes"
+				"public-kubernetes",
+				"public-openshift",
+				"private-kubernetes"
 			]
 		},
 		"cluster": {
@@ -249,9 +249,9 @@
 					"type": "selectfieldset",
 					"key": "deployment-type",
 					"titleMap": {
-						"public_kubernetes": "IBM Public Cloud Kubernetes Cluster",
-						"public_openshift": "IBM Public Cloud Openshift Cluster",
-						"private_kubernetes": "IBM Cloud Private Cluster"
+						"public-kubernetes": "IBM Public Cloud Kubernetes Cluster",
+						"public-openshift": "IBM Public Cloud Openshift Cluster",
+						"private-kubernetes": "IBM Cloud Private Cluster"
 					},
 					"items": [
 						{
