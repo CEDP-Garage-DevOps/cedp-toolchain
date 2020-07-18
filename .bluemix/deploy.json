@@ -83,7 +83,7 @@
 			"disabled": false,
 			"description": "Branch to store image versions"
 		},
-		"VERDACCIO_EMAIL": {
+		"VERDACCIO_URL": {
 			"type": "string",
 			"disabled": false,
 			"description": " "
@@ -546,7 +546,7 @@
 					"items": [
 						{
 							"type": "label",
-							"title": "Verdaccio Email"
+							"title": "Verdaccio URL"
 						},
 						{
 							"type": "label",
@@ -566,7 +566,7 @@
 						},
 						{
 							"type": "text",
-							"key": "VERDACCIO_EMAIL",
+							"key": "VERDACCIO_URL",
 							"readonly": false
 						},
 						{
