@@ -187,11 +187,11 @@ properties:
 - name: VERSIONS_GIT_BRANCH 
   value: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
   type: text
+- name: VERDACCIO_URL
+  value: '{{form.pipeline.parameters.VERDACCIO_URL}}'
+  type: text
 - name: VERDACCIO_USER 
   value: '{{form.pipeline.parameters.VERDACCIO_USER}}'
-  type: text
-- name: VERDACCIO_EMAIL
-  value: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
   type: text
 - name: VERDACCIO_PASSWORD 
   value: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
