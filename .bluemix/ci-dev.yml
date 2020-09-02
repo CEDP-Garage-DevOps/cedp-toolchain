@@ -146,6 +146,7 @@ stages:
       set -e
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
+      export M2_HOME=/usr/share/maven/
       mv git .git
       
       ibm-bifrost login --public-cloud
