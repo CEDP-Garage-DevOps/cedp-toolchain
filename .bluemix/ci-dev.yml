@@ -58,7 +58,7 @@ stages:
       
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
-- name: Unit tests
+- name: Lint
   inputs:
   - type: job
     stage: Plan
@@ -104,7 +104,7 @@ stages:
     test_type: customimage
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
-  - name: Test Code
+  - name: Code Lint
     type: builder
     curatedDockerImage: default
     artifact_dir: ''
@@ -121,21 +121,20 @@ stages:
       
       ibm-bifrost login --public-cloud
       ibm-bifrost code --lint
-      ibm-bifrost code --test
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
-- name: 'Sonar Qube'
+- name: 'Validate'
   inputs:
   - type: job
-    stage: Unit tests
-    job: 'Test Code'
+    stage: Lint
+    job: 'Code Lint'
     dir_name: null
   triggers:
   - type: stage
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
-  - name: 'Validate'
+  - name: 'Unit Tests and Sonar Scan'
     type: tester
     curatedDockerImage: default
     test_type: customimage
@@ -150,6 +149,7 @@ stages:
       mv git .git
       
       ibm-bifrost login --public-cloud
+      ibm-bifrost code --test
       ibm-bifrost sonar --scan
 
     namespace: 'NULL'      
