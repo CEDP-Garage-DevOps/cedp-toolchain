@@ -22,10 +22,10 @@ stages:
       #!/bin/bash
       set -x
       set -e
-      
+  
       ibm-bifrost versions --pull "$VERSIONS_GIT_BRANCH"
       mv .git git
-      
+
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
 - name: Plan
@@ -49,63 +49,25 @@ stages:
       #!/bin/bash
       set -x
       set -e
-      
+  
       mv git .git
-      ibm-bifrost plan -d "${DESTINATION}" diff -pr
+      ibm-bifrost build_plan "${DESTINATION}" diff pr
       mv .git git
-      
+
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
 - name: Unit tests
   inputs:
   - type: job
     stage: Plan
-    job: Build
+    job: 'Build'
     dir_name: null
   triggers:
   - type: stage
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
-  - name: Docker Lint
-    type: tester
-    curatedDockerImage: default
-    script: |-
-      #********************************************
-      #!/bin/bash
-      set -x
-      set -e
-      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
-      export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
-      export HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
-      ibm-bifrost login --public-cloud
-      export MAVEN_OPTS="-Xmx2g"
-
-      ibm-bifrost docker --lint
-    test_type: customimage
-    namespace: 'NULL'
-    docker_image: ${DOCKER_IMAGE_NAME}
-  - name: Deploy Lint
-    type: tester
-    curatedDockerImage: default
-    script: |-
-      #********************************************
-      #!/bin/bash
-      set -x
-      set -e
-      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
-      export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
-      export HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
-      ibm-bifrost login --public-cloud
-      export MAVEN_OPTS="-Xmx2g"
-
-      ibm-bifrost deploy --lint
-    test_type: customimage
-    namespace: 'NULL'
-    docker_image: ${DOCKER_IMAGE_NAME}
-  - name: Test Code
+  - name: 'Test'
     type: builder
     curatedDockerImage: default
     artifact_dir: ''
@@ -118,11 +80,19 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
-      ibm-bifrost login --public-cloud
+  
+      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+  
       export MAVEN_OPTS="-Xmx2g"
-      ibm-bifrost code --lint
-      ibm-bifrost code --test
+  
+      #npm-cli-login -u ${VERDACCIO_USER} -p ${VERDACCIO_PASSWORD} -e ${ARTIFACTORY_USER} -s @cedp -r https://verdaccio.k8s-datahub-development.us-south.containers.appdomain.cloud > ~/.npmrc
+  
+      curl -u ${ARTIFACTORY_USER}:${ARTIFACTORY_APIKEY} https://na.artifactory.swg-devops.com/artifactory/api/npm/auth/  > ~/.npmrc
+  
+      npm config set @cedp:registry https://na.artifactory.swg-devops.com/artifactory/api/npm/cedp-npm-local/
+  
+      ibm-bifrost build_code test-only
+
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
 - name: 'Sonar Qube'
@@ -147,14 +117,12 @@ stages:
       set -e
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
-      
-      export ORGANIZATION=https://cloud.ibm.com
-      ibm-bifrost login --public-cloud
-      
+  
+      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+  
       mv git .git
       sonar-scanner --version
-      
-      ibm-bifrost sonar --scan
+      ibm-bifrost sonar_validate
 
     namespace: 'NULL'      
     docker_image: ${DOCKER_IMAGE_NAME}
@@ -179,49 +147,49 @@ properties:
   type: text
 - name: DOCKER_PASSWORD
   value: '{{form.pipeline.parameters.api-key}}'
-  type: secure 
+  type: secure
 - name: REGISTRY_REGION_ID
   value: '{{form.pipeline.parameters.registry-region}}'
   type: text
-- name: INPUT_GIT_BRANCH 
+- name: INPUT_GIT_BRANCH
   value: '{{form.pipeline.parameters.prod-INPUT_GIT_BRANCH}}'
   type: text
-- name: GIT_REPO 
+- name: GIT_REPO
   value: 'https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines.git'
   type: text
-- name: VERSIONS_GIT_BRANCH 
+- name: VERSIONS_GIT_BRANCH
   value: '{{form.pipeline.parameters.prod-VERSIONS_GIT_BRANCH}}'
   type: text
-- name: VERDACCIO_USER 
+- name: VERDACCIO_USER
   value: '{{form.pipeline.parameters.VERDACCIO_USER}}'
   type: text
 - name: VERDACCIO_EMAIL
   value: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
   type: text
-- name: VERDACCIO_PASSWORD 
+- name: VERDACCIO_PASSWORD
   value: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
   type: secure
 - name: ARTIFACTORY_USER
   value: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
   type: text
-- name: ARTIFACTORY_APIKEY 
+- name: ARTIFACTORY_APIKEY
   value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: secure
-- name: ARTIFACTORY_URL 
+- name: ARTIFACTORY_URL
   value: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
   type: text
-- name: ICP_USER 
+- name: ICP_USER
   value: '{{form.pipeline.parameters.ICP_USER}}'
   type: text
-- name: ICP_PASSWORD 
+- name: ICP_PASSWORD
   value: '{{form.pipeline.parameters.ICP_PASSWORD}}'
   type: secure
-- name: NAMESPACE 
+- name: NAMESPACE
   value: '{{form.pipeline.parameters.prod-namespace}}'
   type: text
 - name: DOMAIN
   value: '{{form.pipeline.parameters.prod-domain}}'
   type: text
-- name: IBMCLOUD_HOME 
+- name: IBMCLOUD_HOME
   value: '/root'
   type: text

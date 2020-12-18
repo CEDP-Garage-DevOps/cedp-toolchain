@@ -51,7 +51,7 @@ stages:
       set -e
       
       mv git .git
-      ibm-bifrost plan -d "${DESTINATION}" diff -pr
+      ibm-bifrost build_plan "${DESTINATION}" diff pr
       mv .git git
       
     namespace: 'NULL'
@@ -60,52 +60,14 @@ stages:
   inputs:
   - type: job
     stage: Plan
-    job: Build
+    job: 'Build'
     dir_name: null
   triggers:
   - type: stage
   permission:
     execute: TOOLCHAIN_ADMINS
   jobs:
-  - name: Docker Lint
-    type: tester
-    curatedDockerImage: default
-    script: |-
-      #********************************************
-      #!/bin/bash
-      set -x
-      set -e
-      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
-      export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
-      export HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
-      ibm-bifrost login --public-cloud
-      export MAVEN_OPTS="-Xmx2g"
-
-      ibm-bifrost docker --lint
-    test_type: customimage
-    namespace: 'NULL'
-    docker_image: ${DOCKER_IMAGE_NAME}
-  - name: Deploy Lint
-    type: tester
-    curatedDockerImage: default
-    script: |-
-      #********************************************
-      #!/bin/bash
-      set -x
-      set -e
-      export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
-      export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
-      export HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
-      ibm-bifrost login --public-cloud
-      export MAVEN_OPTS="-Xmx2g"
-
-      ibm-bifrost deploy --lint
-    test_type: customimage
-    namespace: 'NULL'
-    docker_image: ${DOCKER_IMAGE_NAME}
-  - name: Test Code
+  - name: 'Test'
     type: builder
     curatedDockerImage: default
     artifact_dir: ''
@@ -118,13 +80,19 @@ stages:
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
       export HOME=${IBMCLOUD_HOME}
-      export ORGANIZATION=https://cloud.ibm.com
-      ibm-bifrost login --public-cloud
-
+  
+      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+  
       export MAVEN_OPTS="-Xmx2g"
+  
+      #npm-cli-login -u ${VERDACCIO_USER} -p ${VERDACCIO_PASSWORD} -e ${ARTIFACTORY_USER} -s @cedp -r https://verdaccio.k8s-datahub-development.us-south.containers.appdomain.cloud > ~/.npmrc
+  
+      curl -u ${ARTIFACTORY_USER}:${ARTIFACTORY_APIKEY} https://na.artifactory.swg-devops.com/artifactory/api/npm/auth/  > ~/.npmrc
+  
+      npm config set @cedp:registry https://na.artifactory.swg-devops.com/artifactory/api/npm/cedp-npm-local/
+  
+      ibm-bifrost build_code test-only
 
-      ibm-bifrost code --lint
-      ibm-bifrost code --test
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
 - name: 'Sonar Qube'
@@ -149,14 +117,12 @@ stages:
       set -e
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
       export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID
-      
-      export ORGANIZATION=https://cloud.ibm.com
-      ibm-bifrost login --public-cloud
-      
+  
+      ibmcloud login -a cloud.ibm.com -r "${REGION}" --apikey ${IBM_CLOUD_API_KEY}
+  
       mv git .git
       sonar-scanner --version
-      
-      ibm-bifrost sonar --scan
+      ibm-bifrost sonar_validate
 
     namespace: 'NULL'      
     docker_image: ${DOCKER_IMAGE_NAME}
