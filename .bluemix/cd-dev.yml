@@ -296,4 +296,7 @@ properties:
 - name: DEPLOYMENT_TYPE 
   value: '{{form.pipeline.parameters.deployment-type}}'
   type: text
+- name: OS_TOKEN
+  value: '{{form.pipeline.parameters.OS_TOKEN}}'
+  type: secure
   

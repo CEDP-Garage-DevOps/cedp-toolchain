@@ -131,6 +131,12 @@
 			"disabled": false,
 			"pattern": "\\S",
 			"description": " "
+		},
+		"OS_TOKEN": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S",
+			"description": "Login token"
 		}
 	},
 	"required": [
