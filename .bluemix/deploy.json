@@ -45,6 +45,7 @@
 			"enum": [
 				"public-kubernetes",
 				"public-openshift",
+				"cirrus-openshift",
 				"private-kubernetes"
 			]
 		},
