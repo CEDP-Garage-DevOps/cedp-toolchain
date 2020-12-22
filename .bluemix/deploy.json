@@ -252,8 +252,8 @@
 					"titleMap": {
 						"public-kubernetes": "IBM Public Cloud Kubernetes Cluster",
 						"public-openshift": "IBM Public Cloud Openshift Cluster",
-						"cirrus-openshift": "IBM CIO Cirrus ML Openshift Cluster",
-						"private-kubernetes": "IBM Cloud Private Cluster"
+						"private-kubernetes": "IBM Cloud Private Cluster",
+						"cirrus-openshift": "IBM CIO Cirrus ML Openshift Cluster"						
 					},
 					"items": [
 						{
@@ -469,7 +469,80 @@
 									"readonly": false
 								}
 							]
-						}
+						},
+						{
+							"type": "table",
+							"columnCount": 5,
+							"widths": [
+								"32%",
+								"2%",
+								"32%",
+								"2%",
+								"32%"
+							],
+							"items": [
+								{
+									"type": "label",
+									"title": "Cluster URL"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "Ingress subdomain"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "External IP"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "API token"
+								},
+								{
+									"type": "text",
+									"key": "cluster",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "text",
+									"key": "domain",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "text",
+									"key": "externalIP",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "password",
+									"key": "OS_TOKEN",
+									"readonly": false
+								}
+							]
+						}						
 					]
 				}
 			]
