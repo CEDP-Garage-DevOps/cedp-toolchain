@@ -252,6 +252,7 @@
 					"titleMap": {
 						"public-kubernetes": "IBM Public Cloud Kubernetes Cluster",
 						"public-openshift": "IBM Public Cloud Openshift Cluster",
+						"cirrus-openshift": "IBM CIO Cirrus ML Openshift Cluster",
 						"private-kubernetes": "IBM Cloud Private Cluster"
 					},
 					"items": [
