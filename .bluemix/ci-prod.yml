@@ -23,7 +23,7 @@ stages:
       set -x
       set -e
   
-      ibm-bifrost versions --pull "$VERSIONS_GIT_BRANCH"
+      ibm-bifrost versions pull "$VERSIONS_GIT_BRANCH"
       mv .git git
 
     namespace: 'NULL'

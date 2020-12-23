@@ -23,7 +23,7 @@ stages:
       set -x
       set -e
   
-      ibm-bifrost versions --pull "$VERSIONS_GIT_BRANCH"
+      ibm-bifrost versions pull "$VERSIONS_GIT_BRANCH"
       mv .git git
 
     namespace: 'NULL'
@@ -147,41 +147,41 @@ properties:
   type: text
 - name: DOCKER_PASSWORD
   value: '{{form.pipeline.parameters.api-key}}'
-  type: secure 
+  type: secure
 - name: REGISTRY_REGION_ID
   value: '{{form.pipeline.parameters.registry-region}}'
   type: text
-- name: INPUT_GIT_BRANCH 
+- name: INPUT_GIT_BRANCH
   value: '{{form.pipeline.parameters.stg-INPUT_GIT_BRANCH}}'
   type: text
-- name: GIT_REPO 
+- name: GIT_REPO
   value: 'https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines.git'
   type: text
-- name: VERSIONS_GIT_BRANCH 
+- name: VERSIONS_GIT_BRANCH
   value: '{{form.pipeline.parameters.stg-VERSIONS_GIT_BRANCH}}'
   type: text
-- name: VERDACCIO_USER 
+- name: VERDACCIO_USER
   value: '{{form.pipeline.parameters.VERDACCIO_USER}}'
   type: text
 - name: VERDACCIO_EMAIL
   value: '{{form.pipeline.parameters.VERDACCIO_EMAIL}}'
   type: text
-- name: VERDACCIO_PASSWORD 
+- name: VERDACCIO_PASSWORD
   value: '{{form.pipeline.parameters.VERDACCIO_PASSWORD}}'
   type: secure
 - name: ARTIFACTORY_USER
   value: '{{form.pipeline.parameters.ARTIFACTORY_USER}}'
   type: text
-- name: ARTIFACTORY_APIKEY 
+- name: ARTIFACTORY_APIKEY
   value: '{{form.pipeline.parameters.ARTIFACTORY_APIKEY}}'
   type: secure
-- name: ARTIFACTORY_URL 
+- name: ARTIFACTORY_URL
   value: '{{form.pipeline.parameters.ARTIFACTORY_URL}}'
   type: text
-- name: ICP_USER 
+- name: ICP_USER
   value: '{{form.pipeline.parameters.ICP_USER}}'
   type: text
-- name: ICP_PASSWORD 
+- name: ICP_PASSWORD
   value: '{{form.pipeline.parameters.ICP_PASSWORD}}'
   type: secure
 - name: NAMESPACE
@@ -191,6 +191,6 @@ properties:
 - name: DOMAIN
   value: '{{form.pipeline.parameters.stg-domain}}'
   type: text
-- name: IBMCLOUD_HOME 
+- name: IBMCLOUD_HOME
   value: '/root'
   type: text
