@@ -53,7 +53,7 @@ stages:
       
       ibm-bifrost login --public-cloud
       mv git .git
-      ibm-bifrost plan -d "${DESTINATION}" diff --commit
+      ibm-bifrost plan --use-current-versions -d "${DESTINATION}" diff --commit
       mv .git git
       
     namespace: 'NULL'
@@ -75,7 +75,7 @@ stages:
     deploy_type: customimage
     script: |-
       #********************************************
-      #!/bin/bash
+      #!/bin/bash  
       set -x
       set -e
       export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:)
