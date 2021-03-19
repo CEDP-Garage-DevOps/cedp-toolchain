@@ -63,6 +63,10 @@ services:
           IBMCLOUD_HOME: /root
           KEY_PROTECT_NAME: '{{form.pipeline.parameters.key-protect-name}}'
           DEPLOYMENT_TYPE: '{{form.pipeline.parameters.deployment-type}}'
+          OS_TOKEN: '{{form.pipeline.parameters.OS_TOKEN}}'
+          CIRRUS_REGISTRY: '{{form.pipeline.parameters.CIRRUS_REGISTRY}}'
+          CIRRUS_REGISTRY_USER: '{{form.pipeline.parameters.CIRRUS_REGISTRY_USER}}'
+          CIRRUS_REGISTRY_PASWORD: '{{form.pipeline.parameters.CIRRUS_REGISTRY_PASSWORD}}'
         execute: false
   cedp-tc-ci-dev-build:
     service_id: pipeline
@@ -97,6 +101,10 @@ services:
           IBMCLOUD_HOME: /root
           KEY_PROTECT_NAME: '{{form.pipeline.parameters.key-protect-name}}'
           DEPLOYMENT_TYPE: '{{form.pipeline.parameters.deployment-type}}'
+          OS_TOKEN: '{{form.pipeline.parameters.OS_TOKEN}}'
+          CIRRUS_REGISTRY: '{{form.pipeline.parameters.CIRRUS_REGISTRY}}'
+          CIRRUS_REGISTRY_USER: '{{form.pipeline.parameters.CIRRUS_REGISTRY_USER}}'
+          CIRRUS_REGISTRY_PASWORD: '{{form.pipeline.parameters.CIRRUS_REGISTRY_PASSWORD}}'
         execute: false
   messaging:
     service_id: slack
