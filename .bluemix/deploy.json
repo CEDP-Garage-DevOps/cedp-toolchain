@@ -45,7 +45,9 @@
 			"enum": [
 				"public-kubernetes",
 				"public-openshift",
-				"private-kubernetes"
+				"private-kubernetes",
+				"cirrus-ml-openshift",
+				"cirrus"
 			]
 		},
 		"cluster": {
@@ -130,7 +132,29 @@
 			"disabled": false,
 			"pattern": "\\S",
 			"description": " "
-		}
+		},
+		"OS_TOKEN": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S",
+			"description": "Login token"
+		},
+		"CIRRUS_REGISTRY": {
+			"type": "string",
+			"disabled": false,
+			"description": "Cirrus registry url"
+		},
+		"CIRRUS_REGISTRY_USER": {
+			"type": "string",
+			"disabled": false,
+			"description": " "
+		},
+		"CIRRUS_REGISTRY_PASSWORD": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S",
+			"description": " "			
+		},
 	},
 	"required": [
 		"api-key",
@@ -251,7 +275,8 @@
 					"titleMap": {
 						"public-kubernetes": "IBM Public Cloud Kubernetes Cluster",
 						"public-openshift": "IBM Public Cloud Openshift Cluster",
-						"private-kubernetes": "IBM Cloud Private Cluster"
+						"private-kubernetes": "IBM Cloud Private Cluster",
+						"cirrus-openshift": "IBM CIO Cirrus Openshift Cluster"						
 					},
 					"items": [
 						{
@@ -467,7 +492,97 @@
 									"readonly": false
 								}
 							]
-						}
+						},
+{
+							"type": "table",
+							"columnCount": 7,
+							"widths": [
+								"24%",
+								"1.5%",
+								"24%",
+								"1.5%",
+								"24%",
+								"1.5%",
+								"24%"
+							],
+							"items": [
+								{
+									"type": "label",
+									"title": "Cluster URL"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "Ingress subdomain"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "External IP"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "API token"
+								},
+								{
+									"type": "text",
+									"key": "cluster",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "text",
+									"key": "domain",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "text",
+									"key": "externalIP",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "password",
+									"key": "OS_TOKEN",
+									"readonly": false
+								},
+								{
+									"type": "text",
+									"key": "CIRRUS_REGISTRY",
+									"readonly": false
+								},
+								{
+									"type": "text",
+									"key": "CIRRUS_REGISTRY_USER",
+									"readonly": false
+								},				
+								{
+									"type": "password",
+									"key": "CIRRUS_REGISTRY_PASSWORD",
+									"readonly": false
+								},								
+							]
+						}							
 					]
 				}
 			]
