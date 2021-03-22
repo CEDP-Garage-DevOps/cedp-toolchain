@@ -503,7 +503,6 @@
 								"32%"
 							],
 							"items": [
-							"items": [
 								{
 									"type": "label",
 									"title": "Cluster URL"
