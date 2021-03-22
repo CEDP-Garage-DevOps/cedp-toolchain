@@ -507,7 +507,7 @@
 							"items": [
 								{
 									"type": "label",
-									"title": "Cluster URL"
+									"title": "Cirrus cluster URL"
 								},
 								{
 									"type": "label",
@@ -566,15 +566,27 @@
 									"readonly": false
 								},
 								{
+									"type": "label",
+									"title": ""
+								},								
+								{
 									"type": "text",
 									"key": "CIRRUS_REGISTRY",
 									"readonly": false
 								},
 								{
+									"type": "label",
+									"title": ""
+								},								
+								{
 									"type": "text",
 									"key": "CIRRUS_REGISTRY_USER",
 									"readonly": false
-								},				
+								},
+								{
+									"type": "label",
+									"title": ""
+								},								
 								{
 									"type": "password",
 									"key": "CIRRUS_REGISTRY_PASSWORD",
