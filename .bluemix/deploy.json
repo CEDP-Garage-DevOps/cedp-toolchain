@@ -493,7 +493,7 @@
 								}
 							]
 						},
-{
+						{
 							"type": "table",
 							"columnCount": 7,
 							"widths": [
@@ -580,7 +580,7 @@
 									"type": "password",
 									"key": "CIRRUS_REGISTRY_PASSWORD",
 									"readonly": false
-								},								
+								}							
 							]
 						}							
 					]
