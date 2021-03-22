@@ -146,13 +146,13 @@
 		"CIRRUS_REGISTRY_USER": {
 			"type": "string",
 			"disabled": false,
-			"description": " "
+			"description": "Cirrus registry user "
 		},
 		"CIRRUS_REGISTRY_PASSWORD": {
 			"type": "string",
 			"disabled": false,
 			"pattern": "\\S",
-			"description": " "			
+			"description": "Cirrus registry password "			
 		},
 	},
 	"required": [
