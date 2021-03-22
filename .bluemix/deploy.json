@@ -46,8 +46,7 @@
 				"public-kubernetes",
 				"public-openshift",
 				"private-kubernetes",
-				"cirrus-ml-openshift",
-				"cirrus"
+				"cirrus-openshift"
 			]
 		},
 		"cluster": {
