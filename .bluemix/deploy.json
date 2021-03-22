@@ -561,7 +561,14 @@
 									"type": "label",
 									"title": "OS Password"
 								},
-
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": ""
+								},								
 								{
 									"type": "text",
 									"key": "OS_USER",
