@@ -46,7 +46,7 @@
 				"public-kubernetes",
 				"public-openshift",
 				"private-kubernetes",
-				"cirrus-openshift"
+				"cio-cirrus-openshift"
 			]
 		},
 		"cluster": {
@@ -275,7 +275,7 @@
 						"public-kubernetes": "IBM Public Cloud Kubernetes Cluster",
 						"public-openshift": "IBM Public Cloud Openshift Cluster",
 						"private-kubernetes": "IBM Cloud Private Cluster",
-						"cirrus-openshift": "IBM CIO Cirrus Openshift Cluster"						
+						"cio-cirrus-openshift": "IBM CIO Cirrus Openshift Cluster"						
 					},
 					"items": [
 						{
@@ -494,20 +494,19 @@
 						},
 						{
 							"type": "table",
-							"columnCount": 7,
+							"columnCount": 5,
 							"widths": [
-								"24%",
-								"1.5%",
-								"24%",
-								"1.5%",
-								"24%",
-								"1.5%",
-								"24%"
+								"32%",
+								"2%",
+								"32%",
+								"2%",
+								"32%"
 							],
+							"items": [
 							"items": [
 								{
 									"type": "label",
-									"title": "Cirrus cluster URL"
+									"title": "Cluster URL"
 								},
 								{
 									"type": "label",
@@ -515,7 +514,7 @@
 								},
 								{
 									"type": "label",
-									"title": "Ingress subdomain"
+									"title": "Ingress domain"
 								},
 								{
 									"type": "label",
@@ -526,15 +525,8 @@
 									"title": "External IP"
 								},
 								{
-									"type": "label",
-									"title": ""
-								},
-								{
-									"type": "label",
-									"title": "API token"
-								},
-								{
 									"type": "text",
+									"description": "Cirrus URL",
 									"key": "cluster",
 									"readonly": false
 								},
@@ -544,6 +536,7 @@
 								},
 								{
 									"type": "text",
+									"description": "Ingress domain",
 									"key": "domain",
 									"readonly": false
 								},
@@ -553,7 +546,26 @@
 								},
 								{
 									"type": "text",
+									"description": "Ingress domain IP",
 									"key": "externalIP",
+									"readonly": false
+								},
+								{
+									"type": "label",
+									"title": "OS User"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": "OS Password"
+								},
+
+								{
+									"type": "text",
+									"key": "OS_USER",
 									"readonly": false
 								},
 								{
@@ -564,34 +576,7 @@
 									"type": "password",
 									"key": "OS_TOKEN",
 									"readonly": false
-								},
-								{
-									"type": "label",
-									"title": ""
-								},								
-								{
-									"type": "text",
-									"key": "CIRRUS_REGISTRY",
-									"readonly": false
-								},
-								{
-									"type": "label",
-									"title": ""
-								},								
-								{
-									"type": "text",
-									"key": "CIRRUS_REGISTRY_USER",
-									"readonly": false
-								},
-								{
-									"type": "label",
-									"title": ""
-								},								
-								{
-									"type": "password",
-									"key": "CIRRUS_REGISTRY_PASSWORD",
-									"readonly": false
-								}							
+								}						
 							]
 						}							
 					]
