@@ -299,6 +299,9 @@ properties:
 - name: OS_TOKEN
   value: '{{form.pipeline.parameters.OS_TOKEN}}'
   type: secure
+- name: OS_USER
+  value: '{{form.pipeline.parameters.OS_USER}}'
+  type: text  
 - name: CIRRUS_REGISTRY
   value: '{{form.pipeline.parameters.CIRRUS_REGISTRY}}'
   type: text  
