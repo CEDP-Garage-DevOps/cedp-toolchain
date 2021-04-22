@@ -311,3 +311,6 @@ properties:
 - name: CIRRUS_REGISTRY_PASSWORD
   value: '{{form.pipeline.parameters.CIRRUS_REGISTRY_PASSWORD}}'
   type: secure    
+sidecars:
+  - securityContext:
+      privileged: true
