@@ -138,6 +138,11 @@
 			"pattern": "\\S",
 			"description": "Login token"
 		},
+		"OS_USER": {
+			"type": "string",
+			"disabled": false,
+			"description": " "
+		},
 		"CIRRUS_REGISTRY": {
 			"type": "string",
 			"disabled": false,
