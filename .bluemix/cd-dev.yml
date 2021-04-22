@@ -27,6 +27,11 @@ stages:
       mv .git git
       
     namespace: 'NULL'
+    sidecars:
+    - securityContext:
+        privileged: true
+    securityContext:
+      privileged: true
     docker_image: ${DOCKER_IMAGE_NAME} 
 - name: Plan
   inputs:
@@ -220,6 +225,11 @@ stages:
       
     namespace: 'NULL'
     docker_image: ${DOCKER_IMAGE_NAME}
+    sidecars:
+    - securityContext:
+        privileged: true
+    securityContext:
+      privileged: true
 hooks:
 - enabled: true
   label: null
@@ -311,6 +321,3 @@ properties:
 - name: CIRRUS_REGISTRY_PASSWORD
   value: '{{form.pipeline.parameters.CIRRUS_REGISTRY_PASSWORD}}'
   type: secure    
-sidecars:
-  - securityContext:
-      privileged: true
