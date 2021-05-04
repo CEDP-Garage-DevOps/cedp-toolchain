@@ -37,6 +37,7 @@ services:
         - cedp-tc-repo
       name: '{{toolchain.name}}-CD'
       ui-pipeline: true
+      type: 'tekton'
       configuration:
         content:
           $text: cd-dev.yml
