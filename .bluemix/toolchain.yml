@@ -40,7 +40,7 @@ services:
       type: 'tekton'
       configuration:
         content:
-          $text: cd-dev.yml
+          $text: cd-dev-pipeline-tekton.yml
         env:
           DESTINATION: '{{form.pipeline.parameters.destination}}' 
           GIT_REPO: cedp-tc-repo
