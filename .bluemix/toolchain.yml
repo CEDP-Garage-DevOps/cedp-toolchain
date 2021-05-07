@@ -37,9 +37,10 @@ services:
         - cedp-tc-repo
       name: '{{toolchain.name}}-CD'
       ui-pipeline: true
+      type: 'tekton'
       configuration:
         content:
-          $text: cd-prod.yml
+          $text: cd-dev-pipeline-tekton.yml
         env:
           DESTINATION: '{{form.pipeline.parameters.destination}}' 
           GIT_REPO: cedp-tc-repo
@@ -64,6 +65,10 @@ services:
           KEY_PROTECT_NAME: '{{form.pipeline.parameters.key-protect-name}}'
           DEPLOYMENT_TYPE: '{{form.pipeline.parameters.deployment-type}}'
           OS_TOKEN: '{{form.pipeline.parameters.OS_TOKEN}}'
+          OS_USER: '{{form.pipeline.parameters.OS_USER}}'
+          CIRRUS_REGISTRY: '{{form.pipeline.parameters.CIRRUS_REGISTRY}}'
+          CIRRUS_REGISTRY_USER: '{{form.pipeline.parameters.CIRRUS_REGISTRY_USER}}'
+          CIRRUS_REGISTRY_PASWORD: '{{form.pipeline.parameters.CIRRUS_REGISTRY_PASSWORD}}'
         execute: false
   cedp-tc-ci-prod-build:
     service_id: pipeline
@@ -99,6 +104,10 @@ services:
           KEY_PROTECT_NAME: '{{form.pipeline.parameters.key-protect-name}}'
           DEPLOYMENT_TYPE: '{{form.pipeline.parameters.deployment-type}}'
           OS_TOKEN: '{{form.pipeline.parameters.OS_TOKEN}}'
+          OS_USER: '{{form.pipeline.parameters.OS_USER}}'
+          CIRRUS_REGISTRY: '{{form.pipeline.parameters.CIRRUS_REGISTRY}}'
+          CIRRUS_REGISTRY_USER: '{{form.pipeline.parameters.CIRRUS_REGISTRY_USER}}'
+          CIRRUS_REGISTRY_PASWORD: '{{form.pipeline.parameters.CIRRUS_REGISTRY_PASSWORD}}'
         execute: false
   messaging:
     service_id: slack
