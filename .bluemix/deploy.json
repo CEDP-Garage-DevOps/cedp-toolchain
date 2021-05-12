@@ -84,6 +84,18 @@
 			"disabled": false,
 			"description": "Branch to store image versions"
 		},
+		"GIT_TOKEN": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S",
+			"description": "GitHub access token"
+		},
+		"dockerconfigjson": {
+			"type": "string",
+			"disabled": false,
+			"pattern": "\\S",
+			"description": "Image Pull Secret"		
+		},
 		"VERDACCIO_URL": {
 			"type": "string",
 			"disabled": false,
@@ -158,7 +170,7 @@
 			"disabled": false,
 			"pattern": "\\S",
 			"description": "Cirrus registry password "			
-		},
+		}
 	},
 	"required": [
 		"api-key",
@@ -166,7 +178,9 @@
 		"destination",
 		"dockerImageName",
 		"INPUT_GIT_BRANCH",
-		"VERSIONS_GIT_BRANCH"
+		"VERSIONS_GIT_BRANCH",
+		"dockerconfigjson",
+		"GIT_TOKEN"
 	],
 	"form": [
 		{

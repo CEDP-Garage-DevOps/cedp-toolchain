@@ -2,9 +2,9 @@
 ---
 inputs:
   - type: git
-    branch: ${INPUT_GIT_BRANCH}
+    branch: tekton
     service: ${GIT_REPO}
-    path: .pipeline
+    path: .tekton
 #   - type: git
 #     branch: master
 #     service: ${TEKTON_CATALOG_REPO}
@@ -54,7 +54,7 @@ properties:
 - name: INPUT_GIT_BRANCH 
   value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
   type: text
-- name: GIT_REPO 
+- name: REPO 
   value: 'https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines.git'
   type: text
 - name: VERSIONS_GIT_BRANCH 
@@ -108,3 +108,12 @@ properties:
 - name: CIRRUS_REGISTRY_PASSWORD
   value: '{{form.pipeline.parameters.CIRRUS_REGISTRY_PASSWORD}}'
   type: secure 
+- name: GIT_REPO
+  value: '{{from.pipeline.parameters.repo_url}}'
+  type: text
+- name: dockerconfigjson
+  value: '{{from.pipeline.parameters.dockerconfigjson}}'
+  tpe: secure
+- name: GIT_TOKEN
+  value: '{{from.pipeline.parameters.GIT_TOKEN}}'
+  type: secure  

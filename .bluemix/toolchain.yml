@@ -43,7 +43,10 @@ services:
           $text: cd-dev-pipeline-tekton.yml
         env:
           DESTINATION: '{{form.pipeline.parameters.destination}}' 
-          GIT_REPO: cedp-tc-repo
+          REPO: cedp-tc-repo
+          GIT_REPO: '{{form.pipeline.parameters.repo_url}}'
+          dockerconfigjson: '{{from.pipeline.parameters.dockerconfigjson}}'
+          GIT_TOKEN: '{{from.pipeline.parameters.GIT_TOKEN}}'
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           CLUSTER: '{{form.pipeline.parameters.cluster}}'
@@ -82,7 +85,8 @@ services:
           $text: ci-prod.yml
         env:
           DESTINATION: '{{form.pipeline.parameters.destination}}' 
-          GIT_REPO: cedp-tc-repo
+          REPO: cedp-tc-repo
+          GIT_REPO: '{{form.pipeline.parameters.repo_url}}' 
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           CLUSTER: '{{form.pipeline.parameters.cluster}}'
