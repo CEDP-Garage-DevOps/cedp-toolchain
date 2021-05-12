@@ -288,6 +288,43 @@
 					]
 				},
 				{
+					"type": "table",
+					"columnCount": 3,
+					"widths": [
+						"32%",
+						"2%",
+						"32%"
+					],
+					"items": [
+						{
+							"type": "label",
+							"title": "Git token"
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "label",
+							"title": "Docker config json"
+						},
+						{
+							"type": "password",
+							"key": "GIT_TOKEN",
+							"readonly": false
+						},
+						{
+							"type": "label",
+							"title": ""
+						},
+						{
+							"type": "password",
+							"key": "dockerconfigjson",
+							"readonly": false
+						}
+					]
+				},
+				{
 					"type": "selectfieldset",
 					"key": "deployment-type",
 					"titleMap": {
