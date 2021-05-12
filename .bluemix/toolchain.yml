@@ -44,7 +44,6 @@ services:
         env:
           DESTINATION: '{{form.pipeline.parameters.destination}}' 
           REPO: cedp-tc-repo
-          #GIT_REPO: '{{form.pipeline.parameters.repo_url}}'
           GIT_REPO: cedp-tc-repo
           dockerconfigjson: '{{from.pipeline.parameters.dockerconfigjson}}'
           GIT_TOKEN: '{{from.pipeline.parameters.GIT_TOKEN}}'
@@ -87,7 +86,6 @@ services:
         env:
           DESTINATION: '{{form.pipeline.parameters.destination}}' 
           GIT_REPO: cedp-tc-repo
-          #GIT_REPO: '{{form.pipeline.parameters.repo_url}}' 
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           CLUSTER: '{{form.pipeline.parameters.cluster}}'

@@ -54,9 +54,10 @@ properties:
 - name: INPUT_GIT_BRANCH 
   value: '{{form.pipeline.parameters.INPUT_GIT_BRANCH}}'
   type: text
-# - name: GIT_REPO 
-#   value: 'https://github.ibm.com/CEDP-Garage/cedp-garage-pipelines.git'
-#   type: text
+- name: GIT_REPO 
+  path: parameters.repo_url
+  type: integration
+  value: ${GIT_REPO}
 - name: VERSIONS_GIT_BRANCH 
   value: '{{form.pipeline.parameters.VERSIONS_GIT_BRANCH}}'
   type: text
