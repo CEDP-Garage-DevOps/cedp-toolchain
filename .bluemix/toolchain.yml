@@ -7,8 +7,8 @@ template:
   description:
     $ref: "#/messages/template.description"
   required:
-    - cedp-tc-cd-prod-build
-    - cedp-tc-ci-prod-build
+    - cedp-tc-cd-dev-build
+    - cedp-tc-ci-dev-build
     - cedp-tc-repo
   info:
     git url: >-
@@ -30,7 +30,7 @@ services:
       private_repo: true
       has_issues: false
       enable_traceability: false
-  cedp-tc-cd-prod-build:
+  cedp-tc-cd-dev-build:
     service_id: pipeline
     parameters:
       services:
@@ -73,7 +73,7 @@ services:
           CIRRUS_REGISTRY_USER: '{{form.pipeline.parameters.CIRRUS_REGISTRY_USER}}'
           CIRRUS_REGISTRY_PASWORD: '{{form.pipeline.parameters.CIRRUS_REGISTRY_PASSWORD}}'
         execute: false
-  cedp-tc-ci-prod-build:
+  cedp-tc-ci-dev-build:
     service_id: pipeline
     parameters:
       services:
@@ -82,7 +82,7 @@ services:
       ui-pipeline: true
       configuration:
         content:
-          $text: ci-prod.yml
+          $text: ci-dev.yml
         env:
           DESTINATION: '{{form.pipeline.parameters.destination}}' 
           REPO: cedp-tc-repo
