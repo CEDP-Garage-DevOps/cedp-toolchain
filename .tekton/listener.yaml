@@ -1,0 +1,173 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: template
+spec:
+  params:
+    - name: dockerconfigjson
+      description: docker config to pull build image
+    - name: DESTINATION
+    - name: DOCKER_IMAGE_NAME
+    - name: IBM_CLOUD_API_KEY
+    - name: REGISTRY_REGION_ID
+    - name: CLUSTER
+    - name: DOMAIN
+    - name: EXTERNAL_IP
+    - name: INPUT_GIT_BRANCH 
+    - name: GIT_REPO 
+    - name: VERSIONS_GIT_BRANCH 
+    - name: VERDACCIO_URL
+    - name: VERDACCIO_USER 
+    - name: VERDACCIO_PASSWORD 
+    - name: ARTIFACTORY_USER
+    - name: ARTIFACTORY_APIKEY 
+    - name: ARTIFACTORY_URL 
+    - name: ICP_USER 
+    - name: ICP_PASSWORD 
+    - name: IBMCLOUD_HOME 
+    - name: KEY_PROTECT_NAME 
+    - name: DEPLOYMENT_TYPE 
+    - name: OS_TOKEN
+    - name: OS_USER
+    - name: CIRRUS_REGISTRY
+    - name: CIRRUS_REGISTRY_USER
+    - name: CIRRUS_REGISTRY_PASSWORD
+    - name: GIT_TOKEN
+  resourcetemplates:
+    - apiVersion: v1
+      kind: Secret
+      metadata:
+        name: all-icr-io
+      type: kubernetes.io/dockerconfigjson
+      data:
+        .dockerconfigjson: $(params.dockerconfigjson)
+    - apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: docker-build-sa
+      imagePullSecrets:
+        - name: all-icr-io
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: cedp-tekton-$(uid)-pvc
+      spec:
+        resources:
+          requests:
+            storage: 5Gi
+        volumeMode: Filesystem
+        accessModes:
+          - ReadWriteOnce
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        name: cedp-tekton-test-$(uid)
+      spec:
+        pipelineRef:
+          name: pipeline
+        params:
+          - name: dockerconfigjson
+            value: $(params.dockerconfigjson)
+          - name: DESTINATION
+            value: $(params.DESTINATION)
+          - name: DOCKER_IMAGE_NAME
+            value: $(params.DOCKER_IMAGE_NAME)
+          - name: IBM_CLOUD_API_KEY
+            value: $(params.IBM_CLOUD_API_KEY)
+          - name: REGISTRY_REGION_ID
+            value: $(params.REGISTRY_REGION_ID)
+          - name: CLUSTER
+            value: $(params.CLUSTER)
+          - name: DOMAIN
+            value: $(params.DOMAIN)
+          - name: EXTERNAL_IP
+            value: $(params.EXTERNAL_IP)
+          - name: INPUT_GIT_BRANCH 
+            value: $(params.INPUT_GIT_BRANCH)
+          - name: GIT_REPO 
+            value: $(params.GIT_REPO)
+          - name: VERSIONS_GIT_BRANCH 
+            value: $(params.VERSIONS_GIT_BRANCH)
+          - name: VERDACCIO_URL
+            value: $(params.VERDACCIO_URL)
+          - name: VERDACCIO_USER 
+            value: $(params.VERDACCIO_USER)
+          - name: VERDACCIO_PASSWORD 
+            value: $(params.VERDACCIO_PASSWORD)
+          - name: ARTIFACTORY_USER
+            value: $(params.ARTIFACTORY_USER)
+          - name: ARTIFACTORY_APIKEY 
+            value: $(params.ARTIFACTORY_APIKEY)
+          - name: ARTIFACTORY_URL 
+            value: $(params.ARTIFACTORY_URL)
+          - name: ICP_USER 
+            value: $(params.ICP_USER)
+          - name: ICP_PASSWORD 
+            value: $(params.ICP_PASSWORD)
+          - name: IBMCLOUD_HOME 
+            value: $(params.IBMCLOUD_HOME)
+          - name: KEY_PROTECT_NAME 
+            value: $(params.KEY_PROTECT_NAME)
+          - name: DEPLOYMENT_TYPE 
+            value: $(params.DEPLOYMENT_TYPE)
+          - name: OS_TOKEN
+            value: $(params.OS_TOKEN)
+          - name: OS_USER
+            value: $(params.OS_USER)
+          - name: CIRRUS_REGISTRY
+            value: $(params.CIRRUS_REGISTRY)
+          - name: CIRRUS_REGISTRY_USER
+            value: $(params.CIRRUS_REGISTRY_USER)
+          - name: CIRRUS_REGISTRY_PASSWORD   
+            value: $(params.CIRRUS_REGISTRY_PASSWORD)
+          - name: GIT_TOKEN
+            value: $(params.GIT_TOKEN)            
+        workspaces:
+          - name: pipeline-pvc
+            persistentVolumeClaim:
+              claimName: cedp-tekton-$(uid)-pvc
+        serviceAccountName: docker-build-sa      
+---
+apiVersion: tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: trigger-binding-manual
+spec:
+  params:
+---
+apiVersion: tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: manual-run
+spec:
+  triggers:
+    - binding:
+        name: trigger-binding-manual
+      template:
+        name: template
+---
+apiVersion: tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: binding
+spec:
+  params:
+    - name: repository
+      value: $(params.GIT_REPO))
+    - name: branch
+      value: $(params.INPUT_GIT_BRANCH)
+    - name: revision
+      value: "$(event.head_commit.id)"
+---
+apiVersion: tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: listner
+spec:
+  triggers:
+    - binding:
+        name: binding
+      template:
+        name: template
+

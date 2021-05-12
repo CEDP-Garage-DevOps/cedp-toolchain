@@ -1,0 +1,185 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline
+spec:
+  params:
+    - name: dockerconfigjson
+      description: docker config to pull build image
+    - name: DESTINATION
+    - name: DOCKER_IMAGE_NAME
+    - name: IBM_CLOUD_API_KEY
+    - name: REGISTRY_REGION_ID
+    - name: CLUSTER
+    - name: DOMAIN
+    - name: EXTERNAL_IP
+    - name: INPUT_GIT_BRANCH 
+    - name: GIT_REPO 
+    - name: VERSIONS_GIT_BRANCH 
+    - name: VERDACCIO_URL
+    - name: VERDACCIO_USER 
+    - name: VERDACCIO_PASSWORD 
+    - name: ARTIFACTORY_USER
+    - name: ARTIFACTORY_APIKEY 
+    - name: ARTIFACTORY_URL 
+    - name: ICP_USER 
+    - name: ICP_PASSWORD 
+    - name: IBMCLOUD_HOME 
+    - name: KEY_PROTECT_NAME 
+    - name: DEPLOYMENT_TYPE 
+    - name: OS_TOKEN
+    - name: OS_USER
+    # - name: CIRRUS_REGISTRY
+    # - name: CIRRUS_REGISTRY_USER
+    # - name: CIRRUS_REGISTRY_PASSWORD
+    - name: GIT_TOKEN
+  workspaces:
+  - name: pipeline-pvc
+  tasks:
+    - name: pipeline-simple-clone-task
+      taskRef:
+        name: git-clone-repo
+      workspaces:
+        - name: task-pvc
+          workspace: pipeline-pvc     
+      params:
+        - name: repository
+          value: $(params.GIT_REPO)
+        - name: branch
+          value: $(params.INPUT_GIT_BRANCH)
+        - name: git-access-token
+          value: $(params.GIT_TOKEN)
+    - name: pipeline-versions-task
+      taskRef:
+        name: versions-task
+      runAfter:
+        - pipeline-simple-clone-task
+      params:
+        - name: DESTINATION
+          value: $(params.DESTINATION)
+        - name: DOCKER_IMAGE_NAME
+          value: $(params.DOCKER_IMAGE_NAME)
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: INPUT_GIT_BRANCH 
+          value: $(params.INPUT_GIT_BRANCH)
+        - name: GIT_REPO 
+          value: $(params.GIT_REPO)
+        - name: VERSIONS_GIT_BRANCH 
+          value: $(params.VERSIONS_GIT_BRANCH)
+        - name: IBMCLOUD_HOME 
+          value: $(params.IBMCLOUD_HOME)      
+      workspaces:
+      - name: task-pvc
+        workspace: pipeline-pvc
+    - name: pipeline-plan-task
+      taskRef:
+        name: plan-task
+      runAfter:
+        - pipeline-versions-task
+      params:
+        - name: DESTINATION
+          value: $(params.DESTINATION)
+        - name: DOCKER_IMAGE_NAME
+          value: $(params.DOCKER_IMAGE_NAME)
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          value: $(params.IBM_CLOUD_API_KEY)
+        - name: KEY_PROTECT_NAME 
+          value: $(params.KEY_PROTECT_NAME)
+        - name: CLUSTER
+          value: $(params.CLUSTER)
+        - name: DOMAIN
+          value: $(params.DOMAIN)
+        - name: EXTERNAL_IP
+          value: $(params.EXTERNAL_IP)
+        - name: CLUSTER
+          value: $(params.CLUSTER)
+        - name: DOMAIN
+          value: $(params.DOMAIN)
+        - name: EXTERNAL_IP
+          value: $(params.EXTERNAL_IP)          
+      workspaces:
+      - name: task-pvc
+        workspace: pipeline-pvc      
+    - name: pipeline-code-task
+      taskRef:
+        name: code-task
+      runAfter:
+        - pipeline-plan-task
+      params:
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          value: $(params.IBM_CLOUD_API_KEY)
+        - name: DOCKER_IMAGE_NAME
+          value: $(params.DOCKER_IMAGE_NAME)          
+      workspaces:
+        - name: task-pvc
+          workspace: pipeline-pvc
+    - name: pipeline-docker-task
+      taskRef:
+        name: docker-task
+      runAfter:
+        - pipeline-code-task
+      params:
+        - name: IBMCLOUD_HOME
+          value: $(params.IBMCLOUD_HOME) 
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          value: $(params.IBM_CLOUD_API_KEY)
+        - name: DOCKER_IMAGE_NAME
+          value: $(params.DOCKER_IMAGE_NAME)          
+      workspaces:
+        - name: task-pvc
+          workspace: pipeline-pvc
+    - name: pipeline-deploy-task
+      taskRef:
+        name: deploy-task
+      runAfter:
+        - pipeline-docker-task
+      params:
+        - name: IBMCLOUD_HOME
+          value: $(params.IBMCLOUD_HOME)
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          value: $(params.IBM_CLOUD_API_KEY)
+        - name: DEPLOYMENT_TYPE
+          value: $(params.DEPLOYMENT_TYPE)
+        - name: OS_USER
+          value: $(params.OS_USER)
+        - name: OS_TOKEN
+          value: $(params.OS_TOKEN)
+        - name: CLUSTER
+          value: $(params.CLUSTER)
+        - name: DOCKER_IMAGE_NAME
+          value: $(params.DOCKER_IMAGE_NAME)          
+      workspaces:
+        - name: task-pvc
+          workspace: pipeline-pvc
+    - name: pipeline-versions-push-task
+      taskRef:
+        name: versions-push-task
+      runAfter:
+        - pipeline-deploy-task
+      params:
+        - name: DESTINATION
+          value: $(params.DESTINATION)
+        - name: DOCKER_IMAGE_NAME
+          value: $(params.DOCKER_IMAGE_NAME)
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: INPUT_GIT_BRANCH 
+          value: $(params.INPUT_GIT_BRANCH)
+        - name: GIT_REPO 
+          value: $(params.GIT_REPO)
+        - name: VERSIONS_GIT_BRANCH 
+          value: $(params.VERSIONS_GIT_BRANCH)
+        - name: IBMCLOUD_HOME 
+          value: $(params.IBMCLOUD_HOME)      
+      workspaces:
+      - name: task-pvc
+        workspace: pipeline-pvc                        

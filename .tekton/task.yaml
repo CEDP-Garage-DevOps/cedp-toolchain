@@ -1,0 +1,328 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: versions-task
+spec:
+  params:
+    - name: DESTINATION
+    - name: DOCKER_IMAGE_NAME
+    - name: REGISTRY_REGION_ID
+    - name: INPUT_GIT_BRANCH 
+    - name: GIT_REPO 
+    - name: VERSIONS_GIT_BRANCH 
+    - name: IBMCLOUD_HOME 
+  workspaces:
+  - name: task-pvc
+    mountPath: /artifacts   
+  steps:
+    - name: get-versions
+      securityContext:
+        privileged: true    
+      image:  $(params.DOCKER_IMAGE_NAME)
+      command: ["/bin/sh", "-c"]
+      args:
+        - set -e &&
+          set -x &&
+          cd /artifacts && 
+          ibm-bifrost versions --pull $VERSIONS_GIT_BRANCH &&
+          mv .git git
+      env:
+        - name: DESTINATION
+          value: $(params.DESTINATION)
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: INPUT_GIT_BRANCH 
+          value: $(params.INPUT_GIT_BRANCH)
+        - name: GIT_REPO 
+          value: $(params.GIT_REPO)
+        - name: VERSIONS_GIT_BRANCH 
+          value: $(params.VERSIONS_GIT_BRANCH)
+        - name: IBMCLOUD_HOME 
+          value: $(params.IBMCLOUD_HOME)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: plan-task
+spec:
+  params:
+    - name: DESTINATION
+    - name: DOCKER_IMAGE_NAME
+    - name: REGISTRY_REGION_ID
+    - name: IBM_CLOUD_API_KEY
+    - name: KEY_PROTECT_NAME
+    - name: CLUSTER
+    - name: DOMAIN
+    - name: EXTERNAL_IP    
+  workspaces:
+  - name: task-pvc
+    mountPath: /artifacts   
+  steps:
+    - name: plan
+      securityContext:
+        privileged: true    
+      image: $(params.DOCKER_IMAGE_NAME)
+      command: ["/bin/sh", "-c"]
+      args:
+        - set -e &&
+          set -x &&
+          cd /artifacts && 
+          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
+          ibm-bifrost login --public-cloud &&
+          mv git .git &&
+          ibm-bifrost plan -d "${DESTINATION}" diff --commit &&
+          mv .git git
+      env:
+        - name: DESTINATION
+          value: $(params.DESTINATION)
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          valueFrom:
+            secretKeyRef: 
+              name: secure-properties
+              key: IBM_CLOUD_API_KEY
+        - name: KEY_PROTECT_NAME 
+          value: $(params.KEY_PROTECT_NAME)
+        - name: CLUSTER
+          value: $(params.CLUSTER)
+        - name: DOMAIN
+          value: $(params.DOMAIN)
+        - name: EXTERNAL_IP
+          value: $(params.EXTERNAL_IP)          
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: code-task
+spec:
+  params:
+    - name: REGISTRY_REGION_ID
+    - name: IBM_CLOUD_API_KEY
+    - name: DOCKER_IMAGE_NAME 
+  workspaces:
+    - name: task-pvc
+      mountPath: /artifacts   
+  steps:
+    - name: code
+      securityContext:
+        privileged: true    
+      image: $(params.DOCKER_IMAGE_NAME)
+      command: ["/bin/sh", "-c"]
+      args:
+        - set -e &&
+          set -x &&
+          cd /artifacts && 
+          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
+          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          export MAVEN_OPTS="-Xmx1000m" &&      
+          ibm-bifrost login --public-cloud &&
+          ibm-bifrost code --build 
+      env:
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          valueFrom:
+            secretKeyRef: 
+              name: secure-properties
+              key: IBM_CLOUD_API_KEY
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: docker-task
+spec:
+  params:
+    - name: REGISTRY_REGION_ID
+    - name: IBM_CLOUD_API_KEY
+    - name: IBMCLOUD_HOME
+    - name: DOCKER_IMAGE_NAME 
+  workspaces:
+    - name: task-pvc
+      mountPath: /artifacts   
+  steps:
+    - name: build
+      securityContext:
+        privileged: true    
+      image: $(params.DOCKER_IMAGE_NAME)
+      command: ["/bin/sh", "-c"]
+      args:
+        - set -e &&
+          set -x &&
+          cd /artifacts && 
+          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
+          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          export STORAGE_DRIVER=vfs &&
+          ibm-bifrost login --public-cloud &&
+          ibm-bifrost login --public-registry &&
+          ibm-bifrost docker --build 
+      env:
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          valueFrom:
+            secretKeyRef: 
+              name: secure-properties
+              key: IBM_CLOUD_API_KEY
+        - name: IBMCLOUD_HOME
+          value: $(params.IBMCLOUD_HOME) 
+    - name: validate
+      securityContext:
+        privileged: true    
+      image: $(params.DOCKER_IMAGE_NAME)
+      command: ["/bin/sh", "-c"]
+      args:
+        - set -e &&
+          set -x &&
+          cd /artifacts && 
+          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
+          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          ibm-bifrost login --public-cloud &&
+          ibm-bifrost login --public-registry &&
+          ibm-bifrost docker --validate 
+      env:
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          valueFrom:
+            secretKeyRef: 
+              name: secure-properties
+              key: IBM_CLOUD_API_KEY
+        - name: IBMCLOUD_HOME
+          value: $(params.IBMCLOUD_HOME)                                   
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-task
+spec:
+  params:
+    - name: REGISTRY_REGION_ID
+    - name: IBM_CLOUD_API_KEY
+    - name: IBMCLOUD_HOME
+    - name: DEPLOYMENT_TYPE
+    - name: OS_USER
+    - name: OS_TOKEN
+    - name: CLUSTER 
+    - name: DOCKER_IMAGE_NAME  
+  workspaces:
+    - name: task-pvc
+      mountPath: /artifacts   
+  steps:
+    - name: deploy
+      securityContext:
+        privileged: true    
+      image: $(params.DOCKER_IMAGE_NAME)
+      command: ["/bin/sh", "-c"]
+      args:
+        - set -e &&
+          set -x &&
+          cd /artifacts && 
+          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
+          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          ibm-bifrost login --public-cloud &&
+          ibm-bifrost login --${DEPLOYMENT_TYPE} &&
+          ibm-bifrost deploy --run 
+      env:
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          valueFrom:
+            secretKeyRef: 
+              name: secure-properties
+              key: IBM_CLOUD_API_KEY
+        - name: IBMCLOUD_HOME
+          value: $(params.IBMCLOUD_HOME)
+        - name: DEPLOYMENT_TYPE
+          value: $(params.DEPLOYMENT_TYPE)
+        - name: OS_USER
+          value: $(params.OS_USER)
+        - name: OS_TOKEN
+          valueFrom:
+            secretKeyRef: 
+              name: secure-properties
+              key: OS_TOKEN
+        - name: CLUSTER
+          value: $(params.CLUSTER)           
+    - name: validate
+      securityContext:
+        privileged: true    
+      image: $(params.DOCKER_IMAGE_NAME)
+      command: ["/bin/sh", "-c"]
+      args:
+        - set -e &&
+          set -x &&
+          cd /artifacts && 
+          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
+          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          ibm-bifrost login --public-cloud &&
+          ibm-bifrost login --${DEPLOYMENT_TYPE} &&
+          ibm-bifrost deploy --validate 
+      env:
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: IBM_CLOUD_API_KEY
+          valueFrom:
+            secretKeyRef: 
+              name: secure-properties
+              key: IBM_CLOUD_API_KEY
+        - name: IBMCLOUD_HOME
+          value: $(params.IBMCLOUD_HOME)
+        - name: DEPLOYMENT_TYPE
+          value: $(params.DEPLOYMENT_TYPE)
+        - name: OS_USER
+          value: $(params.OS_USER)
+        - name: OS_TOKEN
+          valueFrom:
+            secretKeyRef: 
+              name: secure-properties
+              key: OS_TOKEN
+        - name: CLUSTER
+          value: $(params.CLUSTER)                      
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: versions-push-task
+spec:
+  params:
+    - name: DESTINATION
+    - name: DOCKER_IMAGE_NAME
+    - name: REGISTRY_REGION_ID
+    - name: INPUT_GIT_BRANCH 
+    - name: GIT_REPO 
+    - name: VERSIONS_GIT_BRANCH 
+    - name: IBMCLOUD_HOME 
+    - name: DOCKER_IMAGE_NAME
+  workspaces:
+  - name: task-pvc
+    mountPath: /artifacts   
+  steps:
+    - name: push-versions
+      securityContext:
+        privileged: true    
+      image: $(params.DOCKER_IMAGE_NAME)
+      command: ["/bin/sh", "-c"]
+      args:
+        - set -e &&
+          set -x &&
+          cd /artifacts && 
+          pwd &&
+          mv git .git &&
+          git config --global user.email "toolchain@cloud.ibm.com" &&
+          git config --global user.name "IBM Cloud DevOps Toochain" &&
+          ibm-bifrost versions --push ${VERSIONS_GIT_BRANCH}
+      env:
+        - name: DESTINATION
+          value: $(params.DESTINATION)
+        - name: REGISTRY_REGION_ID
+          value: $(params.REGISTRY_REGION_ID)
+        - name: INPUT_GIT_BRANCH 
+          value: $(params.INPUT_GIT_BRANCH)
+        - name: GIT_REPO 
+          value: $(params.GIT_REPO)
+        - name: VERSIONS_GIT_BRANCH 
+          value: $(params.VERSIONS_GIT_BRANCH)
+        - name: IBMCLOUD_HOME 
+          value: $(params.IBMCLOUD_HOME)
+
