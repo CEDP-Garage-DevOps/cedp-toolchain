@@ -86,8 +86,8 @@ services:
           $text: ci-dev.yml
         env:
           DESTINATION: '{{form.pipeline.parameters.destination}}' 
-          REPO: cedp-tc-repo
-          GIT_REPO: '{{form.pipeline.parameters.repo_url}}' 
+          GIT_REPO: cedp-tc-repo
+          #GIT_REPO: '{{form.pipeline.parameters.repo_url}}' 
           REGISTRY_REGION_ID: '{{form.pipeline.parameters.registry-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
           CLUSTER: '{{form.pipeline.parameters.cluster}}'
