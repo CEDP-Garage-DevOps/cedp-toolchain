@@ -114,4 +114,9 @@ properties:
   tpe: secure
 - name: GIT_TOKEN
   value: '{{from.pipeline.parameters.GIT_TOKEN}}'
-  type: secure  
+  type: secure 
+- name: DASHBOARD_URL
+  value: '{{from.pipeline.parameters.DASHBOARD_URL}}'
+  type: text 
+    
+  
