@@ -115,8 +115,9 @@ properties:
 - name: GIT_TOKEN
   value: '{{from.pipeline.parameters.GIT_TOKEN}}'
   type: secure 
-- name: DASHBOARD_URL
-  value: '{{from.pipeline.parameters.DASHBOARD_URL}}'
-  type: text 
+- name: DASHBOARD_URL 
+  path: dashboard_url
+  type: integration
+  value: ${DASHBOARD_URL}  
     
   
