@@ -72,7 +72,7 @@ services:
           CIRRUS_REGISTRY: '{{form.pipeline.parameters.CIRRUS_REGISTRY}}'
           CIRRUS_REGISTRY_USER: '{{form.pipeline.parameters.CIRRUS_REGISTRY_USER}}'
           CIRRUS_REGISTRY_PASWORD: '{{form.pipeline.parameters.CIRRUS_REGISTRY_PASSWORD}}'
-          DASHBOARD_URL: '{{from.pipeline.parameters.DASHBOARD_URL}}'
+          DASHBOARD_URL: dra
         execute: false
   cedp-tc-ci-dev-build:
     service_id: pipeline
