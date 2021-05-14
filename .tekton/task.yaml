@@ -100,6 +100,7 @@ spec:
     - name: REGISTRY_REGION_ID
     - name: IBM_CLOUD_API_KEY
     - name: DOCKER_IMAGE_NAME 
+    - name: DASHBOARD_URL
   workspaces:
     - name: task-pvc
       mountPath: /artifacts   
@@ -114,7 +115,7 @@ spec:
           set -x &&
           cd /artifacts && 
           export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
-          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          export TOOLCHAIN_ID=$(echo $DASHBOARD_URL | cut -d= -f2) &&
           export MAVEN_OPTS="-Xmx1000m" &&      
           ibm-bifrost login --public-cloud &&
           ibm-bifrost code --build 
@@ -126,6 +127,8 @@ spec:
             secretKeyRef: 
               name: secure-properties
               key: IBM_CLOUD_API_KEY
+        - name: DASHBOARD_URL  
+          value: $(params.DASHBOARD_URL)                 
 ---
 apiVersion: tekton.dev/v1beta1
 kind: Task
@@ -136,7 +139,8 @@ spec:
     - name: REGISTRY_REGION_ID
     - name: IBM_CLOUD_API_KEY
     - name: IBMCLOUD_HOME
-    - name: DOCKER_IMAGE_NAME 
+    - name: DOCKER_IMAGE_NAME
+    - name: DASHBOARD_URL 
   workspaces:
     - name: task-pvc
       mountPath: /artifacts   
@@ -151,7 +155,7 @@ spec:
           set -x &&
           cd /artifacts && 
           export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
-          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          export TOOLCHAIN_ID=$(echo $DASHBOARD_URL | cut -d= -f2) &&
           export STORAGE_DRIVER=vfs &&
           ibm-bifrost login --public-cloud &&
           ibm-bifrost login --public-registry &&
@@ -165,7 +169,9 @@ spec:
               name: secure-properties
               key: IBM_CLOUD_API_KEY
         - name: IBMCLOUD_HOME
-          value: $(params.IBMCLOUD_HOME) 
+          value: $(params.IBMCLOUD_HOME)
+        - name: DASHBOARD_URL  
+          value: $(params.DASHBOARD_URL)           
     - name: validate
       securityContext:
         privileged: true    
@@ -176,7 +182,7 @@ spec:
           set -x &&
           cd /artifacts && 
           export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
-          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          export TOOLCHAIN_ID=$(echo $DASHBOARD_URL | cut -d= -f2) &&
           ibm-bifrost login --public-cloud &&
           ibm-bifrost login --public-registry &&
           ibm-bifrost docker --validate 
@@ -189,7 +195,9 @@ spec:
               name: secure-properties
               key: IBM_CLOUD_API_KEY
         - name: IBMCLOUD_HOME
-          value: $(params.IBMCLOUD_HOME)                                   
+          value: $(params.IBMCLOUD_HOME)
+        - name: DASHBOARD_URL  
+          value: $(params.DASHBOARD_URL)                                             
 ---
 apiVersion: tekton.dev/v1beta1
 kind: Task
@@ -205,6 +213,7 @@ spec:
     - name: OS_TOKEN
     - name: CLUSTER 
     - name: DOCKER_IMAGE_NAME  
+    - name: DASHBOARD_URL
   workspaces:
     - name: task-pvc
       mountPath: /artifacts   
@@ -219,7 +228,7 @@ spec:
           set -x &&
           cd /artifacts && 
           export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
-          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          export TOOLCHAIN_ID=$(echo $DASHBOARD_URL | cut -d= -f2) && 
           ibm-bifrost login --public-cloud &&
           ibm-bifrost login --${DEPLOYMENT_TYPE} &&
           ibm-bifrost deploy --run 
@@ -243,7 +252,9 @@ spec:
               name: secure-properties
               key: OS_TOKEN
         - name: CLUSTER
-          value: $(params.CLUSTER)           
+          value: $(params.CLUSTER)
+        - name: DASHBOARD_URL  
+          value: $(params.DASHBOARD_URL)                     
     - name: validate
       securityContext:
         privileged: true    
@@ -254,7 +265,7 @@ spec:
           set -x &&
           cd /artifacts && 
           export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
-          export TOOLCHAIN_ID=$PIPELINE_TOOLCHAIN_ID &&
+          export TOOLCHAIN_ID=$(echo $DASHBOARD_URL | cut -d= -f2) &&
           ibm-bifrost login --public-cloud &&
           ibm-bifrost login --${DEPLOYMENT_TYPE} &&
           ibm-bifrost deploy --validate 
@@ -278,7 +289,9 @@ spec:
               name: secure-properties
               key: OS_TOKEN
         - name: CLUSTER
-          value: $(params.CLUSTER)                      
+          value: $(params.CLUSTER)
+        - name: DASHBOARD_URL  
+          value: $(params.DASHBOARD_URL)                 
 ---
 apiVersion: tekton.dev/v1beta1
 kind: Task
@@ -325,4 +338,3 @@ spec:
           value: $(params.VERSIONS_GIT_BRANCH)
         - name: IBMCLOUD_HOME 
           value: $(params.IBMCLOUD_HOME)
-
