@@ -184,7 +184,7 @@
 			"disabled": false
 		}
 	},
-	"required": ["api-key", "prod-region", "dev-destination", "stg-destination", "prod-destination"],
+	"required": ["api-key", "prod-region", "dev-destination", "stg-destination", "prod-destination", "dockerImageName"],
 	"form": [ {
 			"type": "password",
 			"readonly": false,
