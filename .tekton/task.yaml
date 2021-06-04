@@ -172,32 +172,6 @@ spec:
           value: $(params.IBMCLOUD_HOME)
         - name: DASHBOARD_URL  
           value: $(params.DASHBOARD_URL)           
-    - name: validate
-      securityContext:
-        privileged: true    
-      image: $(params.DOCKER_IMAGE_NAME)
-      command: ["/bin/sh", "-c"]
-      args:
-        - set -e &&
-          set -x &&
-          cd /artifacts && 
-          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
-          export TOOLCHAIN_ID=$(echo $DASHBOARD_URL | cut -d= -f2) &&
-          ibm-bifrost login --public-cloud &&
-          ibm-bifrost login --public-registry &&
-          ibm-bifrost docker --validate 
-      env:
-        - name: REGISTRY_REGION_ID
-          value: $(params.REGISTRY_REGION_ID)
-        - name: IBM_CLOUD_API_KEY
-          valueFrom:
-            secretKeyRef: 
-              name: secure-properties
-              key: IBM_CLOUD_API_KEY
-        - name: IBMCLOUD_HOME
-          value: $(params.IBMCLOUD_HOME)
-        - name: DASHBOARD_URL  
-          value: $(params.DASHBOARD_URL)                                             
 ---
 apiVersion: tekton.dev/v1beta1
 kind: Task
