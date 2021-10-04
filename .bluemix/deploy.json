@@ -584,8 +584,8 @@
 								},
 								{
 									"type": "label",
-									"title": ""
-								},								
+									"title": "Git token"
+								},
 								{
 									"type": "text",
 									"key": "OS_USER",
@@ -599,29 +599,10 @@
 									"type": "password",
 									"key": "OS_TOKEN",
 									"readonly": false
-								}						
-							]
-						},
-						{
-							"type": "table",
-							"columnCount": 3,
-							"widths": [
-								"32%",
-								"2%",
-								"32%"
-							],
-							"items": [
-								{
-									"type": "label",
-									"title": "Git token"
-								},
+								},								
 								{
 									"type": "label",
 									"title": ""
-								},
-								{
-									"type": "label",
-									"title": "Docker config json"
 								},
 								{
 									"type": "password",
@@ -630,15 +611,19 @@
 								},
 								{
 									"type": "label",
+									"title": "Docker config json"
+								},								
+								{
+									"type": "label",
 									"title": ""
 								},
 								{
 									"type": "password",
 									"key": "dockerconfigjson",
 									"readonly": false
-								}
+								}						
 							]
-						}							
+						}				
 					]
 				}
 			]
