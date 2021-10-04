@@ -614,10 +614,6 @@
 									"title": "Docker config json"
 								},								
 								{
-									"type": "label",
-									"title": ""
-								},
-								{
 									"type": "password",
 									"key": "dockerconfigjson",
 									"readonly": false
