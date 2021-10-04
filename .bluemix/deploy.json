@@ -612,6 +612,22 @@
 								{
 									"type": "label",
 									"title": "Docker config json"
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": ""
+								},
+								{
+									"type": "label",
+									"title": ""
 								},								
 								{
 									"type": "password",
