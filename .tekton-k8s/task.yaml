@@ -177,6 +177,7 @@ spec:
           cd /artifacts && 
           export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
           export TOOLCHAIN_ID=$(echo $DASHBOARD_URL | cut -d= -f2) &&
+          export STORAGE_DRIVER=vfs &&
           ibm-bifrost login --public-cloud &&
           ibm-bifrost login --public-registry &&
           ibm-bifrost docker --build 
