@@ -102,7 +102,7 @@ spec:
           - name: DASHBOARD_URL
             value: $(params.DASHBOARD_URL)
           - name: IBMCLOUD_HOME 
-          value: $(params.IBMCLOUD_HOME)  
+            value: $(params.IBMCLOUD_HOME)  
         workspaces:
           - name: pipeline-pvc
             persistentVolumeClaim:
