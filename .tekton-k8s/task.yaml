@@ -161,10 +161,7 @@ spec:
     - name: IBM_CLOUD_API_KEY
     - name: IBMCLOUD_HOME
     - name: DOCKER_IMAGE_NAME
-    - name: DASHBOARD_URL
-    - name: properties-file
-      description: file containing properties out of the docker in docker task
-      default: build.properties     
+    - name: DASHBOARD_URL  
   workspaces:
     - name: task-pvc
       mountPath: /artifacts
@@ -181,13 +178,14 @@ spec:
       image: $(params.DOCKER_IMAGE_NAME)
       command: ["/bin/sh", "-c"]
       args:
-        - set -e &&
-          set -x &&
+        - |
+          set -e 
+          set -x 
           cd /artifacts && 
-          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) &&
-          export TOOLCHAIN_ID=$(echo $DASHBOARD_URL | cut -d= -f2) &&
-          ibm-bifrost login --public-cloud &&
-          ibm-bifrost login --public-registry &&
+          export REGION=$(echo $REGISTRY_REGION_ID | cut -f3 -d:) 
+          export TOOLCHAIN_ID=$(echo $DASHBOARD_URL | cut -d= -f2) 
+          ibm-bifrost login --public-cloud 
+          ibm-bifrost login --public-registry 
           ibm-bifrost docker --build 
       env:
         - name: REGISTRY_REGION_ID
@@ -201,8 +199,6 @@ spec:
           value: $(params.IBMCLOUD_HOME)
         - name: DASHBOARD_URL  
           value: $(params.DASHBOARD_URL)
-        - name: PROPERTIES_FILE
-          value: $(params.properties-file)
         - name: DOCKER_HOST
           value: "tcp://localhost:2376"
         # Verify TLS.
@@ -216,13 +212,7 @@ spec:
           value: /steps
       volumeMounts:
         - mountPath: /certs/client
-          name: dind-certs
-        - name: cd-config-volume
-          mountPath: /cd-config          
-        - name: environment-properties
-          mountPath: /cd-config/environment-properties
-        - name: secure-properties
-          mountPath: /cd-config/secure-properties                               
+          name: dind-certs                            
     - name: validate
       securityContext:
         privileged: true    
@@ -286,26 +276,6 @@ spec:
   volumes:
     - name: dind-certs
       emptyDir: {}
-    - name: cd-config-volume
-      configMap:
-        name: toolchain
-        items:
-          - key: toolchain.json
-            path: toolchain.json
-    - name: check-registry-scripts
-      configMap:
-        name: check-registry-scripts
-        items:
-          - key: check_registry.sh
-            path: check_registry.sh
-          - key: parse_image_url.sh
-            path: parse_image_url.sh
-    - name: environment-properties
-      configMap:
-        name: environment-properties
-    - name: secure-properties
-      secret:
-        secretName: secure-properties
     - name: docker-graph-storage 
       emptyDir: {}                           
 ---
