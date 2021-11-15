@@ -126,13 +126,6 @@ RUN wget https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.4/linux/oc.t
  && tar -zxvf oc.tar.gz \
  && mv oc /usr/bin
 
-#Buildah
-RUN echo 'deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list \
- && wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_18.04/Release.key -O Release.key \
- && apt-key add - < Release.key \
- && apt-get update -qq \
- && apt-get -qq -y install buildah
-
 # Chromium and Firefox
 RUN apt-get install -y chromium-browser \
  && apt-get install -y firefox \
