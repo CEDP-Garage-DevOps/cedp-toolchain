@@ -240,7 +240,7 @@ spec:
         - name: DASHBOARD_URL  
           value: $(params.DASHBOARD_URL)  
   sidecars:
-    - image: icr.io/continuous-delivery/pipeline/docker:19.03.15-dind
+    - image: us.icr.io/cedp-garage/docker:19.03.15-dind
       name: server
       securityContext:
         privileged: true

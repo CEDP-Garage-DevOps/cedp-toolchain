@@ -32,9 +32,7 @@ spec:
         the git revision/commit to update the git HEAD to.
         Default is to mean only use the branch
       default: ""
-    - name: git-client-image
-      description: The image to use to run git clone commands
-      default: alpine/git
+    - name: DOCKER_IMAGE_NAME
     - name: git-max-retry
       description: max retry for the git clone operation
       default: "1"
@@ -93,7 +91,7 @@ spec:
         value: $(params.pipeline-debug)
   steps:
     - name: fetch-git-token
-      image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.15
+      image: $(params.DOCKER_IMAGE_NAME)
       env:
         - name: REPOSITORY
           value: $(params.repository)
@@ -179,7 +177,7 @@ spec:
     - name: clone-repo
       securityContext:
         privileged: true
-      image: $(params.git-client-image)
+      image: $(params.DOCKER_IMAGE_NAME)
       env:
         - name: REPOSITORY
           value: $(params.repository)
@@ -200,7 +198,7 @@ spec:
         - name: JSON_FILE_GIT_CREDENTIALS
           value: $(params.git-credentials-json-file)
       script: |
-        #!/bin/sh
+        #!/bin/bash
         set -e
         if [ $PIPELINE_DEBUG == 1 ]; then
             pwd

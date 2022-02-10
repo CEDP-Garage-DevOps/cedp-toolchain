@@ -4,8 +4,6 @@ metadata:
   name: pipeline
 spec:
   params:
-    - name: dockerconfigjson
-      description: docker config to pull build image
     - name: DESTINATION
     - name: DOCKER_IMAGE_NAME
     - name: IBM_CLOUD_API_KEY
@@ -29,9 +27,6 @@ spec:
     - name: DEPLOYMENT_TYPE 
     - name: OS_TOKEN
     - name: OS_USER
-    # - name: CIRRUS_REGISTRY
-    # - name: CIRRUS_REGISTRY_USER
-    # - name: CIRRUS_REGISTRY_PASSWORD
     - name: GIT_TOKEN
     - name: DASHBOARD_URL
   workspaces:
@@ -50,6 +45,8 @@ spec:
           value: $(params.INPUT_GIT_BRANCH)
         - name: git-access-token
           value: $(params.GIT_TOKEN)
+        - name: DOCKER_IMAGE_NAME
+          value: $(params.DOCKER_IMAGE_NAME)    
     - name: pipeline-versions-task
       taskRef:
         name: versions-task

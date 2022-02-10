@@ -4,8 +4,6 @@ metadata:
   name: pipeline
 spec:
   params:
-    # - name: dockerconfigjson
-    #   description: docker config to pull build image
     - name: DESTINATION
     - name: DOCKER_IMAGE_NAME
     - name: IBM_CLOUD_API_KEY
@@ -43,6 +41,8 @@ spec:
           value: $(params.INPUT_GIT_BRANCH)
         - name: git-access-token
           value: $(params.GIT_TOKEN)
+        - name: DOCKER_IMAGE_NAME
+          value: $(params.DOCKER_IMAGE_NAME)    
     - name: pipeline-versions-task
       taskRef:
         name: versions-task
